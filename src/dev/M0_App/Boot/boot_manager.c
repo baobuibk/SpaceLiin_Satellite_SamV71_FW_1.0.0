@@ -1,0 +1,70 @@
+/************************************************
+ *  @file     : boot_manager.c
+ *  @date     : November 2025
+ *  @author   : CAO HIEU
+ *  @version  : 1.0.0
+ *-----------------------------------------------
+ *  Description :
+ *    [-]
+ ************************************************/
+
+#include "boot_manager.h"
+#include "peripheral/systick/plib_systick.h"
+#include "peripheral/tc/plib_tc3.h"
+#include "board.h"
+#include "M5_Utils/DateTime/date_time.h"
+#include "M2_BSP/UART/uart_irq.h"
+#include "M1_SysApp/EmbeddedCLI/CLI_Setup/cli_setup.h"
+#include "ATSAMV71cm7_it.h"
+
+#include "M0_App/AppOS/App_x_Root/app_root.h"
+/*============================================================*/
+/*                      Defines                               */
+/*============================================================*/
+
+/*============================================================*/
+/*                   Private Variables                        */
+/*============================================================*/
+
+/*============================================================*/
+/*                   Public Variables                         */
+/*============================================================*/
+
+/*============================================================*/
+/*              Private Function Prototypes                   */
+/*============================================================*/
+
+/*============================================================*/
+/*                Function Implementations                    */
+/*============================================================*/
+Std_ReturnType BootManager_SystemInit(void){
+
+    Utils_SoftTime_Init();
+    EX_SysTick_HandlerRegister();
+    EX_TC3_CH0_HandlerRegister();
+    
+    UART_Driver_Init();
+    
+    DEBUG_SendString("\r\n");
+    DEBUG_SendString("========================================\r\n");
+    DEBUG_SendString("          SAM-EXP Booting up....\r\n");
+    DEBUG_SendString("========================================\r\n");
+
+    SystemCLI_Init();
+
+
+    return E_OK;
+}
+
+void BootManager_SystemStart(void){
+    TC3_CH0_TimerStart();
+    SYSTICK_TimerStart();
+    {
+        static volatile int i;
+        static volatile int m = 100;
+        while (m--) {
+            for (i = 0; i < 10; i++);  
+        }
+    }
+    App_Start();
+}

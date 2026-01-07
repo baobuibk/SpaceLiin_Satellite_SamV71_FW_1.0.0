@@ -1,0 +1,380 @@
+build/default/production/_ext/1389938436/app_network.o: \
+ ../src/dev/M0_App/AppOS/App_3_Network/app_network.c \
+ ../src/dev/M0_App/AppOS/App_3_Network/app_network.h \
+ ../src/dev/M0_App/OS/os.h \
+ ../src/dev/M4_Middlewares/Config/FreeRTOS_Config/FreeRTOSConfig.h \
+ ../src/dev/board.h ../src/dev/M2_BSP/UART/uart_irq.h \
+ ../src/config/default/peripheral/uart/plib_uart2.h \
+ ../src/config/default/peripheral/uart/plib_uart_common.h \
+ ../src/config/default/device.h \
+ ../src/packs/ATSAMV71Q21B_DFP/samv71q21b.h \
+ ../src/packs/CMSIS/CMSIS/Core/Include/core_cm7.h \
+ ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_version.h \
+ ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h \
+ ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_gcc.h \
+ ../src/packs/CMSIS/CMSIS/Core/Include/mpu_armv7.h \
+ ../src/packs/CMSIS/CMSIS/Core/Include/cachel1_armv7.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/acc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/aes.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/afec.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/chipid.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/dacc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/efc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/fuses.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/gmac.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/gpbr.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/hsmci.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/i2sc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/icm.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/isi.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/matrix.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/mcan.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/mlb.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/pio.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/pmc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/pwm.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/qspi.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/rstc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/rswdt.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/rtc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/rtt.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/smc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/spi.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/ssc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/supc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/tc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/trng.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/twihs.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/uart.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/usart.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/usbhs.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/utmi.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/wdt.h \
+ ../src/packs/ATSAMV71Q21B_DFP/component/xdmac.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/acc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/aes.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/afec0.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/afec1.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/chipid.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/dacc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/efc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/fuses.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/gmac.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/gpbr.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/hsmci.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/i2sc0.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/i2sc1.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/icm.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/isi.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/matrix.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/mcan0.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/mcan1.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/mlb.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/pioa.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/piob.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/pioc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/piod.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/pioe.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/pmc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/pwm0.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/pwm1.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/qspi.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/rstc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/rswdt.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/rtc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/rtt.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/smc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/spi0.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/spi1.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/ssc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/supc.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/tc0.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/tc1.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/tc2.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/tc3.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/trng.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/twihs0.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/twihs1.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/twihs2.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/uart0.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/uart1.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/uart2.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/uart3.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/uart4.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/usart0.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/usart1.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/usart2.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/usbhs.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/utmi.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/wdt.h \
+ ../src/packs/ATSAMV71Q21B_DFP/instance/xdmac.h \
+ ../src/packs/ATSAMV71Q21B_DFP/pio/samv71q21b.h \
+ ../src/config/default/device_cache.h ../src/config/default/device.h \
+ ../src/config/default/toolchain_specifics.h \
+ ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h \
+ ../src/dev/M5_Utils/RingBuffer/ring_buffer.h \
+ ../src/dev/M5_Utils/Define/define.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/FreeRTOS.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/projdefs.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/portable.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/deprecated_definitions.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/mpu_wrappers.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/task.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/list.h \
+ ../src/dev/M4_Middlewares/TinyUSB/tusb.h \
+ ../src/dev/M4_Middlewares/TinyUSB/common/tusb_common.h \
+ ../src/dev/M4_Middlewares/TinyUSB/tusb_option.h \
+ ../src/dev/M4_Middlewares/TinyUSB/common/tusb_compiler.h \
+ ../src/dev/M4_Middlewares/TinyUSB/../Config/TinyUSB_Config/tusb_config.h \
+ ../src/dev/M4_Middlewares/TinyUSB/../Config/LwIP_Config/lwipopts.h \
+ ../src/dev/M4_Middlewares/TinyUSB/common/tusb_mcu.h \
+ ../src/dev/M4_Middlewares/TinyUSB/common/tusb_verify.h \
+ ../src/dev/M4_Middlewares/TinyUSB/common/tusb_types.h \
+ ../src/dev/M4_Middlewares/TinyUSB/common/tusb_debug.h \
+ ../src/dev/M4_Middlewares/TinyUSB/osal/osal.h \
+ ../src/dev/M4_Middlewares/TinyUSB/common/tusb_common.h \
+ ../src/dev/M4_Middlewares/TinyUSB/osal/osal_freertos.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/semphr.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/queue.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/task.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/queue.h \
+ ../src/dev/M4_Middlewares/TinyUSB/common/tusb_fifo.h \
+ ../src/dev/M4_Middlewares/TinyUSB/osal/osal.h \
+ ../src/dev/M4_Middlewares/TinyUSB/device/usbd.h \
+ ../src/dev/M4_Middlewares/TinyUSB/class/net/net_device.h \
+ ../src/dev/M4_Middlewares/TinyUSB/class/cdc/cdc.h \
+ ../src/dev/M4_Middlewares/Config/TinyUSB_Config/tusb_config.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/init.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/opt.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/../../../Config/LwIP_Config/lwipopts.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/debug.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/arch.h \
+ ../src/dev/M4_Middlewares/Config/LwIP_Config/arch/cc.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/timeouts.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/err.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/sys.h \
+ ../src/dev/M4_Middlewares/Config/LwIP_Config/arch/sys_arch.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/tcp.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/tcpbase.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/mem.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/pbuf.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/ip.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/def.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/ip_addr.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/ip4_addr.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/ip6_addr.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/def.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/netif.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/stats.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/memp.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/priv/memp_std.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/priv/memp_priv.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/priv/mem_priv.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/ip4.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/prot/ip4.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/ip6.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/prot/ip.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/icmp.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/prot/icmp.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/etharp.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/prot/ethernet.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/prot/ieee.h \
+ ../src/dev/M4_Middlewares/LwIP/include/lwip/prot/etharp.h \
+ ../src/dev/M4_Middlewares/LwIP/include/netif/ethernet.h \
+ ../src/dev/M4_Middlewares/Config/TinyUSB_Config/board_api.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/timers.h \
+ ../src/dev/M1_SysApp/EmbeddedCLI/CLI_Setup/cli_setup.h \
+ ../src/dev/M1_SysApp/EmbeddedCLI/CLI_Setup/../CLI_Src/embedded_cli.h \
+ ../src/dev/M5_Utils/Define/define.h \
+ ../src/dev/M1_SysApp/EmbeddedCLI/CLI_Auth/simple_shield.h
+../src/dev/M0_App/AppOS/App_3_Network/app_network.h:
+../src/dev/M0_App/OS/os.h:
+../src/dev/M4_Middlewares/Config/FreeRTOS_Config/FreeRTOSConfig.h:
+../src/dev/board.h:
+../src/dev/M2_BSP/UART/uart_irq.h:
+../src/config/default/peripheral/uart/plib_uart2.h:
+../src/config/default/peripheral/uart/plib_uart_common.h:
+../src/config/default/device.h:
+../src/packs/ATSAMV71Q21B_DFP/samv71q21b.h:
+../src/packs/CMSIS/CMSIS/Core/Include/core_cm7.h:
+../src/packs/CMSIS/CMSIS/Core/Include/cmsis_version.h:
+../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h:
+../src/packs/CMSIS/CMSIS/Core/Include/cmsis_gcc.h:
+../src/packs/CMSIS/CMSIS/Core/Include/mpu_armv7.h:
+../src/packs/CMSIS/CMSIS/Core/Include/cachel1_armv7.h:
+../src/packs/ATSAMV71Q21B_DFP/component/acc.h:
+../src/packs/ATSAMV71Q21B_DFP/component/aes.h:
+../src/packs/ATSAMV71Q21B_DFP/component/afec.h:
+../src/packs/ATSAMV71Q21B_DFP/component/chipid.h:
+../src/packs/ATSAMV71Q21B_DFP/component/dacc.h:
+../src/packs/ATSAMV71Q21B_DFP/component/efc.h:
+../src/packs/ATSAMV71Q21B_DFP/component/fuses.h:
+../src/packs/ATSAMV71Q21B_DFP/component/gmac.h:
+../src/packs/ATSAMV71Q21B_DFP/component/gpbr.h:
+../src/packs/ATSAMV71Q21B_DFP/component/hsmci.h:
+../src/packs/ATSAMV71Q21B_DFP/component/i2sc.h:
+../src/packs/ATSAMV71Q21B_DFP/component/icm.h:
+../src/packs/ATSAMV71Q21B_DFP/component/isi.h:
+../src/packs/ATSAMV71Q21B_DFP/component/matrix.h:
+../src/packs/ATSAMV71Q21B_DFP/component/mcan.h:
+../src/packs/ATSAMV71Q21B_DFP/component/mlb.h:
+../src/packs/ATSAMV71Q21B_DFP/component/pio.h:
+../src/packs/ATSAMV71Q21B_DFP/component/pmc.h:
+../src/packs/ATSAMV71Q21B_DFP/component/pwm.h:
+../src/packs/ATSAMV71Q21B_DFP/component/qspi.h:
+../src/packs/ATSAMV71Q21B_DFP/component/rstc.h:
+../src/packs/ATSAMV71Q21B_DFP/component/rswdt.h:
+../src/packs/ATSAMV71Q21B_DFP/component/rtc.h:
+../src/packs/ATSAMV71Q21B_DFP/component/rtt.h:
+../src/packs/ATSAMV71Q21B_DFP/component/smc.h:
+../src/packs/ATSAMV71Q21B_DFP/component/spi.h:
+../src/packs/ATSAMV71Q21B_DFP/component/ssc.h:
+../src/packs/ATSAMV71Q21B_DFP/component/supc.h:
+../src/packs/ATSAMV71Q21B_DFP/component/tc.h:
+../src/packs/ATSAMV71Q21B_DFP/component/trng.h:
+../src/packs/ATSAMV71Q21B_DFP/component/twihs.h:
+../src/packs/ATSAMV71Q21B_DFP/component/uart.h:
+../src/packs/ATSAMV71Q21B_DFP/component/usart.h:
+../src/packs/ATSAMV71Q21B_DFP/component/usbhs.h:
+../src/packs/ATSAMV71Q21B_DFP/component/utmi.h:
+../src/packs/ATSAMV71Q21B_DFP/component/wdt.h:
+../src/packs/ATSAMV71Q21B_DFP/component/xdmac.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/acc.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/aes.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/afec0.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/afec1.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/chipid.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/dacc.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/efc.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/fuses.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/gmac.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/gpbr.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/hsmci.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/i2sc0.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/i2sc1.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/icm.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/isi.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/matrix.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/mcan0.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/mcan1.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/mlb.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/pioa.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/piob.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/pioc.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/piod.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/pioe.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/pmc.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/pwm0.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/pwm1.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/qspi.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/rstc.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/rswdt.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/rtc.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/rtt.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/smc.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/spi0.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/spi1.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/ssc.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/supc.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/tc0.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/tc1.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/tc2.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/tc3.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/trng.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/twihs0.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/twihs1.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/twihs2.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/uart0.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/uart1.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/uart2.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/uart3.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/uart4.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/usart0.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/usart1.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/usart2.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/usbhs.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/utmi.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/wdt.h:
+../src/packs/ATSAMV71Q21B_DFP/instance/xdmac.h:
+../src/packs/ATSAMV71Q21B_DFP/pio/samv71q21b.h:
+../src/config/default/device_cache.h:
+../src/config/default/device.h:
+../src/config/default/toolchain_specifics.h:
+../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h:
+../src/dev/M5_Utils/RingBuffer/ring_buffer.h:
+../src/dev/M5_Utils/Define/define.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/FreeRTOS.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/projdefs.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/portable.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/deprecated_definitions.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/portable/GCC/ARM_CM7/r0p1/portmacro.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/mpu_wrappers.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/task.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/list.h:
+../src/dev/M4_Middlewares/TinyUSB/tusb.h:
+../src/dev/M4_Middlewares/TinyUSB/common/tusb_common.h:
+../src/dev/M4_Middlewares/TinyUSB/tusb_option.h:
+../src/dev/M4_Middlewares/TinyUSB/common/tusb_compiler.h:
+../src/dev/M4_Middlewares/TinyUSB/../Config/TinyUSB_Config/tusb_config.h:
+../src/dev/M4_Middlewares/TinyUSB/../Config/LwIP_Config/lwipopts.h:
+../src/dev/M4_Middlewares/TinyUSB/common/tusb_mcu.h:
+../src/dev/M4_Middlewares/TinyUSB/common/tusb_verify.h:
+../src/dev/M4_Middlewares/TinyUSB/common/tusb_types.h:
+../src/dev/M4_Middlewares/TinyUSB/common/tusb_debug.h:
+../src/dev/M4_Middlewares/TinyUSB/osal/osal.h:
+../src/dev/M4_Middlewares/TinyUSB/common/tusb_common.h:
+../src/dev/M4_Middlewares/TinyUSB/osal/osal_freertos.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/semphr.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/queue.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/task.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/queue.h:
+../src/dev/M4_Middlewares/TinyUSB/common/tusb_fifo.h:
+../src/dev/M4_Middlewares/TinyUSB/osal/osal.h:
+../src/dev/M4_Middlewares/TinyUSB/device/usbd.h:
+../src/dev/M4_Middlewares/TinyUSB/class/net/net_device.h:
+../src/dev/M4_Middlewares/TinyUSB/class/cdc/cdc.h:
+../src/dev/M4_Middlewares/Config/TinyUSB_Config/tusb_config.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/init.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/opt.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/../../../Config/LwIP_Config/lwipopts.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/debug.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/arch.h:
+../src/dev/M4_Middlewares/Config/LwIP_Config/arch/cc.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/timeouts.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/err.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/sys.h:
+../src/dev/M4_Middlewares/Config/LwIP_Config/arch/sys_arch.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/tcp.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/tcpbase.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/mem.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/pbuf.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/ip.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/def.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/ip_addr.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/ip4_addr.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/ip6_addr.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/def.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/netif.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/stats.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/memp.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/priv/memp_std.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/priv/memp_priv.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/priv/mem_priv.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/ip4.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/prot/ip4.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/ip6.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/prot/ip.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/icmp.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/prot/icmp.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/etharp.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/prot/ethernet.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/prot/ieee.h:
+../src/dev/M4_Middlewares/LwIP/include/lwip/prot/etharp.h:
+../src/dev/M4_Middlewares/LwIP/include/netif/ethernet.h:
+../src/dev/M4_Middlewares/Config/TinyUSB_Config/board_api.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/timers.h:
+../src/dev/M1_SysApp/EmbeddedCLI/CLI_Setup/cli_setup.h:
+../src/dev/M1_SysApp/EmbeddedCLI/CLI_Setup/../CLI_Src/embedded_cli.h:
+../src/dev/M5_Utils/Define/define.h:
+../src/dev/M1_SysApp/EmbeddedCLI/CLI_Auth/simple_shield.h:
