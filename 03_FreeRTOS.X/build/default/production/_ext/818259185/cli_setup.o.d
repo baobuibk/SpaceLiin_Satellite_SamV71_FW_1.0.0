@@ -113,8 +113,18 @@ build/default/production/_ext/818259185/cli_setup.o: \
  ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h \
  ../src/dev/M5_Utils/RingBuffer/ring_buffer.h \
  ../src/dev/M5_Utils/Define/define.h \
- ../src/dev/M1_SysApp/EmbeddedCli/CLI_Command/cli_command.h \
- ../src/dev/M1_SysApp/EmbeddedCli/CLI_Command/../CLI_Src/embedded_cli.h
+ ../src/dev/M1_SysApp/EmbeddedCLI/CLI_Command/cli_command.h \
+ ../src/dev/M1_SysApp/EmbeddedCLI/CLI_Command/../CLI_Src/embedded_cli.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/FreeRTOS.h \
+ ../src/dev/M4_Middlewares/Config/FreeRTOS_Config/FreeRTOSConfig.h \
+ ../src/dev/board.h ../src/dev/M2_BSP/UART/uart_irq.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/projdefs.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/portable.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/deprecated_definitions.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/mpu_wrappers.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/task.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/list.h
 ../src/dev/M1_SysApp/EmbeddedCLI/CLI_Setup/cli_setup.h:
 ../src/dev/M1_SysApp/EmbeddedCLI/CLI_Setup/../CLI_Src/embedded_cli.h:
 ../src/dev/M5_Utils/Define/define.h:
@@ -230,5 +240,16 @@ build/default/production/_ext/818259185/cli_setup.o: \
 ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h:
 ../src/dev/M5_Utils/RingBuffer/ring_buffer.h:
 ../src/dev/M5_Utils/Define/define.h:
-../src/dev/M1_SysApp/EmbeddedCli/CLI_Command/cli_command.h:
-../src/dev/M1_SysApp/EmbeddedCli/CLI_Command/../CLI_Src/embedded_cli.h:
+../src/dev/M1_SysApp/EmbeddedCLI/CLI_Command/cli_command.h:
+../src/dev/M1_SysApp/EmbeddedCLI/CLI_Command/../CLI_Src/embedded_cli.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/FreeRTOS.h:
+../src/dev/M4_Middlewares/Config/FreeRTOS_Config/FreeRTOSConfig.h:
+../src/dev/board.h:
+../src/dev/M2_BSP/UART/uart_irq.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/projdefs.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/portable.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/deprecated_definitions.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/portable/GCC/ARM_CM7/r0p1/portmacro.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/mpu_wrappers.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/task.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/list.h:

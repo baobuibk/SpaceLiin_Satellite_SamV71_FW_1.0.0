@@ -62,6 +62,24 @@
 // *****************************************************************************
 
 
+/*** Macros for GPIO_PD0 pin ***/
+#define GPIO_PD0_Set()               (PIOD_REGS->PIO_SODR = ((uint32_t)1U<<0U))
+#define GPIO_PD0_Clear()             (PIOD_REGS->PIO_CODR = ((uint32_t)1U<<0U))
+#define GPIO_PD0_Toggle()            (PIOD_REGS->PIO_ODSR ^= ((uint32_t)1U<<0U))
+#define GPIO_PD0_OutputEnable()      (PIOD_REGS->PIO_OER = ((uint32_t)1U<<0U))
+#define GPIO_PD0_InputEnable()       (PIOD_REGS->PIO_ODR = ((uint32_t)1U<<0U))
+#define GPIO_PD0_Get()               ((PIOD_REGS->PIO_PDSR >> 0U) & 0x1U)
+#define GPIO_PD0_PIN                  PIO_PIN_PD0
+
+/*** Macros for GPIO_PE5 pin ***/
+#define GPIO_PE5_Set()               (PIOE_REGS->PIO_SODR = ((uint32_t)1U<<5U))
+#define GPIO_PE5_Clear()             (PIOE_REGS->PIO_CODR = ((uint32_t)1U<<5U))
+#define GPIO_PE5_Toggle()            (PIOE_REGS->PIO_ODSR ^= ((uint32_t)1U<<5U))
+#define GPIO_PE5_OutputEnable()      (PIOE_REGS->PIO_OER = ((uint32_t)1U<<5U))
+#define GPIO_PE5_InputEnable()       (PIOE_REGS->PIO_ODR = ((uint32_t)1U<<5U))
+#define GPIO_PE5_Get()               ((PIOE_REGS->PIO_PDSR >> 5U) & 0x1U)
+#define GPIO_PE5_PIN                  PIO_PIN_PE5
+
 /*** Macros for LED_PA23 pin ***/
 #define LED_PA23_Set()               (PIOA_REGS->PIO_SODR = ((uint32_t)1U<<23U))
 #define LED_PA23_Clear()             (PIOA_REGS->PIO_CODR = ((uint32_t)1U<<23U))
@@ -70,6 +88,15 @@
 #define LED_PA23_InputEnable()       (PIOA_REGS->PIO_ODR = ((uint32_t)1U<<23U))
 #define LED_PA23_Get()               ((PIOA_REGS->PIO_PDSR >> 23U) & 0x1U)
 #define LED_PA23_PIN                  PIO_PIN_PA23
+
+/*** Macros for GPIO_PD28 pin ***/
+#define GPIO_PD28_Set()               (PIOD_REGS->PIO_SODR = ((uint32_t)1U<<28U))
+#define GPIO_PD28_Clear()             (PIOD_REGS->PIO_CODR = ((uint32_t)1U<<28U))
+#define GPIO_PD28_Toggle()            (PIOD_REGS->PIO_ODSR ^= ((uint32_t)1U<<28U))
+#define GPIO_PD28_OutputEnable()      (PIOD_REGS->PIO_OER = ((uint32_t)1U<<28U))
+#define GPIO_PD28_InputEnable()       (PIOD_REGS->PIO_ODR = ((uint32_t)1U<<28U))
+#define GPIO_PD28_Get()               ((PIOD_REGS->PIO_PDSR >> 28U) & 0x1U)
+#define GPIO_PD28_PIN                  PIO_PIN_PD28
 
 /*** Macros for LED_PC9 pin ***/
 #define LED_PC9_Set()               (PIOC_REGS->PIO_SODR = ((uint32_t)1U<<9U))

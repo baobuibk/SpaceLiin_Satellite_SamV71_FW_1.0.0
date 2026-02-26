@@ -129,7 +129,53 @@ build/default/production/_ext/667517761/cli_command.o: \
  ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/mpu_wrappers.h \
  ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/task.h \
  ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/list.h \
- ../src/dev/M1_SysApp/dmesg/dmesg.h
+ ../src/dev/M1_SysApp/dmesg/dmesg.h \
+ ../src/dev/M3_Devices/FRAM_USART-SPI/fram_usart.h \
+ ../src/config/default/definitions.h \
+ ../src/config/default/peripheral/usart/plib_usart_spi_common.h \
+ ../src/config/default/../../packs/ATSAMV71Q21B_DFP/component/usart.h \
+ ../src/config/default/peripheral/uart/plib_uart2.h \
+ ../src/config/default/peripheral/clk/plib_clk.h \
+ ../src/config/default/peripheral/pio/plib_pio.h \
+ ../src/config/default/peripheral/nvic/plib_nvic.h \
+ ../src/config/default/peripheral/systick/plib_systick.h \
+ ../src/config/default/peripheral/mcan/plib_mcan1.h \
+ ../src/config/default/peripheral/mcan/plib_mcan_common.h \
+ ../src/config/default/peripheral/efc/plib_efc.h \
+ ../src/config/default/peripheral/tc/plib_tc3.h \
+ ../src/config/default/peripheral/tc/plib_tc_common.h \
+ ../src/config/default/peripheral/usart/plib_usart0_spi.h \
+ ../src/config/default/peripheral/usart/plib_usart_spi_common.h \
+ ../src/config/default/peripheral/usart/plib_usart2_spi.h \
+ ../src/config/default/peripheral/usart/../usart/plib_usart_spi_common.h \
+ ../src/config/default/peripheral/usart/plib_usart0_spi.h \
+ ../src/dev/M0_App/AppOS/App_3_CSP/app_csp.h ../src/dev/M0_App/OS/os.h \
+ ../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp.h \
+ ../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_platform.h \
+ ../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_types.h \
+ ../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_autoconfig.h \
+ ../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_error.h \
+ ../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_debug.h \
+ ../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_buffer.h \
+ ../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_rtable.h \
+ ../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_iflist.h \
+ ../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_interface.h \
+ ../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_sfp.h \
+ ../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_promisc.h \
+ ../src/dev/M1_SysApp/rparam/exp_rparam_table.h \
+ ../src/dev/M1_SysApp/rparam/param/types.h \
+ ../src/dev/M1_SysApp/rparam/gs_support/pgm.h \
+ ../src/dev/M1_SysApp/rparam/gs_support/gs_stdio.h \
+ ../src/dev/M1_SysApp/rparam/gs_support/gs_error.h \
+ ../src/dev/M1_SysApp/rparam/gs_support/types.h \
+ ../src/dev/M4_Middlewares/libcsp-1.6/include/csp/strings.h \
+ ../src/dev/M1_SysApp/rparam/gs_support/mutex.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/semphr.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/queue.h \
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/task.h \
+ ../src/dev/M1_SysApp/rparam/gs_support/minmax.h \
+ ../src/dev/M1_SysApp/rparam/param/table.h \
+ ../src/dev/M1_SysApp/rparam/param/internal/types.h
 ../src/dev/M1_SysApp/EmbeddedCLI/CLI_Command/cli_command.h:
 ../src/dev/M1_SysApp/EmbeddedCLI/CLI_Command/../CLI_Src/embedded_cli.h:
 ../src/dev/M1_SysApp/EmbeddedCLI/CLI_Setup/cli_setup.h:
@@ -262,3 +308,50 @@ build/default/production/_ext/667517761/cli_command.o: \
 ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/task.h:
 ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/list.h:
 ../src/dev/M1_SysApp/dmesg/dmesg.h:
+../src/dev/M3_Devices/FRAM_USART-SPI/fram_usart.h:
+../src/config/default/definitions.h:
+../src/config/default/peripheral/usart/plib_usart_spi_common.h:
+../src/config/default/../../packs/ATSAMV71Q21B_DFP/component/usart.h:
+../src/config/default/peripheral/uart/plib_uart2.h:
+../src/config/default/peripheral/clk/plib_clk.h:
+../src/config/default/peripheral/pio/plib_pio.h:
+../src/config/default/peripheral/nvic/plib_nvic.h:
+../src/config/default/peripheral/systick/plib_systick.h:
+../src/config/default/peripheral/mcan/plib_mcan1.h:
+../src/config/default/peripheral/mcan/plib_mcan_common.h:
+../src/config/default/peripheral/efc/plib_efc.h:
+../src/config/default/peripheral/tc/plib_tc3.h:
+../src/config/default/peripheral/tc/plib_tc_common.h:
+../src/config/default/peripheral/usart/plib_usart0_spi.h:
+../src/config/default/peripheral/usart/plib_usart_spi_common.h:
+../src/config/default/peripheral/usart/plib_usart2_spi.h:
+../src/config/default/peripheral/usart/../usart/plib_usart_spi_common.h:
+../src/config/default/peripheral/usart/plib_usart0_spi.h:
+../src/dev/M0_App/AppOS/App_3_CSP/app_csp.h:
+../src/dev/M0_App/OS/os.h:
+../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp.h:
+../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_platform.h:
+../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_types.h:
+../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_autoconfig.h:
+../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_error.h:
+../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_debug.h:
+../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_buffer.h:
+../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_rtable.h:
+../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_iflist.h:
+../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_interface.h:
+../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_sfp.h:
+../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_promisc.h:
+../src/dev/M1_SysApp/rparam/exp_rparam_table.h:
+../src/dev/M1_SysApp/rparam/param/types.h:
+../src/dev/M1_SysApp/rparam/gs_support/pgm.h:
+../src/dev/M1_SysApp/rparam/gs_support/gs_stdio.h:
+../src/dev/M1_SysApp/rparam/gs_support/gs_error.h:
+../src/dev/M1_SysApp/rparam/gs_support/types.h:
+../src/dev/M4_Middlewares/libcsp-1.6/include/csp/strings.h:
+../src/dev/M1_SysApp/rparam/gs_support/mutex.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/semphr.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/queue.h:
+../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/task.h:
+../src/dev/M1_SysApp/rparam/gs_support/minmax.h:
+../src/dev/M1_SysApp/rparam/param/table.h:
+../src/dev/M1_SysApp/rparam/param/internal/types.h:

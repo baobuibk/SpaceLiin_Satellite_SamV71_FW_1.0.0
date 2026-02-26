@@ -2,8 +2,7 @@ build/default/production/_ext/1171490990/interrupts.o: \
  ../src/config/default/interrupts.c \
  ../src/config/default/device_vectors.h \
  ../src/config/default/interrupts.h ../src/config/default/definitions.h \
- ../src/config/default/peripheral/uart/plib_uart2.h \
- ../src/config/default/peripheral/uart/plib_uart_common.h \
+ ../src/config/default/peripheral/usart/plib_usart_spi_common.h \
  ../src/config/default/device.h \
  ../src/packs/ATSAMV71Q21B_DFP/samv71q21b.h \
  ../src/packs/CMSIS/CMSIS/Core/Include/core_cm7.h \
@@ -110,18 +109,26 @@ build/default/production/_ext/1171490990/interrupts.o: \
  ../src/config/default/device_cache.h ../src/config/default/device.h \
  ../src/config/default/toolchain_specifics.h \
  ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h \
+ ../src/config/default/../../packs/ATSAMV71Q21B_DFP/component/usart.h \
+ ../src/config/default/peripheral/uart/plib_uart2.h \
+ ../src/config/default/peripheral/uart/plib_uart_common.h \
  ../src/config/default/peripheral/clk/plib_clk.h \
  ../src/config/default/peripheral/pio/plib_pio.h \
  ../src/config/default/peripheral/nvic/plib_nvic.h \
  ../src/config/default/peripheral/systick/plib_systick.h \
+ ../src/config/default/peripheral/mcan/plib_mcan1.h \
+ ../src/config/default/peripheral/mcan/plib_mcan_common.h \
  ../src/config/default/peripheral/efc/plib_efc.h \
  ../src/config/default/peripheral/tc/plib_tc3.h \
- ../src/config/default/peripheral/tc/plib_tc_common.h
+ ../src/config/default/peripheral/tc/plib_tc_common.h \
+ ../src/config/default/peripheral/usart/plib_usart0_spi.h \
+ ../src/config/default/peripheral/usart/plib_usart_spi_common.h \
+ ../src/config/default/peripheral/usart/plib_usart2_spi.h \
+ ../src/config/default/peripheral/usart/../usart/plib_usart_spi_common.h
 ../src/config/default/device_vectors.h:
 ../src/config/default/interrupts.h:
 ../src/config/default/definitions.h:
-../src/config/default/peripheral/uart/plib_uart2.h:
-../src/config/default/peripheral/uart/plib_uart_common.h:
+../src/config/default/peripheral/usart/plib_usart_spi_common.h:
 ../src/config/default/device.h:
 ../src/packs/ATSAMV71Q21B_DFP/samv71q21b.h:
 ../src/packs/CMSIS/CMSIS/Core/Include/core_cm7.h:
@@ -229,10 +236,19 @@ build/default/production/_ext/1171490990/interrupts.o: \
 ../src/config/default/device.h:
 ../src/config/default/toolchain_specifics.h:
 ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h:
+../src/config/default/../../packs/ATSAMV71Q21B_DFP/component/usart.h:
+../src/config/default/peripheral/uart/plib_uart2.h:
+../src/config/default/peripheral/uart/plib_uart_common.h:
 ../src/config/default/peripheral/clk/plib_clk.h:
 ../src/config/default/peripheral/pio/plib_pio.h:
 ../src/config/default/peripheral/nvic/plib_nvic.h:
 ../src/config/default/peripheral/systick/plib_systick.h:
+../src/config/default/peripheral/mcan/plib_mcan1.h:
+../src/config/default/peripheral/mcan/plib_mcan_common.h:
 ../src/config/default/peripheral/efc/plib_efc.h:
 ../src/config/default/peripheral/tc/plib_tc3.h:
 ../src/config/default/peripheral/tc/plib_tc_common.h:
+../src/config/default/peripheral/usart/plib_usart0_spi.h:
+../src/config/default/peripheral/usart/plib_usart_spi_common.h:
+../src/config/default/peripheral/usart/plib_usart2_spi.h:
+../src/config/default/peripheral/usart/../usart/plib_usart_spi_common.h:

@@ -64,7 +64,10 @@ void BusFault_Handler (void);
 void UsageFault_Handler (void);
 void DebugMonitor_Handler (void);
 void SysTick_Handler (void);
+void USART0_InterruptHandler (void);
+void USART2_InterruptHandler (void);
 void USBHS_Handler (void);
+void MCAN1_INT0_InterruptHandler (void);
 void UART2_InterruptHandler (void);
 void TC3_CH0_InterruptHandler (void);
 

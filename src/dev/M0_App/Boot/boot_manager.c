@@ -16,8 +16,12 @@
 #include "M2_BSP/UART/uart_irq.h"
 #include "M1_SysApp/EmbeddedCLI/CLI_Setup/cli_setup.h"
 #include "ATSAMV71cm7_it.h"
+#include "hwcsp_cfg.h"
 
 #include "M0_App/AppOS/App_x_Root/app_root.h"
+#include "M3_Devices/FRAM_USART-SPI/fram_usart.h"
+
+
 /*============================================================*/
 /*                      Defines                               */
 /*============================================================*/
@@ -44,6 +48,7 @@ Std_ReturnType BootManager_SystemInit(void){
     EX_TC3_CH0_HandlerRegister();
     
     UART_Driver_Init();
+    FRAM_USART_Init(FRAM_MODE_POLLING);
     
     DEBUG_SendString("\r\n");
     DEBUG_SendString("========================================\r\n");
@@ -51,7 +56,7 @@ Std_ReturnType BootManager_SystemInit(void){
     DEBUG_SendString("========================================\r\n");
 
     SystemCLI_Init();
-
+    HardwareCSP_Init();
 
     return E_OK;
 }

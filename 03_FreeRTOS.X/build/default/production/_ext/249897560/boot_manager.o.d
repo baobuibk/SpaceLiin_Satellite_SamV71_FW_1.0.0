@@ -120,7 +120,26 @@ build/default/production/_ext/249897560/boot_manager.o: \
  ../src/dev/M1_SysApp/EmbeddedCLI/CLI_Setup/cli_setup.h \
  ../src/dev/M1_SysApp/EmbeddedCLI/CLI_Setup/../CLI_Src/embedded_cli.h \
  ../src/dev/M5_Utils/Define/define.h ../src/ATSAMV71cm7_it.h \
- ../src/dev/M0_App/AppOS/App_x_Root/app_root.h
+ ../src/dev/M4_Middlewares/Config/HardwareCSP_Config/hwcsp_cfg.h \
+ ../src/dev/M0_App/AppOS/App_x_Root/app_root.h \
+ ../src/dev/M3_Devices/FRAM_USART-SPI/fram_usart.h \
+ ../src/config/default/definitions.h \
+ ../src/config/default/peripheral/usart/plib_usart_spi_common.h \
+ ../src/config/default/../../packs/ATSAMV71Q21B_DFP/component/usart.h \
+ ../src/config/default/peripheral/uart/plib_uart2.h \
+ ../src/config/default/peripheral/clk/plib_clk.h \
+ ../src/config/default/peripheral/pio/plib_pio.h \
+ ../src/config/default/peripheral/nvic/plib_nvic.h \
+ ../src/config/default/peripheral/systick/plib_systick.h \
+ ../src/config/default/peripheral/mcan/plib_mcan1.h \
+ ../src/config/default/peripheral/mcan/plib_mcan_common.h \
+ ../src/config/default/peripheral/efc/plib_efc.h \
+ ../src/config/default/peripheral/tc/plib_tc3.h \
+ ../src/config/default/peripheral/usart/plib_usart0_spi.h \
+ ../src/config/default/peripheral/usart/plib_usart_spi_common.h \
+ ../src/config/default/peripheral/usart/plib_usart2_spi.h \
+ ../src/config/default/peripheral/usart/../usart/plib_usart_spi_common.h \
+ ../src/config/default/peripheral/usart/plib_usart0_spi.h
 ../src/dev/M0_App/Boot/boot_manager.h:
 ../src/dev/M5_Utils/Define/define.h:
 ../src/config/default/peripheral/systick/plib_systick.h:
@@ -244,4 +263,23 @@ build/default/production/_ext/249897560/boot_manager.o: \
 ../src/dev/M1_SysApp/EmbeddedCLI/CLI_Setup/../CLI_Src/embedded_cli.h:
 ../src/dev/M5_Utils/Define/define.h:
 ../src/ATSAMV71cm7_it.h:
+../src/dev/M4_Middlewares/Config/HardwareCSP_Config/hwcsp_cfg.h:
 ../src/dev/M0_App/AppOS/App_x_Root/app_root.h:
+../src/dev/M3_Devices/FRAM_USART-SPI/fram_usart.h:
+../src/config/default/definitions.h:
+../src/config/default/peripheral/usart/plib_usart_spi_common.h:
+../src/config/default/../../packs/ATSAMV71Q21B_DFP/component/usart.h:
+../src/config/default/peripheral/uart/plib_uart2.h:
+../src/config/default/peripheral/clk/plib_clk.h:
+../src/config/default/peripheral/pio/plib_pio.h:
+../src/config/default/peripheral/nvic/plib_nvic.h:
+../src/config/default/peripheral/systick/plib_systick.h:
+../src/config/default/peripheral/mcan/plib_mcan1.h:
+../src/config/default/peripheral/mcan/plib_mcan_common.h:
+../src/config/default/peripheral/efc/plib_efc.h:
+../src/config/default/peripheral/tc/plib_tc3.h:
+../src/config/default/peripheral/usart/plib_usart0_spi.h:
+../src/config/default/peripheral/usart/plib_usart_spi_common.h:
+../src/config/default/peripheral/usart/plib_usart2_spi.h:
+../src/config/default/peripheral/usart/../usart/plib_usart_spi_common.h:
+../src/config/default/peripheral/usart/plib_usart0_spi.h:

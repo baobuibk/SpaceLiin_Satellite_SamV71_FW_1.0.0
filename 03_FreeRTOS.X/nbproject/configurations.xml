@@ -13,6 +13,10 @@
             <logicalFolder name="efc" displayName="efc" projectFiles="true">
               <itemPath>../src/config/default/peripheral/efc/plib_efc.h</itemPath>
             </logicalFolder>
+            <logicalFolder name="mcan" displayName="mcan" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/mcan/plib_mcan_common.h</itemPath>
+              <itemPath>../src/config/default/peripheral/mcan/plib_mcan1.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="nvic" displayName="nvic" projectFiles="true">
               <itemPath>../src/config/default/peripheral/nvic/plib_nvic.h</itemPath>
             </logicalFolder>
@@ -30,6 +34,11 @@
               <itemPath>../src/config/default/peripheral/uart/plib_uart_common.h</itemPath>
               <itemPath>../src/config/default/peripheral/uart/plib_uart2.h</itemPath>
             </logicalFolder>
+            <logicalFolder name="usart" displayName="usart" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/usart/plib_usart_spi_common.h</itemPath>
+              <itemPath>../src/config/default/peripheral/usart/plib_usart0_spi.h</itemPath>
+              <itemPath>../src/config/default/peripheral/usart/plib_usart2_spi.h</itemPath>
+            </logicalFolder>
           </logicalFolder>
           <itemPath>../src/config/default/device.h</itemPath>
           <itemPath>../src/config/default/device_cache.h</itemPath>
@@ -38,6 +47,8 @@
           <itemPath>../src/config/default/interrupts.h</itemPath>
           <itemPath>../src/config/default/device_vectors.h</itemPath>
         </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="docs" displayName="docs" projectFiles="true">
       </logicalFolder>
       <logicalFolder name="packs" displayName="packs" projectFiles="true">
         <logicalFolder name="ATSAMV71Q21B_DFP"
@@ -173,6 +184,8 @@
               </logicalFolder>
               <logicalFolder name="efc" displayName="efc" projectFiles="true">
               </logicalFolder>
+              <logicalFolder name="mcan" displayName="mcan" projectFiles="true">
+              </logicalFolder>
               <logicalFolder name="nvic" displayName="nvic" projectFiles="true">
               </logicalFolder>
               <logicalFolder name="pio" displayName="pio" projectFiles="true">
@@ -182,6 +195,8 @@
               <logicalFolder name="tc" displayName="tc" projectFiles="true">
               </logicalFolder>
               <logicalFolder name="uart" displayName="uart" projectFiles="true">
+              </logicalFolder>
+              <logicalFolder name="usart" displayName="usart" projectFiles="true">
               </logicalFolder>
             </logicalFolder>
             <logicalFolder name="stdio" displayName="stdio" projectFiles="true">
@@ -202,6 +217,9 @@
               </logicalFolder>
               <logicalFolder name="App_3_Comm" displayName="App_3_Comm" projectFiles="true">
               </logicalFolder>
+              <logicalFolder name="App_3_CSP" displayName="App_3_CSP" projectFiles="true">
+                <itemPath>../src/dev/M0_App/AppOS/App_3_CSP/app_csp.h</itemPath>
+              </logicalFolder>
               <logicalFolder name="App_3_Network"
                              displayName="App_3_Network"
                              projectFiles="true">
@@ -212,6 +230,9 @@
               </logicalFolder>
               <logicalFolder name="App_4_Alive" displayName="App_4_Alive" projectFiles="true">
                 <itemPath>../src/dev/M0_App/AppOS/App_4_Alive/app_alive.h</itemPath>
+              </logicalFolder>
+              <logicalFolder name="App_4_CTRL" displayName="App_4_CTRL" projectFiles="true">
+                <itemPath>../src/dev/M0_App/AppOS/App_4_CTRL/app_ctrl.h</itemPath>
               </logicalFolder>
               <logicalFolder name="App_4_Logging"
                              displayName="App_4_Logging"
@@ -251,8 +272,47 @@
                 <itemPath>../src/dev/M1_SysApp/EmbeddedCLI/CLI_Src/embedded_cli.h</itemPath>
               </logicalFolder>
             </logicalFolder>
+            <logicalFolder name="evt" displayName="evt" projectFiles="true">
+              <itemPath>../src/dev/M1_SysApp/evt/evt.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="FastIPC" displayName="FastIPC" projectFiles="true">
               <itemPath>../src/dev/M1_SysApp/FastIPC/fast_ipc.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="rparam" displayName="rparam" projectFiles="true">
+              <logicalFolder name="gs_support" displayName="gs_support" projectFiles="true">
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/bytebuffer.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/byteorder.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/conf_util.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/crc32.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/endian.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/fletcher.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/gs_error.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/gs_stdio.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/gs_string.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/minmax.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/mutex.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/pgm.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/types.h</itemPath>
+              </logicalFolder>
+              <logicalFolder name="param" displayName="param" projectFiles="true">
+                <logicalFolder name="internal" displayName="internal" projectFiles="true">
+                  <itemPath>../src/dev/M1_SysApp/rparam/param/internal/rparam.h</itemPath>
+                  <itemPath>../src/dev/M1_SysApp/rparam/param/internal/serialize.h</itemPath>
+                  <itemPath>../src/dev/M1_SysApp/rparam/param/internal/table.h</itemPath>
+                  <itemPath>../src/dev/M1_SysApp/rparam/param/internal/types.h</itemPath>
+                </logicalFolder>
+                <itemPath>../src/dev/M1_SysApp/rparam/param/param_lock.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/param/param_serializer.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/param/param_string.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/param/param_types.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/param/rparam.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/param/serialize.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/param/serialize_local.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/param/table.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/param/types.h</itemPath>
+              </logicalFolder>
+              <itemPath>../src/dev/M1_SysApp/rparam/exp_rparam_table.h</itemPath>
+              <itemPath>../src/dev/M1_SysApp/rparam/rparam_server.h</itemPath>
             </logicalFolder>
             <logicalFolder name="xlog" displayName="xlog" projectFiles="true">
               <itemPath>../src/dev/M1_SysApp/xlog/xlog.h</itemPath>
@@ -265,6 +325,11 @@
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="M3_Devices" displayName="M3_Devices" projectFiles="true">
+            <logicalFolder name="FRAM_USART-SPI"
+                           displayName="FRAM_USART-SPI"
+                           projectFiles="true">
+              <itemPath>../src/dev/M3_Devices/FRAM_USART-SPI/fram_usart.h</itemPath>
+            </logicalFolder>
           </logicalFolder>
           <logicalFolder name="M4_Middlewares"
                          displayName="M4_Middlewares"
@@ -274,6 +339,11 @@
                              displayName="FreeRTOS_Config"
                              projectFiles="true">
                 <itemPath>../src/dev/M4_Middlewares/Config/FreeRTOS_Config/FreeRTOSConfig.h</itemPath>
+              </logicalFolder>
+              <logicalFolder name="HardwareCSP_Config"
+                             displayName="HardwareCSP_Config"
+                             projectFiles="true">
+                <itemPath>../src/dev/M4_Middlewares/Config/HardwareCSP_Config/hwcsp_cfg.h</itemPath>
               </logicalFolder>
               <logicalFolder name="LwIP_Config" displayName="LwIP_Config" projectFiles="true">
                 <logicalFolder name="arch" displayName="arch" projectFiles="true">
@@ -329,6 +399,96 @@
                   <logicalFolder name="MemMang" displayName="MemMang" projectFiles="true">
                   </logicalFolder>
                 </logicalFolder>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="libcsp-1.6" displayName="libcsp-1.6" projectFiles="true">
+              <logicalFolder name="doc" displayName="doc" projectFiles="true">
+              </logicalFolder>
+              <logicalFolder name="examples" displayName="examples" projectFiles="true">
+              </logicalFolder>
+              <logicalFolder name="include" displayName="include" projectFiles="true">
+                <logicalFolder name="csp" displayName="csp" projectFiles="true">
+                  <logicalFolder name="arch" displayName="arch" projectFiles="true">
+                    <logicalFolder name="posix" displayName="posix" projectFiles="true">
+                      <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/arch/posix/csp_system.h</itemPath>
+                      <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/arch/posix/pthread_queue.h</itemPath>
+                    </logicalFolder>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/arch/csp_clock.h</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/arch/csp_malloc.h</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/arch/csp_queue.h</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/arch/csp_semaphore.h</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/arch/csp_system.h</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/arch/csp_thread.h</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/arch/csp_time.h</itemPath>
+                  </logicalFolder>
+                  <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/crypto/csp_hmac.h</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/crypto/csp_sha1.h</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/crypto/csp_xtea.h</itemPath>
+                  </logicalFolder>
+                  <logicalFolder name="drivers" displayName="drivers" projectFiles="true">
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/drivers/can_mcan.h</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/drivers/can_socketcan.h</itemPath>
+                  </logicalFolder>
+                  <logicalFolder name="interfaces" displayName="interfaces" projectFiles="true">
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/interfaces/csp_if_can.h</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/interfaces/csp_if_i2c.h</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/interfaces/csp_if_kiss.h</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/interfaces/csp_if_lo.h</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/interfaces/csp_if_zmqhub.h</itemPath>
+                  </logicalFolder>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp.h</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_autoconfig.h</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_buffer.h</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_cmp.h</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_crc32.h</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_debug.h</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_endian.h</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_error.h</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_iflist.h</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_interface.h</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_platform.h</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_promisc.h</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_rtable.h</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_sfp.h</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_types.h</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/strings.h</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/include/csp/csp_heap.h</itemPath>
+                </logicalFolder>
+              </logicalFolder>
+              <logicalFolder name="src" displayName="src" projectFiles="true">
+                <logicalFolder name="arch" displayName="arch" projectFiles="true">
+                  <logicalFolder name="freertos" displayName="freertos" projectFiles="true">
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="bindings" displayName="bindings" projectFiles="true">
+                  <logicalFolder name="python" displayName="python" projectFiles="true">
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
+                </logicalFolder>
+                <logicalFolder name="drivers" displayName="drivers" projectFiles="true">
+                  <logicalFolder name="can" displayName="can" projectFiles="true">
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="interfaces" displayName="interfaces" projectFiles="true">
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/interfaces/csp_if_can_pbuf.h</itemPath>
+                </logicalFolder>
+                <logicalFolder name="rtable" displayName="rtable" projectFiles="true">
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/rtable/csp_rtable_internal.h</itemPath>
+                </logicalFolder>
+                <logicalFolder name="transport" displayName="transport" projectFiles="true">
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/transport/csp_transport.h</itemPath>
+                </logicalFolder>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_conn.h</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_dedup.h</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_init.h</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_io.h</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_port.h</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_promisc.h</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_qfifo.h</itemPath>
+              </logicalFolder>
+              <logicalFolder name="utils" displayName="utils" projectFiles="true">
               </logicalFolder>
             </logicalFolder>
             <logicalFolder name="LwIP" displayName="LwIP" projectFiles="true">
@@ -859,9 +1019,12 @@
           <itemPath>03_FreeRTOS_default/components/dfp.yml</itemPath>
           <itemPath>03_FreeRTOS_default/components/efc.yml</itemPath>
           <itemPath>03_FreeRTOS_default/components/cmsis.yml</itemPath>
+          <itemPath>03_FreeRTOS_default/components/mcan1.yml</itemPath>
           <itemPath>03_FreeRTOS_default/components/uart2.yml</itemPath>
+          <itemPath>03_FreeRTOS_default/components/usart0.yml</itemPath>
           <itemPath>03_FreeRTOS_default/components/core.yml</itemPath>
           <itemPath>03_FreeRTOS_default/components/tc3.yml</itemPath>
+          <itemPath>03_FreeRTOS_default/components/usart2.yml</itemPath>
         </logicalFolder>
         <itemPath>03_FreeRTOS_default/mcc-config.mc4</itemPath>
       </logicalFolder>
@@ -893,6 +1056,9 @@
             <logicalFolder name="efc" displayName="efc" projectFiles="true">
               <itemPath>../src/config/default/peripheral/efc/plib_efc.c</itemPath>
             </logicalFolder>
+            <logicalFolder name="mcan" displayName="mcan" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/mcan/plib_mcan1.c</itemPath>
+            </logicalFolder>
             <logicalFolder name="nvic" displayName="nvic" projectFiles="true">
               <itemPath>../src/config/default/peripheral/nvic/plib_nvic.c</itemPath>
             </logicalFolder>
@@ -907,6 +1073,10 @@
             </logicalFolder>
             <logicalFolder name="uart" displayName="uart" projectFiles="true">
               <itemPath>../src/config/default/peripheral/uart/plib_uart2.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="usart" displayName="usart" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/usart/plib_usart0_spi.c</itemPath>
+              <itemPath>../src/config/default/peripheral/usart/plib_usart2_spi.c</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="stdio" displayName="stdio" projectFiles="true">
@@ -927,6 +1097,8 @@
               </logicalFolder>
               <logicalFolder name="efc" displayName="efc" projectFiles="true">
               </logicalFolder>
+              <logicalFolder name="mcan" displayName="mcan" projectFiles="true">
+              </logicalFolder>
               <logicalFolder name="nvic" displayName="nvic" projectFiles="true">
               </logicalFolder>
               <logicalFolder name="pio" displayName="pio" projectFiles="true">
@@ -936,6 +1108,8 @@
               <logicalFolder name="tc" displayName="tc" projectFiles="true">
               </logicalFolder>
               <logicalFolder name="uart" displayName="uart" projectFiles="true">
+              </logicalFolder>
+              <logicalFolder name="usart" displayName="usart" projectFiles="true">
               </logicalFolder>
             </logicalFolder>
             <logicalFolder name="stdio" displayName="stdio" projectFiles="true">
@@ -956,6 +1130,9 @@
               </logicalFolder>
               <logicalFolder name="App_3_Comm" displayName="App_3_Comm" projectFiles="true">
               </logicalFolder>
+              <logicalFolder name="App_3_CSP" displayName="App_3_CSP" projectFiles="true">
+                <itemPath>../src/dev/M0_App/AppOS/App_3_CSP/app_csp.c</itemPath>
+              </logicalFolder>
               <logicalFolder name="App_3_Network"
                              displayName="App_3_Network"
                              projectFiles="true">
@@ -966,6 +1143,9 @@
               </logicalFolder>
               <logicalFolder name="App_4_Alive" displayName="App_4_Alive" projectFiles="true">
                 <itemPath>../src/dev/M0_App/AppOS/App_4_Alive/app_alive.c</itemPath>
+              </logicalFolder>
+              <logicalFolder name="App_4_CTRL" displayName="App_4_CTRL" projectFiles="true">
+                <itemPath>../src/dev/M0_App/AppOS/App_4_CTRL/app_ctrl.c</itemPath>
               </logicalFolder>
               <logicalFolder name="App_4_Logging"
                              displayName="App_4_Logging"
@@ -1005,8 +1185,44 @@
                 <itemPath>../src/dev/M1_SysApp/EmbeddedCLI/CLI_Src/embedded_cli.c</itemPath>
               </logicalFolder>
             </logicalFolder>
+            <logicalFolder name="evt" displayName="evt" projectFiles="true">
+              <itemPath>../src/dev/M1_SysApp/evt/evt.c</itemPath>
+            </logicalFolder>
             <logicalFolder name="FastIPC" displayName="FastIPC" projectFiles="true">
               <itemPath>../src/dev/M1_SysApp/FastIPC/fast_ipc.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="nanopb" displayName="nanopb" projectFiles="true">
+              <itemPath>../src/dev/M1_SysApp/nanopb/pb_common.c</itemPath>
+              <itemPath>../src/dev/M1_SysApp/nanopb/pb_decode.c</itemPath>
+              <itemPath>../src/dev/M1_SysApp/nanopb/pb_encode.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="rgosh" displayName="rgosh" projectFiles="true">
+              <itemPath>../src/dev/M1_SysApp/rgosh/gosh.pb.c</itemPath>
+              <itemPath>../src/dev/M1_SysApp/rgosh/rgosh_error.c</itemPath>
+              <itemPath>../src/dev/M1_SysApp/rgosh/rgosh_serialize.c</itemPath>
+              <itemPath>../src/dev/M1_SysApp/rgosh/rgosh_server.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="rparam" displayName="rparam" projectFiles="true">
+              <logicalFolder name="gs_support" displayName="gs_support" projectFiles="true">
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/bytebuffer.c</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/byteorder.c</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/crc32.c</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/fletcher.c</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/gs_error.c</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/gs_stdio.c</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/gs_string.c</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/mutex.c</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/gs_support/strtoint.c</itemPath>
+              </logicalFolder>
+              <logicalFolder name="param" displayName="param" projectFiles="true">
+                <logicalFolder name="internal" displayName="internal" projectFiles="true">
+                </logicalFolder>
+                <itemPath>../src/dev/M1_SysApp/rparam/param/serialize.c</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/param/string.c</itemPath>
+                <itemPath>../src/dev/M1_SysApp/rparam/param/table.c</itemPath>
+              </logicalFolder>
+              <itemPath>../src/dev/M1_SysApp/rparam/exp_rparam_table.c</itemPath>
+              <itemPath>../src/dev/M1_SysApp/rparam/rparam_server.c</itemPath>
             </logicalFolder>
             <logicalFolder name="xlog" displayName="xlog" projectFiles="true">
               <itemPath>../src/dev/M1_SysApp/xlog/xlog.c</itemPath>
@@ -1019,6 +1235,11 @@
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="M3_Devices" displayName="M3_Devices" projectFiles="true">
+            <logicalFolder name="FRAM_USART-SPI"
+                           displayName="FRAM_USART-SPI"
+                           projectFiles="true">
+              <itemPath>../src/dev/M3_Devices/FRAM_USART-SPI/fram_usart.c</itemPath>
+            </logicalFolder>
           </logicalFolder>
           <logicalFolder name="M4_Middlewares"
                          displayName="M4_Middlewares"
@@ -1027,6 +1248,11 @@
               <logicalFolder name="FreeRTOS_Config"
                              displayName="FreeRTOS_Config"
                              projectFiles="true">
+              </logicalFolder>
+              <logicalFolder name="HardwareCSP_Config"
+                             displayName="HardwareCSP_Config"
+                             projectFiles="true">
+                <itemPath>../src/dev/M4_Middlewares/Config/HardwareCSP_Config/hwcsp_cfg.c</itemPath>
               </logicalFolder>
               <logicalFolder name="LwIP_Config" displayName="LwIP_Config" projectFiles="true">
                 <logicalFolder name="arch" displayName="arch" projectFiles="true">
@@ -1067,6 +1293,99 @@
                 <itemPath>../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/timers.c</itemPath>
               </logicalFolder>
             </logicalFolder>
+            <logicalFolder name="libcsp-1.6" displayName="libcsp-1.6" projectFiles="true">
+              <logicalFolder name="doc" displayName="doc" projectFiles="true">
+              </logicalFolder>
+              <logicalFolder name="examples" displayName="examples" projectFiles="true">
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/examples/csp_arch.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/examples/csp_server_client.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/examples/zmqproxy.c</itemPath>
+              </logicalFolder>
+              <logicalFolder name="include" displayName="include" projectFiles="true">
+                <logicalFolder name="csp" displayName="csp" projectFiles="true">
+                  <logicalFolder name="arch" displayName="arch" projectFiles="true">
+                    <logicalFolder name="posix" displayName="posix" projectFiles="true">
+                    </logicalFolder>
+                  </logicalFolder>
+                  <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
+                  </logicalFolder>
+                  <logicalFolder name="drivers" displayName="drivers" projectFiles="true">
+                  </logicalFolder>
+                  <logicalFolder name="interfaces" displayName="interfaces" projectFiles="true">
+                  </logicalFolder>
+                </logicalFolder>
+              </logicalFolder>
+              <logicalFolder name="src" displayName="src" projectFiles="true">
+                <logicalFolder name="arch" displayName="arch" projectFiles="true">
+                  <logicalFolder name="freertos" displayName="freertos" projectFiles="true">
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/arch/freertos/csp_clock.c</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/arch/freertos/csp_malloc.c</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/arch/freertos/csp_queue.c</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/arch/freertos/csp_semaphore.c</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/arch/freertos/csp_system.c</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/arch/freertos/csp_thread.c</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/arch/freertos/csp_time.c</itemPath>
+                  </logicalFolder>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/arch/csp_system.c</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/arch/csp_time.c</itemPath>
+                </logicalFolder>
+                <logicalFolder name="bindings" displayName="bindings" projectFiles="true">
+                  <logicalFolder name="python" displayName="python" projectFiles="true">
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/bindings/python/pycsp.c</itemPath>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/crypto/csp_hmac.c</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/crypto/csp_sha1.c</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/crypto/csp_xtea.c</itemPath>
+                </logicalFolder>
+                <logicalFolder name="drivers" displayName="drivers" projectFiles="true">
+                  <logicalFolder name="can" displayName="can" projectFiles="true">
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/drivers/can/can_mcan.c</itemPath>
+                    <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/drivers/can/can_socketcan.c</itemPath>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="interfaces" displayName="interfaces" projectFiles="true">
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/interfaces/csp_if_can.c</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/interfaces/csp_if_can_pbuf.c</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/interfaces/csp_if_i2c.c</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/interfaces/csp_if_kiss.c</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/interfaces/csp_if_lo.c</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/interfaces/csp_if_zmqhub.c</itemPath>
+                </logicalFolder>
+                <logicalFolder name="rtable" displayName="rtable" projectFiles="true">
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/rtable/csp_rtable.c</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/rtable/csp_rtable_cidr.c</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/rtable/csp_rtable_static.c</itemPath>
+                </logicalFolder>
+                <logicalFolder name="transport" displayName="transport" projectFiles="true">
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/transport/csp_rdp.c</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/transport/csp_udp.c</itemPath>
+                </logicalFolder>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_bridge.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_buffer.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_conn.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_crc32.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_debug.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_dedup.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_endian.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_hex_dump.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_iflist.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_init.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_io.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_port.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_promisc.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_qfifo.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_route.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_services.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_service_handler.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_sfp.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_compat.c</itemPath>
+                <itemPath>../src/dev/M4_Middlewares/libcsp-1.6/src/csp_heap.c</itemPath>
+              </logicalFolder>
+              <logicalFolder name="utils" displayName="utils" projectFiles="true">
+              </logicalFolder>
+            </logicalFolder>
             <logicalFolder name="LwIP" displayName="LwIP" projectFiles="true">
               <logicalFolder name="api" displayName="api" projectFiles="true">
                 <itemPath>../src/dev/M4_Middlewares/LwIP/api/api_lib.c</itemPath>
@@ -1093,6 +1412,7 @@
                   <itemPath>../src/dev/M4_Middlewares/LwIP/apps/http/fs.c</itemPath>
                   <itemPath>../src/dev/M4_Middlewares/LwIP/apps/http/httpd.c</itemPath>
                   <itemPath>../src/dev/M4_Middlewares/LwIP/apps/http/http_client.c</itemPath>
+                  <itemPath>../src/dev/M4_Middlewares/LwIP/apps/http/fsdata.c</itemPath>
                 </logicalFolder>
                 <logicalFolder name="lwiperf" displayName="lwiperf" projectFiles="true">
                   <itemPath>../src/dev/M4_Middlewares/LwIP/apps/lwiperf/lwiperf.c</itemPath>
@@ -1509,6 +1829,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>../src</Elem>
+    <Elem>../docs</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -1524,8 +1845,8 @@
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="SAMV71_DFP" vendor="Microchip" version="4.12.237"/>
         <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
+        <pack name="SAMV71_DFP" vendor="Microchip" version="4.12.237"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -1554,6 +1875,132 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
+      <item path="../src/dev/M4_Middlewares/LwIP/apps/http/fsdata.c"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="../src/dev/M4_Middlewares/libcsp-1.6/examples/csp_arch.c"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="../src/dev/M4_Middlewares/libcsp-1.6/examples/csp_server_client.c"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="../src/dev/M4_Middlewares/libcsp-1.6/examples/zmqproxy.c"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="../src/dev/M4_Middlewares/libcsp-1.6/src/bindings/python/pycsp.c"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="../src/dev/M4_Middlewares/libcsp-1.6/src/drivers/can/can_socketcan.c"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="../src/dev/M4_Middlewares/libcsp-1.6/src/rtable/csp_rtable_static.c"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
       <C32>
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
@@ -1571,7 +2018,7 @@
         <property key="exclude-floating-point" value="false"/>
         <property key="expand-pragma-config" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/config/default;../src/packs/ATSAMV71Q21B_DFP;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;..\src\config\default;..\src\dev;..\src\dev\M0_App\OS;..\src\dev\M4_Middlewares\Config\FreeRTOS_Config;..\src\dev\M4_Middlewares\FreeRTOS\FreeRTOSv20240604-LTS\include;..\src\dev\M4_Middlewares\FreeRTOS\FreeRTOSv20240604-LTS\portable\GCC\ARM_CM7\r0p1;..\src\dev\M4_Middlewares\LwIP\include;..\src\dev\M4_Middlewares\TinyUSB\common;..\src\dev\M4_Middlewares\TinyUSB\device;..\src\dev\M4_Middlewares\TinyUSB\portable\microchip\samx7x;..\src\dev\M4_Middlewares\TinyUSB;..\src\dev\M4_Middlewares\Config\LwIP_Config;..\src\dev\M4_Middlewares\Config\TinyUSB_Config"/>
+                  value="../src;../src/config/default;../src/packs/ATSAMV71Q21B_DFP;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;..\src\config\default;..\src\dev;..\src\dev\M0_App\OS;..\src\dev\M4_Middlewares\Config\FreeRTOS_Config;..\src\dev\M4_Middlewares\Config\LwIP_Config;..\src\dev\M4_Middlewares\Config\TinyUSB_Config;..\src\dev\M4_Middlewares\FreeRTOS\FreeRTOSv20240604-LTS\include;..\src\dev\M4_Middlewares\FreeRTOS\FreeRTOSv20240604-LTS\portable\GCC\ARM_CM7\r0p1;..\src\dev\M4_Middlewares\LwIP\include;..\src\dev\M4_Middlewares\TinyUSB;..\src\dev\M4_Middlewares\TinyUSB\common;..\src\dev\M4_Middlewares\TinyUSB\device;..\src\dev\M4_Middlewares\TinyUSB\portable\microchip\samx7x;..\src\dev\M4_Middlewares\libcsp-1.6\include;..\src\dev\M4_Middlewares\Config\HardwareCSP_Config;..\src\dev\M1_SysApp\rparam;..\src\dev\M1_SysApp\rgosh"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
@@ -1600,6 +2047,7 @@
         <property key="use-cci" value="false"/>
         <property key="use-iar" value="false"/>
         <property key="use-indirect-calls" value="false"/>
+        <appendMe value="-DPB_FIELD_16BIT "/>
       </C32>
       <C32-AR>
         <property key="additional-options-chop-files" value="false"/>
@@ -1762,8 +2210,6 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="400000-5fffff"/>
         <property key="poweroptions.powerenable" value="false"/>
-        <property key="programmerToGoFilePath"
-                  value="F:/F00_Workspace/06_SAT_SAM/MCU/MainProject/03_FREERTOS/03_FreeRTOS.X/debug/default/03_FreeRTOS_ptg"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.preservedataflash" value="false"/>
         <property key="programoptions.preservedataflash.ranges"

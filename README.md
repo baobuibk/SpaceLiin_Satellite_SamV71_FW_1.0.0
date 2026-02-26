@@ -4,55 +4,24 @@ This is code for SAM-EXP-MCU/ATSAMV71-based boards
 ## Summary
 - Target: ATSAMV71Q21B (SAMV71)
 - OS: FreeRTOS
-- Support: UART CLI, USB Network CLI, some library included
+- Support: UART CLI, USB Network CLI, libcsp1.6, rgosh/rparam GOMSPACE, some library included
 - Contents: boot manager, drivers, middleware, utilities and tests (see `src/`)
 
 ## How to test
+### CLI
 - Open UART console: 115200 8N1 and check boot logs
 - Check USB enumeration and basic peripherals
 - Run ncat to [192.168.6.8:2323] if board network is configured
+### GS-Client
+- `gs-client` interfaces with MCU Board via CSP-CAN
+- On Linux board, run binary file to start script.
 
-## TeamWork with MPLAB X IDE
-
-### 1. Pre-check
-    - Check "Path Tools" must be installed
-![alt text](docs/image-1.png)
-
-    - Enable "View Versioning"
-![alt text](docs/image-2.png)
-
-
-### 2. Clone
-    - Team > Git > Clone...
-    - Paste link Git repo: Eg [https://github.com/itwasme-ulrich/samv71-testproject.git]
-    - Open project
-
-### 3. Dev Branch
-    - Target to Project and Right click:
-    - Git > Branch/Tag > Create Branch...
-    - Add name [dev-branch]
-    - Tick to [Checkout Branch] -> Check out immediately
-  
-![alt text](docs/image-3.png)
-
-### 4. Commit
-    - When done, commit to branch following: Right Click to Project, Git > Commit...
-    - **ADD GIT COMMIT MESSAGE**
-    - Commit --> Local save
-
-### 5. Push
-    - Target to project, Git > Remote > Push...
-
-### 6. Pull
-    - Target to project, Git > Remote > Pull...
-
-### 7. Merge Request / Pull Request
-    - !!! It is highly recommended using Browser/GitApp for this step
 
 ## Upcoming
 ![alt text](docs/image.png)
 - Add more driver
 - XIP/Bootloader
+- Memory Optimization
 
 ## Changelog
 
@@ -60,4 +29,14 @@ This is code for SAM-EXP-MCU/ATSAMV71-based boards
 ```
 -> Sum: Release version for test
 [Add] initial test release
+```
+
+### 26/02/2026
+```
+-> Sum: New features updated
+[Add] CAN peripheral 1M Bitrate
+[Add] libcsp1.6
+[Fix] Some bug cli, xlog, dmesg
+[Add] Compatible with GOMSPACE RPARAM/RGOSH 
+[Add] .gitkeep for empty folder
 ```

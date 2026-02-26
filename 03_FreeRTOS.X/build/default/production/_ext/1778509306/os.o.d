@@ -119,8 +119,7 @@ build/default/production/_ext/1778509306/os.o: ../src/dev/M0_App/OS/os.c \
  ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/mpu_wrappers.h \
  ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/task.h \
- ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/list.h \
- ../src/dev/M2_BSP/UART/uart_irq.h
+ ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/list.h
 ../src/dev/M0_App/OS/os.h:
 ../src/dev/M4_Middlewares/Config/FreeRTOS_Config/FreeRTOSConfig.h:
 ../src/dev/board.h:
@@ -244,4 +243,3 @@ build/default/production/_ext/1778509306/os.o: ../src/dev/M0_App/OS/os.c \
 ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/mpu_wrappers.h:
 ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/task.h:
 ../src/dev/M4_Middlewares/FreeRTOS/FreeRTOSv20240604-LTS/include/list.h:
-../src/dev/M2_BSP/UART/uart_irq.h:

@@ -5311,7 +5311,7 @@ data:
       - children:
         - attributes:
             id: core
-            value: '0'
+            value: '20480'
           type: Dynamic
         type: Values
       type: Hex
@@ -5344,7 +5344,7 @@ data:
       - children:
         - attributes:
             id: core
-            value: '0'
+            value: '20480'
           type: Dynamic
         type: Values
       type: Hex
@@ -5474,7 +5474,7 @@ data:
       - children:
         - attributes:
             id: core
-            value: '266240'
+            value: '266272'
           type: Dynamic
         type: Values
       type: Hex
@@ -5986,6 +5986,806 @@ data:
           type: User
         type: Values
       type: Boolean
+    PMC_PCER0:
+      attributes:
+        id: PMC_PCER0
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '244736'
+          type: Dynamic
+        type: Values
+      type: Hex
+    USART0_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: USART0_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_13_0_ENABLE:
+      attributes:
+        id: NVIC_13_0_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_13_0_HANDLER:
+      attributes:
+        id: NVIC_13_0_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: USART0_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    NVIC_13_0_HANDLER_LOCK:
+      attributes:
+        id: NVIC_13_0_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    USART0_CLOCK_ENABLE:
+      attributes:
+        id: USART0_CLOCK_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: usart0
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    USART0_INTERRUPT_ENABLE:
+      attributes:
+        id: USART0_INTERRUPT_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: usart0
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    USART0_INTERRUPT_HANDLER:
+      attributes:
+        id: USART0_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: usart0
+            value: USART0_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    USART0_INTERRUPT_HANDLER_LOCK:
+      attributes:
+        id: USART0_INTERRUPT_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: usart0
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    PIN_20_FUNCTION_TYPE:
+      attributes:
+        id: PIN_20_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: USART0_TXD0
+          type: User
+        type: Values
+      type: String
+    PIOB_PDR_VALUE:
+      attributes:
+        id: PIOB_PDR_VALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '8195'
+          type: Dynamic
+        type: Values
+      type: Hex
+    PIOB_ABCDSR1_VALUE:
+      attributes:
+        id: PIOB_ABCDSR1_VALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Hex
+    PIOB_ABCDSR2_VALUE:
+      attributes:
+        id: PIOB_ABCDSR2_VALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '8195'
+          type: Dynamic
+        type: Values
+      type: Hex
+    PIN_20_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_20_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: C
+          type: User
+        type: Values
+      type: String
+    PIN_21_FUNCTION_TYPE:
+      attributes:
+        id: PIN_21_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: USART0_RXD0
+          type: User
+        type: Values
+      type: String
+    PIN_21_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_21_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: C
+          type: User
+        type: Values
+      type: String
+    PIN_144_FUNCTION_TYPE:
+      attributes:
+        id: PIN_144_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: USART0_SCK0
+          type: User
+        type: Values
+      type: String
+    PIN_144_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_144_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: C
+          type: User
+        type: Values
+      type: String
+    PIN_1_FUNCTION_TYPE:
+      attributes:
+        id: PIN_1_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: GPIO
+          type: User
+        type: Values
+      type: String
+    PIN_1_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_1_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: GPIO
+          type: User
+        type: Values
+      type: String
+    PIN_1_FUNCTION_NAME:
+      attributes:
+        id: PIN_1_FUNCTION_NAME
+      children:
+      - children:
+        - attributes:
+            value: GPIO_PD0
+          type: User
+        type: Values
+      type: String
+    PIOD_OER_VALUE:
+      attributes:
+        id: PIOD_OER_VALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '268435457'
+          type: Dynamic
+        type: Values
+      type: Hex
+    PIN_1_DIR:
+      attributes:
+        id: PIN_1_DIR
+      children:
+      - children:
+        - attributes:
+            value: Out
+          type: User
+        type: Values
+      type: String
+    PIOD_SODR_VALUE:
+      attributes:
+        id: PIOD_SODR_VALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Hex
+    PIN_1_LAT:
+      attributes:
+        id: PIN_1_LAT
+      children:
+      - children:
+        - attributes:
+            value: ''
+          type: User
+        type: Values
+      type: String
+    PIN_28_FUNCTION_TYPE:
+      attributes:
+        id: PIN_28_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: GPIO
+          type: User
+        type: Values
+      type: String
+    PIOE_PDR_VALUE:
+      attributes:
+        id: PIOE_PDR_VALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Hex
+    PIOE_ABCDSR1_VALUE:
+      attributes:
+        id: PIOE_ABCDSR1_VALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Hex
+    PIOE_ABCDSR2_VALUE:
+      attributes:
+        id: PIOE_ABCDSR2_VALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Hex
+    PIN_28_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_28_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: GPIO
+          type: User
+        type: Values
+      type: String
+    PIN_28_FUNCTION_NAME:
+      attributes:
+        id: PIN_28_FUNCTION_NAME
+      children:
+      - children:
+        - attributes:
+            value: GPIO_PE5
+          type: User
+        type: Values
+      type: String
+    PIOE_OER_VALUE:
+      attributes:
+        id: PIOE_OER_VALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '32'
+          type: Dynamic
+        type: Values
+      type: Hex
+    PIN_28_DIR:
+      attributes:
+        id: PIN_28_DIR
+      children:
+      - children:
+        - attributes:
+            value: Out
+          type: User
+        type: Values
+      type: String
+    PIOE_SODR_VALUE:
+      attributes:
+        id: PIOE_SODR_VALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Hex
+    PIN_28_LAT:
+      attributes:
+        id: PIN_28_LAT
+      children:
+      - children:
+        - attributes:
+            value: ''
+          type: User
+        type: Values
+      type: String
+    PIN_71_FUNCTION_TYPE:
+      attributes:
+        id: PIN_71_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: GPIO
+          type: User
+        type: Values
+      type: String
+    PIN_71_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_71_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: GPIO
+          type: User
+        type: Values
+      type: String
+    PIN_71_FUNCTION_NAME:
+      attributes:
+        id: PIN_71_FUNCTION_NAME
+      children:
+      - children:
+        - attributes:
+            value: GPIO_PD28
+          type: User
+        type: Values
+      type: String
+    PIN_71_DIR:
+      attributes:
+        id: PIN_71_DIR
+      children:
+      - children:
+        - attributes:
+            value: Out
+          type: User
+        type: Values
+      type: String
+    PIN_71_LAT:
+      attributes:
+        id: PIN_71_LAT
+      children:
+      - children:
+        - attributes:
+            value: ''
+          type: User
+        type: Values
+      type: String
+    PIOD_PUER_VALUE:
+      attributes:
+        id: PIOD_PUER_VALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Hex
+    PIN_52_PU:
+      attributes:
+        id: PIN_52_PU
+      children:
+      - children:
+        - attributes:
+            value: ''
+          type: User
+        type: Values
+      type: String
+    PIOD_DRIVER_VALUE:
+      attributes:
+        id: PIOD_DRIVER_VALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Hex
+    PIN_52_DRIVER:
+      attributes:
+        id: PIN_52_DRIVER
+      children:
+      - children:
+        - attributes:
+            value: ''
+          type: User
+        type: Values
+      type: String
+    PIOB_PUER_VALUE:
+      attributes:
+        id: PIOB_PUER_VALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '1'
+          type: Dynamic
+        type: Values
+      type: Hex
+    PIN_21_PU:
+      attributes:
+        id: PIN_21_PU
+      children:
+      - children:
+        - attributes:
+            value: 'True'
+          type: User
+        type: Values
+      type: String
+    PIOB_DRIVER_VALUE:
+      attributes:
+        id: PIOB_DRIVER_VALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '1'
+          type: Dynamic
+        type: Values
+      type: Hex
+    PIN_21_DRIVER:
+      attributes:
+        id: PIN_21_DRIVER
+      children:
+      - children:
+        - attributes:
+            value: High
+          type: User
+        type: Values
+      type: String
+    USART2_CLOCK_ENABLE:
+      attributes:
+        id: USART2_CLOCK_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: usart2
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    USART2_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: USART2_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_15_0_ENABLE:
+      attributes:
+        id: NVIC_15_0_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    USART2_INTERRUPT_ENABLE:
+      attributes:
+        id: USART2_INTERRUPT_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: usart2
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_15_0_HANDLER:
+      attributes:
+        id: NVIC_15_0_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: USART2_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    USART2_INTERRUPT_HANDLER:
+      attributes:
+        id: USART2_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: usart2
+            value: USART2_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    NVIC_15_0_HANDLER_LOCK:
+      attributes:
+        id: NVIC_15_0_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    USART2_INTERRUPT_HANDLER_LOCK:
+      attributes:
+        id: USART2_INTERRUPT_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: usart2
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    MCAN1_CLOCK_ENABLE:
+      attributes:
+        id: MCAN1_CLOCK_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: mcan1
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    MCAN1_INT0_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: MCAN1_INT0_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_37_0_ENABLE:
+      attributes:
+        id: NVIC_37_0_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    MCAN1_INT0_INTERRUPT_ENABLE:
+      attributes:
+        id: MCAN1_INT0_INTERRUPT_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: mcan1
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    NVIC_37_0_HANDLER:
+      attributes:
+        id: NVIC_37_0_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: MCAN1_INT0_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    MCAN1_INT0_INTERRUPT_HANDLER:
+      attributes:
+        id: MCAN1_INT0_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: mcan1
+            value: MCAN1_INT0_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    NVIC_37_0_HANDLER_LOCK:
+      attributes:
+        id: NVIC_37_0_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    MCAN1_INT0_INTERRUPT_HANDLER_LOCK:
+      attributes:
+        id: MCAN1_INT0_INTERRUPT_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: mcan1
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    PCK1_CLOCK_FREQUENCY:
+      attributes:
+        id: PCK1_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            value: '32000'
+          type: User
+        type: Values
+      type: String
+    PCK2_CLOCK_FREQUENCY:
+      attributes:
+        id: PCK2_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            value: '32000'
+          type: User
+        type: Values
+      type: String
+    PCK3_CLOCK_FREQUENCY:
+      attributes:
+        id: PCK3_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            value: '32000'
+          type: User
+        type: Values
+      type: String
+    MCAN1_CLOCK_FREQUENCY:
+      attributes:
+        id: MCAN1_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '120000000'
+          type: Dynamic
+        type: Values
+      type: Integer
+    PCK5_CLOCK_FREQUENCY:
+      attributes:
+        id: PCK5_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            value: '120000000'
+          type: User
+        type: Values
+      type: String
+    PCK7_CLOCK_FREQUENCY:
+      attributes:
+        id: PCK7_CLOCK_FREQUENCY
+      children:
+      - children:
+        - attributes:
+            value: '32000'
+          type: User
+        type: Values
+      type: String
+    PMC_PCK5_CSS:
+      attributes:
+        id: PMC_PCK5_CSS
+      children:
+      - children:
+        - attributes:
+            value: MCK
+          type: User
+        type: Values
+      type: Combo
+    PMC_SCER_PCK5:
+      attributes:
+        id: PMC_SCER_PCK5
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    PIN_97_FUNCTION_TYPE:
+      attributes:
+        id: PIN_97_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: MCAN1_CANTX1
+          type: User
+        type: Values
+      type: String
+    PIN_97_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_97_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: C
+          type: User
+        type: Values
+      type: String
+    PIN_17_FUNCTION_TYPE:
+      attributes:
+        id: PIN_17_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: MCAN1_CANRX1
+          type: User
+        type: Values
+      type: String
+    PIN_17_PERIPHERAL_FUNCTION:
+      attributes:
+        id: PIN_17_PERIPHERAL_FUNCTION
+      children:
+      - children:
+        - attributes:
+            value: C
+          type: User
+        type: Values
+      type: String
   userData:
     children:
     - attributes:

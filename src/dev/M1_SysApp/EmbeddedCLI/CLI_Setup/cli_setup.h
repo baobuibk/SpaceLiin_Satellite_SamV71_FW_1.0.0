@@ -9,6 +9,7 @@
 #define M2_SYSTEM_CLI_TERMINAL_CLI_SETUP_CLI_SETUP_H_
 #include "../CLI_Src/embedded_cli.h"
 #include "dev/M5_Utils/Define/define.h"
+#include "stddef.h"
 // Definitions for CLI sizes
 #define CLI_RX_BUFFER_SIZE 		16
 #define CLI_CMD_BUFFER_SIZE 	64
@@ -38,6 +39,11 @@ EmbeddedCli *get_UART2_CliPointer(void);
 
 EmbeddedCli *get_Net_CliPointer(void);
 
+EmbeddedCli *get_RGOSH_CliPointer(void);
+
 void Cli_Net_Register_Tx(CliWriteByte_t tx_cb);
+
+void Cli_RGOSH_CaptureStart(char *buf, size_t buf_max);
+void Cli_RGOSH_CaptureStop(size_t *out_len);
 
 #endif /* M2_SYSTEM_CLI_TERMINAL_CLI_SETUP_CLI_SETUP_H_ */

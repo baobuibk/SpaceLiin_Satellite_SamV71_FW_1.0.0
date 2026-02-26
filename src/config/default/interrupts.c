@@ -78,7 +78,7 @@ void __attribute__((optimize("-O1"), long_call, noreturn, used))Dummy_Handler(vo
 }
 
 /* MISRAC 2012 deviation block start */
-/* MISRA C-2012 Rule 8.6 deviated 69 times.  Deviation record ID -  H3_MISRAC_2012_R_8_6_DR_1 */
+/* MISRA C-2012 Rule 8.6 deviated 66 times.  Deviation record ID -  H3_MISRAC_2012_R_8_6_DR_1 */
 /* Device vectors list dummy definition*/
 extern void SVCall_Handler             ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void PendSV_Handler             ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
@@ -94,9 +94,7 @@ extern void UART1_Handler              ( void ) __attribute__((weak, alias("Dumm
 extern void PIOA_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void PIOB_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void PIOC_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
-extern void USART0_Handler             ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void USART1_Handler             ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
-extern void USART2_Handler             ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void PIOD_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void PIOE_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void HSMCI_Handler              ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
@@ -117,7 +115,6 @@ extern void ICM_Handler                ( void ) __attribute__((weak, alias("Dumm
 extern void ACC_Handler                ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void MCAN0_INT0_Handler         ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void MCAN0_INT1_Handler         ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
-extern void MCAN1_INT0_Handler         ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void MCAN1_INT1_Handler         ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void GMAC_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void AFEC1_Handler              ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
@@ -185,9 +182,9 @@ const H3DeviceVectors exception_table=
     .pfnPIOA_Handler               = PIOA_Handler,
     .pfnPIOB_Handler               = PIOB_Handler,
     .pfnPIOC_Handler               = PIOC_Handler,
-    .pfnUSART0_Handler             = USART0_Handler,
+    .pfnUSART0_Handler             = USART0_InterruptHandler,
     .pfnUSART1_Handler             = USART1_Handler,
-    .pfnUSART2_Handler             = USART2_Handler,
+    .pfnUSART2_Handler             = USART2_InterruptHandler,
     .pfnPIOD_Handler               = PIOD_Handler,
     .pfnPIOE_Handler               = PIOE_Handler,
     .pfnHSMCI_Handler              = HSMCI_Handler,
@@ -209,7 +206,7 @@ const H3DeviceVectors exception_table=
     .pfnUSBHS_Handler              = USBHS_Handler,
     .pfnMCAN0_INT0_Handler         = MCAN0_INT0_Handler,
     .pfnMCAN0_INT1_Handler         = MCAN0_INT1_Handler,
-    .pfnMCAN1_INT0_Handler         = MCAN1_INT0_Handler,
+    .pfnMCAN1_INT0_Handler         = MCAN1_INT0_InterruptHandler,
     .pfnMCAN1_INT1_Handler         = MCAN1_INT1_Handler,
     .pfnGMAC_Handler               = GMAC_Handler,
     .pfnAFEC1_Handler              = AFEC1_Handler,

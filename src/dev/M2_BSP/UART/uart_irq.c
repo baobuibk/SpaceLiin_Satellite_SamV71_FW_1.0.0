@@ -11,6 +11,12 @@
 #include "uart_irq.h"
 #include <string.h>
 
+#define USE_RTOS
+
+#ifdef USE_RTOS
+#include "os.h"
+#endif
+
 /*************************************************
  *                  BUFFERS                      *
  *************************************************/
@@ -213,31 +219,51 @@ bool UART_Driver_WriteByte(uart_registers_t* uart, uint8_t data)
     return true;
 }
 
-size_t UART_Driver_Write(uart_registers_t* uart, const uint8_t* data, size_t length)
+size_t UART_Driver_Write(uart_registers_t* uart,
+                         const uint8_t* data,
+                         size_t length)
 {
-    if (data == NULL || length == 0) {
+    if (data == NULL || length == 0)
         return 0;
-    }
-    
+
     UART_Driver_t* driver = UART_Driver_Get(uart);
-    if (driver == NULL) {
+    if (driver == NULL)
         return 0;
-    }
-    
+
     size_t written = 0;
-    
+
     for (size_t i = 0; i < length; i++)
     {
-        if (!RingBuffer_Put(&driver->tx_buffer, data[i])) {
-            break;  // Buffer full
+#ifdef USE_RTOS
+        TickType_t start = xTaskGetTickCount();
+        bool timeout = false;
+
+        while (!RingBuffer_Put(&driver->tx_buffer, data[i]))
+        {
+            vTaskDelay(1);
+
+            if ((xTaskGetTickCount() - start) > pdMS_TO_TICKS(10))
+            {
+                timeout = true;
+                break;
+            }
         }
+
+        if (timeout)
+            break;
+#else
+        while (!RingBuffer_Put(&driver->tx_buffer, data[i]))
+        {
+            /* spin until space available */
+        }
+#endif
+
         written++;
     }
-    
-    if (written > 0) {
+
+    if (written > 0)
         UART_Driver_StartTx(driver);
-    }
-    
+
     return written;
 }
 

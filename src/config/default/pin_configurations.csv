@@ -1,5 +1,5 @@
 "Pin Number","Pin ID","Custom Name","Function","Direction","Latch","Open Drain","PIO Interrupt","Pull Up","Pull Down","Glitch/Debounce Filter",Drive Strength
-1,PD0,,Available,In,,,,,,,
+1,PD0,GPIO_PD0,GPIO,Out,Low,No,Disabled,No,No,Disabled,Low
 2,PD31,,Available,In,,,,,,,
 4,PE0,,Available,In,,,,,,,
 6,PE1,,Available,In,,,,,,,
@@ -11,18 +11,18 @@
 14,PC31,,Available,In,,,,,,,
 15,PC30,,Available,In,,,,,,,
 16,PC29,,Available,In,,,,,,,
-17,PC12,,Available,In,,,,,,,
+17,PC12,,MCAN1_CANRX1,n/a,n/a,No,Disabled,No,No,Disabled,Low
 18,PC15,,Available,In,,,,,,,
 19,PC13,,Available,In,,,,,,,
-20,PB1,,Available,In,,,,,,,
-21,PB0,,Available,In,,,,,,,
+20,PB1,,USART0_TXD0,n/a,n/a,No,Disabled,No,No,Disabled,Low
+21,PB0,,USART0_RXD0,n/a,n/a,No,Disabled,Yes,No,Disabled,High
 22,PA20,,Available,In,,,,,,,
 23,PA19,,Available,In,,,,,,,
 24,PA18,,Available,In,,,,,,,
 25,PA17,,Available,In,,,,,,,
 26,PB2,,Available,In,,,,,,,
 27,PE4,,Available,In,,,,,,,
-28,PE5,,Available,In,,,,,,,
+28,PE5,GPIO_PE5,GPIO,Out,Low,No,Disabled,No,No,Disabled,Low
 31,PB3,,Available,In,,,,,,,
 32,PA21,,Available,In,,,,,,,
 34,PD30,,Available,In,,,,,,,
@@ -58,7 +58,7 @@
 68,PA12,,Available,In,,,,,,,
 69,PD18,,Available,In,,,,,,,
 70,PA27,,Available,In,,,,,,,
-71,PD28,,Available,In,,,,,,,
+71,PD28,GPIO_PD28,GPIO,Out,Low,No,Disabled,No,No,Disabled,Low
 73,PA5,,Available,In,,,,,,,
 74,PD17,,Available,In,,,,,,,
 75,PA9,,Available,In,,,,,,,
@@ -77,7 +77,7 @@
 92,PD12,,Available,In,,,,,,,
 93,PA2,,Available,In,,,,,,,
 94,PC11,,Available,In,,,,,,,
-97,PC14,,Available,In,,,,,,,
+97,PC14,,MCAN1_CANTX1,n/a,n/a,No,Disabled,No,No,Disabled,Low
 98,PD11,,Available,In,,,,,,,
 99,PA1,,Available,In,,,,,,,
 100,PC16,,Available,In,,,,,,,
@@ -112,4 +112,4 @@
 133,PC25,,Available,In,,,,,,,
 141,PB8,,Available,In,,,,,,,
 142,PB9,,Available,In,,,,,,,
-144,PB13,,Available,In,,,,,,,
+144,PB13,,USART0_SCK0,n/a,n/a,No,Disabled,No,No,Disabled,Low
