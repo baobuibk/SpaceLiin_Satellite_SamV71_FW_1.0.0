@@ -163,7 +163,7 @@ Std_ReturnType UART_Driver_Init(void)
     /* [0] UART in list: Done one --------------------------------- */
     /* ... */
 
-    return E_OK;
+    return ERROR_OK;
 }
 
 /*************************************************

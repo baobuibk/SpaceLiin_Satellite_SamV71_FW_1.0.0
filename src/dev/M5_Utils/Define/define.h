@@ -17,11 +17,7 @@ extern "C" {
 
 typedef enum
 {
-    E_OK       = 0x00U,  /* Operation successful */
-    E_ERROR    ,  /* Operation failed */
-    E_BUSY     ,  /* Resource is busy */
-    E_TIMEOUT   ,  /* Operation timed out */
-    ERROR_OK      ,  /* Operation successful */
+    ERROR_OK = 0     ,  /* Operation successful */
     ERROR_FAIL ,  /* Operation failed */
     ERROR_BUSY ,  /* Resource is busy */
     ERROR_TIMEOUT ,  /* Operation timed out */
