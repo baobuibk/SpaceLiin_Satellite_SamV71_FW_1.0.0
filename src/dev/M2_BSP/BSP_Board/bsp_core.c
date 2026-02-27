@@ -33,3 +33,10 @@ do_t laser_sw_ext_cs =
     .pin  = LASER_SW_EXT_CS_PIN,
     .bStatus = false,
 };
+
+do_t status_led = 
+{
+    .port = STATUS_LED_PORT,
+    .pin = STATUS_LED_PIN,
+    .bStatus = false,
+};

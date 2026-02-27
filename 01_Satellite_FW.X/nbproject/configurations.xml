@@ -332,19 +332,17 @@
           </logicalFolder>
           <logicalFolder name="M2_BSP" displayName="M2_BSP" projectFiles="true">
             <logicalFolder name="BSP_Board" displayName="BSP_Board" projectFiles="true">
-              <itemPath>../src/dev/M2_BSP/BSP_Board/bsp_core.c</itemPath>
               <itemPath>../src/dev/M2_BSP/BSP_Board/board.h</itemPath>
               <itemPath>../src/dev/M2_BSP/BSP_Board/board_v71_iss.h</itemPath>
               <itemPath>../src/dev/M2_BSP/BSP_Board/board_v71_xult.h</itemPath>
               <itemPath>../src/dev/M2_BSP/BSP_Board/bsp_core.h</itemPath>
+              <itemPath>../src/dev/M2_BSP/BSP_Board/board_v71_satellite.h</itemPath>
             </logicalFolder>
             <logicalFolder name="BSP_Laser" displayName="BSP_Laser" projectFiles="true">
-              <itemPath>../src/dev/M2_BSP/BSP_Laser/bsp_laser.c</itemPath>
               <itemPath>../src/dev/M2_BSP/BSP_Laser/bsp_laser.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="BSP_Photodiode"
-                           displayName="BSP_Photodiode"
-                           projectFiles="true">
+            <logicalFolder name="f1" displayName="BSP_Led" projectFiles="true">
+              <itemPath>../src/dev/M2_BSP/BSP_Led/bsp_led.h</itemPath>
             </logicalFolder>
             <logicalFolder name="BSP_RS485" displayName="BSP_RS485" projectFiles="true">
             </logicalFolder>
@@ -1345,6 +1343,15 @@
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="M2_BSP" displayName="M2_BSP" projectFiles="true">
+            <logicalFolder name="f3" displayName="BSP_Board" projectFiles="true">
+              <itemPath>../src/dev/M2_BSP/BSP_Board/bsp_core.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f2" displayName="BSP_Laser" projectFiles="true">
+              <itemPath>../src/dev/M2_BSP/BSP_Laser/bsp_laser.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f1" displayName="BSP_Led" projectFiles="true">
+              <itemPath>../src/dev/M2_BSP/BSP_Led/bsp_led.c</itemPath>
+            </logicalFolder>
             <logicalFolder name="UART" displayName="UART" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/UART/uart_dma.c</itemPath>
               <itemPath>../src/dev/M2_BSP/UART/uart_irq.c</itemPath>
@@ -1955,7 +1962,7 @@
         <targetDevice>ATSAMV71Q21B</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>EdbgTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>5.00</languageToolchainVersion>
         <platform>3</platform>
