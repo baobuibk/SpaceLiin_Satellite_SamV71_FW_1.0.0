@@ -338,6 +338,9 @@
               <itemPath>../src/dev/M2_BSP/BSP_Board/bsp_core.h</itemPath>
               <itemPath>../src/dev/M2_BSP/BSP_Board/board_v71_satellite.h</itemPath>
             </logicalFolder>
+            <logicalFolder name="f2" displayName="BSP_Heater" projectFiles="true">
+              <itemPath>../src/dev/M2_BSP/BSP_Heater/bsp_heater.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="BSP_Laser" displayName="BSP_Laser" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Laser/bsp_laser.h</itemPath>
             </logicalFolder>
@@ -1345,6 +1348,9 @@
           <logicalFolder name="M2_BSP" displayName="M2_BSP" projectFiles="true">
             <logicalFolder name="f3" displayName="BSP_Board" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Board/bsp_core.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f4" displayName="BSP_Heater" projectFiles="true">
+              <itemPath>../src/dev/M2_BSP/BSP_Heater/bsp_heater.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f2" displayName="BSP_Laser" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Laser/bsp_laser.c</itemPath>
