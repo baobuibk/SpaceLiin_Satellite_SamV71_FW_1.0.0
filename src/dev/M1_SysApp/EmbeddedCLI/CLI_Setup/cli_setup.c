@@ -102,7 +102,7 @@ Std_ReturnType SystemCLI_Init(void)
     cfg->staticBindingCount = getCliStaticBindingCount();
 
     cli_uart2 = embeddedCliNew(cfg);
-    if (cli_uart2 == NULL) return E_ERROR;
+    if (cli_uart2 == NULL) return ERROR_FAIL;
     cli_uart2->writeChar = writeCharToCli_UART2;
 
     /* ---- 2. Net CLI ---- */
@@ -119,7 +119,7 @@ Std_ReturnType SystemCLI_Init(void)
     cfg->staticBindingCount = getCliStaticBindingCount();
 
     cli_net = embeddedCliNew(cfg);
-    if (cli_net == NULL) return E_ERROR;
+    if (cli_net == NULL) return ERROR_FAIL;
     cli_net->writeChar = writeCharToCli_Net;
 
     /* ---- 3. RGOSH CLI ---- */
@@ -136,11 +136,11 @@ Std_ReturnType SystemCLI_Init(void)
     cfg->staticBindingCount = getCliStaticBindingCount();
 
     cli_rgosh = embeddedCliNew(cfg);
-    if (cli_rgosh == NULL) return E_ERROR;
+    if (cli_rgosh == NULL) return ERROR_FAIL;
     cli_rgosh->writeChar = writeCharToCli_RGOSH;
 
     cliIsReady = true;
-    return E_OK;
+    return ERROR_OK;
 }
 
 /* ================================================================
