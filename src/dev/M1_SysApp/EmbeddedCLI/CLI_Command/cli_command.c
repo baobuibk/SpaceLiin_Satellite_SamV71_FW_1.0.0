@@ -29,6 +29,8 @@
 #include <param/table.h>
 #include <param/internal/types.h>
 
+#include "M2_BSP/BSP_Led/bsp_led.h"
+
 /*************************************************
  *                     Extern                    *
  *************************************************/
@@ -60,6 +62,10 @@ static void CMD_CspInfo(EmbeddedCli *cli, char *args, void *context);
 
 static void CMD_ParamShow(EmbeddedCli *cli, char *args, void *context);
 static void CMD_ParamSet (EmbeddedCli *cli, char *args, void *context);
+
+static void CMD_LED_Set (EmbeddedCli *cli, char *args, void *context);
+static void CMD_LED_Reset (EmbeddedCli *cli, char *args, void *context);
+
 
 /*************************************************
  * Command Define "Dev"              *
@@ -103,6 +109,9 @@ static const CliCommandBinding cliStaticBindings_internal[] = {
 
     { "Param",          "param_show", "Show all fields of a table: param_show <table_id 0-4>",           true, NULL, CMD_ParamShow },
     { "Param",          "param_set",  "Set a field in a table: param_set <table_id> <addr> <type> <value>", true, NULL, CMD_ParamSet  },
+    
+    { "LED",          "led_set",  "Comment following: led_set",                                 true, NULL, CMD_LED_Set  },
+    { "LED",          "led_reset",  "Comment following: led_reset",                             true, NULL, CMD_LED_Reset  },
 
     { NULL,         	"reset",       	"Reset MCU: reset",                                 	false, 	NULL, CMD_Reset,     	 },
 };
@@ -1108,6 +1117,23 @@ static void CMD_ParamSet(EmbeddedCli *cli, char *args, void *context) {
     embeddedCliPrint(cli, buf);
     embeddedCliPrint(cli, "");
 }
+
+
+static void CMD_LED_Set (EmbeddedCli *cli, char *args, void *context)
+{
+    bsp_led_set();
+    embeddedCliPrint(cli, "LED_ON");
+    embeddedCliPrint(cli, "");
+}
+static void CMD_LED_Reset (EmbeddedCli *cli, char *args, void *context)
+{
+    bsp_led_reset();
+    embeddedCliPrint(cli, "LED_OFF");
+    embeddedCliPrint(cli, "");
+}
+
+
+
 
 static void CMD_Reset(EmbeddedCli *cli, char *args, void *context) {
 	NVIC_SystemReset();

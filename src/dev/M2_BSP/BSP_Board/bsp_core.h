@@ -14,6 +14,8 @@ extern do_t laser_dac_latch;
 extern do_t laser_sw_int_cs ;
 extern do_t laser_sw_ext_cs ;
 
+extern do_t status_led;
+
 void BSP_board_init(void);
 
 #endif /* __BSP_CORE_H__ */
