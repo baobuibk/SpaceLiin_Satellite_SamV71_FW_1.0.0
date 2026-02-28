@@ -346,6 +346,9 @@
                            displayName="BSP_Photodiode"
                            projectFiles="true">
             </logicalFolder>
+            <logicalFolder name="f1" displayName="BSP_Power" projectFiles="true">
+              <itemPath>../src/dev/M2_BSP/BSP_Power/bsp_power.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="BSP_RS485" displayName="BSP_RS485" projectFiles="true">
             </logicalFolder>
             <logicalFolder name="UART" displayName="UART" projectFiles="true">
@@ -1345,6 +1348,9 @@
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="M2_BSP" displayName="M2_BSP" projectFiles="true">
+            <logicalFolder name="f1" displayName="BSP_Power" projectFiles="true">
+              <itemPath>../src/dev/M2_BSP/BSP_Power/bsp_power.c</itemPath>
+            </logicalFolder>
             <logicalFolder name="UART" displayName="UART" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/UART/uart_dma.c</itemPath>
               <itemPath>../src/dev/M2_BSP/UART/uart_irq.c</itemPath>
@@ -1955,7 +1961,7 @@
         <targetDevice>ATSAMV71Q21B</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>EdbgTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>5.00</languageToolchainVersion>
         <platform>3</platform>

@@ -29,6 +29,8 @@
 #include <param/table.h>
 #include <param/internal/types.h>
 
+#include "M2_BSP/BSP_Power/bsp_power.h"
+
 /*************************************************
  *                     Extern                    *
  *************************************************/
@@ -60,6 +62,32 @@ static void CMD_CspInfo(EmbeddedCli *cli, char *args, void *context);
 
 static void CMD_ParamShow(EmbeddedCli *cli, char *args, void *context);
 static void CMD_ParamSet (EmbeddedCli *cli, char *args, void *context);
+
+static void CMD_PowerSOM_ON(EmbeddedCli *cli, char *args, void *context); 
+static void CMD_PowerSOM_OFF(EmbeddedCli *cli, char *args, void *context);
+static void CMD_PowerSOM_Get(EmbeddedCli *cli, char *args, void *context);
+static void CMD_PowerBuckPeri_ON(EmbeddedCli *cli, char *args, void *context);
+static void CMD_PowerBuckPeri_OFF(EmbeddedCli *cli, char *args, void *context); 
+static void CMD_PowerBuckPeri_Get(EmbeddedCli *cli, char *args, void *context);
+static void CMD_PowerTec_ON(EmbeddedCli *cli, char *args, void *context);
+static void CMD_PowerTec_OFF(EmbeddedCli *cli, char *args, void *context);
+static void CMD_PowerTec_Get(EmbeddedCli *cli, char *args, void *context);
+static void CMD_PowerHD4_ON(EmbeddedCli *cli, char *args, void *context);
+static void CMD_PowerHD4_OFF(EmbeddedCli *cli, char *args, void *context); 
+static void CMD_PowerHD4_Get(EmbeddedCli *cli, char *args, void *context); 
+static void CMD_PowerSolenoid_ON(EmbeddedCli *cli, char *args, void *context);
+static void CMD_PowerSolenoid_OFF(EmbeddedCli *cli, char *args, void *context);
+static void CMD_PowerSolenoid_Get(EmbeddedCli *cli, char *args, void *context);
+static void CMD_PowerLP_ON(EmbeddedCli *cli, char *args, void *context);
+static void CMD_PowerLP_OFF(EmbeddedCli *cli, char *args, void *context);
+static void CMD_PowerLP_Get(EmbeddedCli *cli, char *args, void *context); 
+static void CMD_PowerHeater_ON(EmbeddedCli *cli, char *args, void *context);
+static void CMD_PowerHeater_OFF(EmbeddedCli *cli, char *args, void *context);
+static void CMD_PowerHeater_Get(EmbeddedCli *cli, char *args, void *context); 
+static void CMD_PowerAll_ON(EmbeddedCli *cli, char *args, void *context);
+static void CMD_PowerAll_OFF(EmbeddedCli *cli, char *args, void *context);
+static void CMD_PowerAll_Get(EmbeddedCli *cli, char *args, void *context); 
+
 
 /*************************************************
  * Command Define "Dev"              *
@@ -104,7 +132,41 @@ static const CliCommandBinding cliStaticBindings_internal[] = {
     { "Param",          "param_show", "Show all fields of a table: param_show <table_id 0-4>",           true, NULL, CMD_ParamShow },
     { "Param",          "param_set",  "Set a field in a table: param_set <table_id> <addr> <type> <value>", true, NULL, CMD_ParamSet  },
 
-    { NULL,         	"reset",       	"Reset MCU: reset",                                 	false, 	NULL, CMD_Reset,     	 },
+    
+    { "POWER",          "power_som_on",  "power_som_on: enable efuse for turn on som",        false, NULL, CMD_PowerSOM_ON, },
+    { "POWER",          "power_som_off",      "power_som_off: disable efuse for turn off som",          false, NULL, CMD_PowerSOM_OFF },
+    { "POWER",          "power_som_get",      "power_som_get: get power status of som",                 false, NULL, CMD_PowerSOM_Get },
+
+    { "POWER",          "power_buck_peri_on", "power_buck_peri_on: enable efuse for turn on buck peri",   false, NULL, CMD_PowerBuckPeri_ON },
+    { "POWER",          "power_buck_peri_off","power_buck_peri_off: disable efuse for turn off buck peri", false, NULL, CMD_PowerBuckPeri_OFF },
+    { "POWER",          "power_buck_peri_get","power_buck_peri_get: get power status of buck peri",      false, NULL, CMD_PowerBuckPeri_Get },
+
+    { "POWER",          "power_tec_on",       "power_tec_on: enable efuse for turn on tec",             false, NULL, CMD_PowerTec_ON },
+    { "POWER",          "power_tec_off",      "power_tec_off: disable efuse for turn off tec",           false, NULL, CMD_PowerTec_OFF },
+    { "POWER",          "power_tec_get",      "power_tec_get: get power status of tec",                  false, NULL, CMD_PowerTec_Get },
+
+    { "POWER",          "power_hd4_on",       "power_hd4_on: enable efuse for turn on hd4",             false, NULL, CMD_PowerHD4_ON },
+    { "POWER",          "power_hd4_off",      "power_hd4_off: disable efuse for turn off hd4",           false, NULL, CMD_PowerHD4_OFF },
+    { "POWER",          "power_hd4_get",      "power_hd4_get: get power status of hd4",                  false, NULL, CMD_PowerHD4_Get },
+
+    { "POWER",          "power_solenoid_on",  "power_solenoid_on: enable efuse for turn on solenoid",    false, NULL, CMD_PowerSolenoid_ON },
+    { "POWER",          "power_solenoid_off", "power_solenoid_off: disable efuse for turn off solenoid",  false, NULL, CMD_PowerSolenoid_OFF },
+    { "POWER",          "power_solenoid_get", "power_solenoid_get: get power status of solenoid",       false, NULL, CMD_PowerSolenoid_Get },
+
+    { "POWER",          "power_lp_on",        "power_lp_on: enable efuse for turn on lp",               false, NULL, CMD_PowerLP_ON },
+    { "POWER",          "power_lp_off",       "power_lp_off: disable efuse for turn off lp",             false, NULL, CMD_PowerLP_OFF },
+    { "POWER",          "power_lp_get",       "power_lp_get: get power status of lp",                   false, NULL, CMD_PowerLP_Get },
+
+    { "POWER",          "power_heater_on",    "power_heater_on: enable efuse for turn on heater",       false, NULL, CMD_PowerHeater_ON },
+    { "POWER",          "power_heater_off",   "power_heater_off: disable efuse for turn off heater",      false, NULL, CMD_PowerHeater_OFF },
+    { "POWER",          "power_heater_get",   "power_heater_get: get power status of heater",           false, NULL, CMD_PowerHeater_Get },
+
+    { "POWER",          "power_all_on",       "power_all_on: enable efuse for turn on all rails",       false, NULL, CMD_PowerAll_ON },
+    { "POWER",          "power_all_off",      "power_all_off: disable efuse for turn off all rails",      false, NULL, CMD_PowerAll_OFF },
+    { "POWER",          "power_all_get",      "power_all_get: get power status of all rails",           false, NULL, CMD_PowerAll_Get },
+
+    
+    { NULL,         	"reset",       	"Reset MCU: reset",                                 	false, 	NULL, CMD_Reset,     	},
 };
 /*************************************************
  *                 External Declarations         *
@@ -1108,6 +1170,235 @@ static void CMD_ParamSet(EmbeddedCli *cli, char *args, void *context) {
     embeddedCliPrint(cli, buf);
     embeddedCliPrint(cli, "");
 }
+
+
+/*
+ * POWER ON/OFF AND STATUS
+ */
+static void CMD_PowerSOM_ON(EmbeddedCli *cli, char *args, void *context) {
+    bsp_power_som_on();
+    embeddedCliPrint(cli, "CMD_PowerSOM_ON");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_PowerSOM_OFF(EmbeddedCli *cli, char *args, void *context) {
+    bsp_power_som_off();
+    embeddedCliPrint(cli, "CMD_PowerSOM_OFF");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_PowerSOM_Get(EmbeddedCli *cli, char *args, void *context) {
+    if (bsp_power_som_status())    
+        embeddedCliPrint(cli, "Power SOM is ON");
+    else
+        embeddedCliPrint(cli, "Power SOM is OFF");
+    embeddedCliPrint(cli, "");
+}
+
+
+static void CMD_PowerBuckPeri_ON(EmbeddedCli *cli, char *args, void *context) {
+    bsp_power_buck_peri_on();
+    embeddedCliPrint(cli, "CMD_PowerBuckPeri_ON");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_PowerBuckPeri_OFF(EmbeddedCli *cli, char *args, void *context) {
+    bsp_power_buck_peri_off();
+    embeddedCliPrint(cli, "CMD_PowerBuckPeri_OFF");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_PowerBuckPeri_Get(EmbeddedCli *cli, char *args, void *context) {
+    if (bsp_power_buck_peri_status())    
+        embeddedCliPrint(cli, "Power Buck Peripherals is ON");
+    else
+        embeddedCliPrint(cli, "Power Buck Peripherals is OFF");
+    embeddedCliPrint(cli, "");
+}
+
+
+static void CMD_PowerTec_ON(EmbeddedCli *cli, char *args, void *context) {
+    bsp_power_tec_on();
+    embeddedCliPrint(cli, "CMD_PowerTec_ON");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_PowerTec_OFF(EmbeddedCli *cli, char *args, void *context) {
+    bsp_power_tec_off();
+    embeddedCliPrint(cli, "CMD_PowerTec_OFF");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_PowerTec_Get(EmbeddedCli *cli, char *args, void *context) {
+    if (bsp_power_tec_status())    
+        embeddedCliPrint(cli, "Power Tec is ON");
+    else
+        embeddedCliPrint(cli, "Power Tec is OFF");
+    embeddedCliPrint(cli, "");
+}
+
+
+static void CMD_PowerHD4_ON(EmbeddedCli *cli, char *args, void *context) {
+    bsp_power_hd4_on();
+    embeddedCliPrint(cli, "CMD_PowerHD4_ON");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_PowerHD4_OFF(EmbeddedCli *cli, char *args, void *context) {
+    bsp_power_hd4_off();
+    embeddedCliPrint(cli, "CMD_PowerHD4_OFF");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_PowerHD4_Get(EmbeddedCli *cli, char *args, void *context) {
+    if (bsp_power_hd4_status())    
+        embeddedCliPrint(cli, "Power HD4 is ON");
+    else
+        embeddedCliPrint(cli, "Power HD4 is OFF");
+    embeddedCliPrint(cli, "");
+}
+
+
+static void CMD_PowerSolenoid_ON(EmbeddedCli *cli, char *args, void *context) {
+    bsp_power_solenoid_on();
+    embeddedCliPrint(cli, "CMD_PowerSolenoid_ON");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_PowerSolenoid_OFF(EmbeddedCli *cli, char *args, void *context) {
+    bsp_power_solenoid_off();
+    embeddedCliPrint(cli, "CMD_PowerSolenoid_OFF");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_PowerSolenoid_Get(EmbeddedCli *cli, char *args, void *context) {
+    if (bsp_power_solenoid_status())    
+        embeddedCliPrint(cli, "Power Solenoid is ON");
+    else
+        embeddedCliPrint(cli, "Power Solenoid is OFF");
+    embeddedCliPrint(cli, "");
+}
+
+
+static void CMD_PowerLP_ON(EmbeddedCli *cli, char *args, void *context) {
+    bsp_power_lp_on();
+    embeddedCliPrint(cli, "CMD_PowerLP_ON");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_PowerLP_OFF(EmbeddedCli *cli, char *args, void *context) {
+    bsp_power_lp_off();
+    embeddedCliPrint(cli, "CMD_PowerLP_OFF");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_PowerLP_Get(EmbeddedCli *cli, char *args, void *context) {
+    if (bsp_power_lp_status())    
+        embeddedCliPrint(cli, "Power LP is ON");
+    else
+        embeddedCliPrint(cli, "Power LP is OFF");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_PowerHeater_ON(EmbeddedCli *cli, char *args, void *context) {
+    bsp_power_heater_on();
+    embeddedCliPrint(cli, "CMD_PowerHeater_ON");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_PowerHeater_OFF(EmbeddedCli *cli, char *args, void *context) {
+    bsp_power_heater_off();
+    embeddedCliPrint(cli, "CMD_PowerHeater_OFF");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_PowerHeater_Get(EmbeddedCli *cli, char *args, void *context) {
+    if (bsp_power_heater_status())    
+        embeddedCliPrint(cli, "Power Heater is ON");
+    else
+        embeddedCliPrint(cli, "Power Heater is OFF");
+    embeddedCliPrint(cli, "");
+}  
+
+
+static void CMD_PowerAll_ON(EmbeddedCli *cli, char *args, void *context) {
+    power_on_all();
+    embeddedCliPrint(cli, "CMD_PowerAll_ON");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_PowerAll_OFF(EmbeddedCli *cli, char *args, void *context) {
+    power_off_all();
+    embeddedCliPrint(cli, "CMD_PowerAll_OFF");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_PowerAll_Get(EmbeddedCli *cli, char *args, void *context) {
+    if (bsp_power_som_status())    
+        embeddedCliPrint(cli, "Power SOM is ON");
+    else
+        embeddedCliPrint(cli, "Power SOM is OFF");
+    
+    if (bsp_power_buck_peri_status())    
+        embeddedCliPrint(cli, "Power Buck Peripherals is ON");
+    else
+        embeddedCliPrint(cli, "Power Buck Peripherals is OFF");
+    
+    if (bsp_power_tec_status())    
+        embeddedCliPrint(cli, "Power Tec is ON");
+    else
+        embeddedCliPrint(cli, "Power Tec is OFF");
+    
+    if (bsp_power_tec_status())    
+        embeddedCliPrint(cli, "Power Tec is ON");
+    else
+        embeddedCliPrint(cli, "Power Tec is OFF");
+
+    if (bsp_power_hd4_status())    
+        embeddedCliPrint(cli, "Power HD4 is ON");
+    else
+        embeddedCliPrint(cli, "Power HD4 is OFF");
+
+    if (bsp_power_solenoid_status())    
+        embeddedCliPrint(cli, "Power Solenoid is ON");
+    else
+        embeddedCliPrint(cli, "Power Solenoid is OFF");
+    
+    if (bsp_power_lp_status())    
+        embeddedCliPrint(cli, "Power LP is ON");
+    else
+        embeddedCliPrint(cli, "Power LP is OFF");
+    
+    if (bsp_power_heater_status())    
+        embeddedCliPrint(cli, "Power Heater is ON");
+    else
+    {
+        embeddedCliPrint(cli, "Power Heater is OFF");
+    }
+    embeddedCliPrint(cli, "");
+} 
+
+
+
+////--------IDEA OPTIMIZE POWER FUNCTION-----------
+//
+//static void CMD_PowerGuide_ON(EmbeddedCli *cli, char *args, void *context)
+//{
+//    embeddedCliPrint(cli, "power_on + parameters: <som> <buck_peri> <tec> <hd4> <solenoid> <lp> <heater> <all>");
+//}
+//
+//static void CMD_PowerGuide_OFF(EmbeddedCli *cli, char *args, void *context)
+//{
+//    embeddedCliPrint(cli, "power_on + parameters: <som> <buck_peri> <tec> <hd4> <solenoid> <lp> <heater> <all>");
+//} 
+//
+//static void CMD_Power_ON(EmbeddedCli *cli, char *args, void *context)
+//{
+//    int i = 1;
+//    
+//} 
+
+
 
 static void CMD_Reset(EmbeddedCli *cli, char *args, void *context) {
 	NVIC_SystemReset();
