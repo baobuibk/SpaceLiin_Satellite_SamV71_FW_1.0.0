@@ -117,13 +117,10 @@ void SYS_Initialize ( void* data )
     /* MISRAC 2012 deviation block start */
     /* MISRA C-2012 Rule 2.2 deviated in this file.  Deviation record ID -  H3_MISRAC_2012_R_2_2_DR_1 */
 
-
     EFC_Initialize();
   
     CLOCK_Initialize();
 	PIO_Initialize();
-
-
 
 	UART2_Initialize();
 
@@ -133,17 +130,18 @@ void SYS_Initialize ( void* data )
 	WDT_REGS->WDT_MR = WDT_MR_WDDIS_Msk; 		// Disable WDT 
 
     MCAN1_Initialize();
+    
+    TC0_CH0_CompareInitialize();
+    TC0_CH2_CompareInitialize();
+    TC1_CH0_CompareInitialize();
+    TC2_CH0_CompareInitialize();
+    TC2_CH1_CompareInitialize();
 
-  
-
- 
-    TC3_CH0_TimerInitialize(); 
-     
+    TC3_CH0_TimerInitialize();
     
     USART0_SPI_Initialize();
 
     USART2_SPI_Initialize();
-
 
     NVIC_Initialize();
 

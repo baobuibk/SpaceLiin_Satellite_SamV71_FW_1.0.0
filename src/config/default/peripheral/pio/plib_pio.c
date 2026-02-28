@@ -61,7 +61,25 @@ void PIO_Initialize ( void )
     MATRIX_REGS->CCFG_SYSIO = 0x0;
 
     /************************ PIO A Initialization ************************/
+    //------begin-------
+    /* PORTA PIO: Default*/
+    ((pio_registers_t*)PIO_PORT_A)->PIO_ABCDSR[0]= 0x0U;
+    ((pio_registers_t*)PIO_PORT_A)->PIO_ABCDSR[1]= 0xFFFFFFFFU;
+    
+    /* Select Peripheral B for PA00, PA01, PA26, PA27 */
+    uint32_t periph_B_mask = (1U << 0) | (1U << 1) | (1U << 26) | (1U << 27);
+    PIOA_REGS->PIO_ABCDSR[0] |=  periph_B_mask;
+    PIOA_REGS->PIO_ABCDSR[1] &= ~periph_B_mask;
+    //------stop--------
+    
     ((pio_registers_t*)PIO_PORT_A)->PIO_PER = 0xFFFFFFFFU;
+    //------begin-------
+    /* PORTA PIO Disable and Peripheral Enable*/
+    ((pio_registers_t*)PIO_PORT_A)->PIO_PDR |=  periph_B_mask;
+    /* PORTA PIO Enable and Peripheral Disable*/
+    ((pio_registers_t*)PIO_PORT_A)->PIO_PER &= ~periph_B_mask;
+    //------stop--------
+    
     ((pio_registers_t*)PIO_PORT_A)->PIO_MDDR = 0xFFFFFFFFU;
     /* PORTA Pull Up Enable/Disable as per MHC selection */
     ((pio_registers_t*)PIO_PORT_A)->PIO_PUDR = 0xFFFFFFFFU;
@@ -103,7 +121,12 @@ void PIO_Initialize ( void )
     /************************ PIO C Initialization ************************/
     /* PORTC Peripheral Function Selection */
     ((pio_registers_t*)PIO_PORT_C)->PIO_ABCDSR[0]= 0x0U;
-    ((pio_registers_t*)PIO_PORT_C)->PIO_ABCDSR[1]= 0x5000U;
+    ((pio_registers_t*)PIO_PORT_C)->PIO_ABCDSR[1]= 0x5000U; 
+    
+    /* Select Peripheral B for PC5, PC6 */
+    PIOC_REGS->PIO_ABCDSR[0] |=  (1U << 5) | (1U << 6);
+    PIOC_REGS->PIO_ABCDSR[1] &= ~((1U << 5) | (1U << 6));
+    
     /* PORTC PIO Disable and Peripheral Enable*/
     ((pio_registers_t*)PIO_PORT_C)->PIO_PDR = 0x5000U;
     ((pio_registers_t*)PIO_PORT_C)->PIO_PER = ~0x5000U;

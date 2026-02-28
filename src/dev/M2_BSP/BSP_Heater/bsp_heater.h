@@ -14,8 +14,12 @@ extern "C" {
 
 #include "stdint.h"
 
-void bsp_heater_set_duty(uint8_t duty);
-void bsp_heater_off(void);
+typedef enum {
+    HTR_1 = 0, HTR_2, HTR_3, HTR_4, HTR_5, HTR_6, HTR_7, HTR_8,
+} heater_channel_t;
+
+void bsp_heater_set_duty(heater_channel_t HTR_CH, uint8_t HTR_DUTY);
+void bsp_heater_off(heater_channel_t HTR_CH);
 
 
 

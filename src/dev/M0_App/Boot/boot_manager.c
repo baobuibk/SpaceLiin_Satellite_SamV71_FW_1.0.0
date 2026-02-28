@@ -63,6 +63,7 @@ Std_ReturnType BootManager_SystemInit(void){
 
 void BootManager_SystemStart(void){
     TC3_CH0_TimerStart();
+    TC0_CH0_CompareStart();
     SYSTICK_TimerStart();
     {
         static volatile int i;
