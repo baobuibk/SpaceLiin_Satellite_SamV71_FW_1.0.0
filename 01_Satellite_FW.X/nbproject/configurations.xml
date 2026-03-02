@@ -29,6 +29,9 @@
             <logicalFolder name="tc" displayName="tc" projectFiles="true">
               <itemPath>../src/config/default/peripheral/tc/plib_tc3.h</itemPath>
               <itemPath>../src/config/default/peripheral/tc/plib_tc_common.h</itemPath>
+              <itemPath>../src/config/default/peripheral/tc/plib_tc0.h</itemPath>
+              <itemPath>../src/config/default/peripheral/tc/plib_tc1.h</itemPath>
+              <itemPath>../src/config/default/peripheral/tc/plib_tc2.h</itemPath>
             </logicalFolder>
             <logicalFolder name="uart" displayName="uart" projectFiles="true">
               <itemPath>../src/config/default/peripheral/uart/plib_uart_common.h</itemPath>
@@ -337,6 +340,9 @@
               <itemPath>../src/dev/M2_BSP/BSP_Board/board_v71_xult.h</itemPath>
               <itemPath>../src/dev/M2_BSP/BSP_Board/bsp_core.h</itemPath>
               <itemPath>../src/dev/M2_BSP/BSP_Board/board_v71_satellite.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f2" displayName="BSP_Heater" projectFiles="true">
+              <itemPath>../src/dev/M2_BSP/BSP_Heater/bsp_heater.h</itemPath>
             </logicalFolder>
             <logicalFolder name="BSP_Laser" displayName="BSP_Laser" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Laser/bsp_laser.h</itemPath>
@@ -1184,6 +1190,9 @@
             </logicalFolder>
             <logicalFolder name="tc" displayName="tc" projectFiles="true">
               <itemPath>../src/config/default/peripheral/tc/plib_tc3.c</itemPath>
+              <itemPath>../src/config/default/peripheral/tc/plib_tc0.c</itemPath>
+              <itemPath>../src/config/default/peripheral/tc/plib_tc1.c</itemPath>
+              <itemPath>../src/config/default/peripheral/tc/plib_tc2.c</itemPath>
             </logicalFolder>
             <logicalFolder name="uart" displayName="uart" projectFiles="true">
               <itemPath>../src/config/default/peripheral/uart/plib_uart2.c</itemPath>
@@ -1345,6 +1354,9 @@
           <logicalFolder name="M2_BSP" displayName="M2_BSP" projectFiles="true">
             <logicalFolder name="f3" displayName="BSP_Board" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Board/bsp_core.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f4" displayName="BSP_Heater" projectFiles="true">
+              <itemPath>../src/dev/M2_BSP/BSP_Heater/bsp_heater.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f2" displayName="BSP_Laser" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Laser/bsp_laser.c</itemPath>

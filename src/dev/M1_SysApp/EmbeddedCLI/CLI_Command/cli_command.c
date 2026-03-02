@@ -30,6 +30,7 @@
 #include <param/internal/types.h>
 
 #include "M2_BSP/BSP_Led/bsp_led.h"
+#include "M2_BSP/BSP_Heater/bsp_heater.h"
 
 /*************************************************
  *                     Extern                    *
@@ -65,6 +66,9 @@ static void CMD_ParamSet (EmbeddedCli *cli, char *args, void *context);
 
 static void CMD_LED_Set (EmbeddedCli *cli, char *args, void *context);
 static void CMD_LED_Reset (EmbeddedCli *cli, char *args, void *context);
+
+static void CMD_HEATER_SetDuty (EmbeddedCli *cli, char *args, void *context);
+
 
 
 /*************************************************
@@ -112,6 +116,11 @@ static const CliCommandBinding cliStaticBindings_internal[] = {
     
     { "LED",          "led_set",  "Comment following: led_set",                                 true, NULL, CMD_LED_Set  },
     { "LED",          "led_reset",  "Comment following: led_reset",                             true, NULL, CMD_LED_Reset  },
+    
+    { "HTR",          "heater_set",  "Comment following: heater_set <channel> <duty> ",         true, NULL, CMD_HEATER_SetDuty  },
+
+    
+    
 
     { NULL,         	"reset",       	"Reset MCU: reset",                                 	false, 	NULL, CMD_Reset,     	 },
 };
@@ -1129,6 +1138,57 @@ static void CMD_LED_Reset (EmbeddedCli *cli, char *args, void *context)
 {
     bsp_led_reset();
     embeddedCliPrint(cli, "LED_OFF");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_HEATER_SetDuty (EmbeddedCli *cli, char *args, void *context)
+{
+    (void)context;
+
+    const char *HTR_CH   = embeddedCliGetToken(args, 1);
+    const char *HTR_Duty = embeddedCliGetToken(args, 2);
+    char buf[128];
+
+    if (HTR_CH == NULL || HTR_Duty == NULL)
+    {
+        embeddedCliPrint(cli, "Usage  : heater_set <channel 1-8> <duty 0-100>");
+        embeddedCliPrint(cli, "Example: heater_set 1 80");
+        return;
+    }
+
+    char *endptr;
+
+    uint32_t ch = strtoul(HTR_CH, &endptr, 10);
+    if (*endptr != '\0')
+    {
+        embeddedCliPrint(cli, "Error: Channel must be a number (1-8)");
+        return;
+    }
+
+    uint32_t duty = strtoul(HTR_Duty, &endptr, 10);
+    if (*endptr != '\0')
+    {
+        embeddedCliPrint(cli, "Error: Duty must be a number (0-100)");
+        return;
+    }
+
+    if (ch < 1 || ch > 8)
+    {
+        embeddedCliPrint(cli, "Error: Channel out of range (1-8)");
+        return;
+    }
+
+    if (duty > 100)
+    {
+        embeddedCliPrint(cli, "Error: Duty out of range (0-100%)");
+        return;
+    }
+
+    bsp_heater_set_duty((uint8_t)(ch - 1), (uint8_t)duty);
+
+    snprintf(buf, sizeof(buf), "--> OK: Heater[%lu] Duty = %lu%%", ch, duty);
+
+    embeddedCliPrint(cli, buf);
     embeddedCliPrint(cli, "");
 }
 

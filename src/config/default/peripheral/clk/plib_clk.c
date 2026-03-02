@@ -222,8 +222,6 @@ Clock Initialize
 *********************************************************************************/
 void CLOCK_Initialize( void )
 {
-
-
     /* Initialize Main Clock */
     CLK_MainClockInitialize();
 
@@ -239,7 +237,6 @@ void CLOCK_Initialize( void )
     /* Initialize USB Clock */
     CLK_USBClockInitialize();
 
-
     /* Initialize Programmable Clock */
     CLK_ProgrammableClockInitialize();
 
@@ -248,4 +245,11 @@ void CLOCK_Initialize( void )
     PMC_REGS->PMC_PCER1=0x41020U;
     
     PMC_EnablePeripheralClock(ID_USBHS);
+    
+    PMC_EnablePeripheralClock(ID_TC0_CHANNEL0);
+    PMC_EnablePeripheralClock(ID_TC0_CHANNEL2);
+    PMC_EnablePeripheralClock(ID_TC1_CHANNEL0);
+    PMC_EnablePeripheralClock(ID_TC2_CHANNEL0);
+    PMC_EnablePeripheralClock(ID_TC2_CHANNEL1);
+    
 }
