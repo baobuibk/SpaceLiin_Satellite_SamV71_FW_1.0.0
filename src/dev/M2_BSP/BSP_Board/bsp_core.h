@@ -22,6 +22,8 @@ extern do_t power_solenoid;
 extern do_t power_lp;
 extern do_t power_heater;
 
+extern do_t status_led;
+
 void BSP_board_init(void);
 
 #endif /* __BSP_CORE_H__ */

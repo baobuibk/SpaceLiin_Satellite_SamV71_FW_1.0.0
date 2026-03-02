@@ -54,3 +54,8 @@ dkms.conf
 # debug information files
 *.dwo
 **/.generated_files/
+build/
+dist/
+nbproject/private/
+nbproject/Makefile-*
+nbproject/Package-*

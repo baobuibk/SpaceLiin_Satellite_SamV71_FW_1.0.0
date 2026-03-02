@@ -13,6 +13,7 @@
 #include "M1_SysApp/xlog/xlog.h"
 #include "M1_SysApp/dmesg/dmesg.h"
 #include "stdio.h"
+#include "M2_BSP/BSP_Led/bsp_led.h"
 
 
 const osThreadAttr_t alive_attr = {
@@ -27,7 +28,7 @@ void App_AliveTask(void *param)
     char buf[32];
     for(;;)
     {
-        LED_PA23_Toggle();
+        bsp_led_toggle();
         osThreadFeed();
         snprintf(buf, sizeof(buf), "Alive counter: %lu", counter++);
 //        xlog("Hello World %d\r\n", counter++);

@@ -83,3 +83,9 @@ do_t power_heater =
     .pin = POWER_HEATER_PIN, 
     .bStatus = false
 }; 
+do_t status_led = 
+{
+    .port = STATUS_LED_PORT,
+    .pin = STATUS_LED_PIN,
+    .bStatus = false,
+};
