@@ -30,5 +30,29 @@
 #define STATUS_LED_PORT         1    //PA23
 #define STATUS_LED_PIN          23   //PA23
 
-#endif /* #ifndef _BOARD_V71_XULT_H_ */
 
+///*
+// * DEFINE FOR PORT AND PIN CONTROL EFUSE POWER
+// */
+#define POWER_SOM_PORT          4
+#define POWER_SOM_PIN           5
+
+#define POWER_PERI_PORT          5
+#define POWER_PERI_PIN           4
+
+#define POWER_TEC_PORT          4
+#define POWER_TEC_PIN           4
+
+#define POWER_HD4_PORT          4
+#define POWER_HD4_PIN           3
+
+#define POWER_SLN_PORT          4
+#define POWER_SLN_PIN           2
+
+#define POWER_LP_PORT          4
+#define POWER_LP_PIN           6
+
+#define POWER_HEATER_PORT       5
+#define POWER_HEATER_PIN        3
+
+#endif /* #ifndef _BOARD_V71_XULT_H_ */
