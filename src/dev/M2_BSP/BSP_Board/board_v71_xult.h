@@ -30,5 +30,7 @@
 #define STATUS_LED_PORT         1    //PA23
 #define STATUS_LED_PIN          23   //PA23
 
+
+
 #endif /* #ifndef _BOARD_V71_XULT_H_ */
 

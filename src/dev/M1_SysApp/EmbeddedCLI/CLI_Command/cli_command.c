@@ -1130,13 +1130,44 @@ static void CMD_ParamSet(EmbeddedCli *cli, char *args, void *context) {
 
 static void CMD_LED_Set (EmbeddedCli *cli, char *args, void *context)
 {
-    bsp_led_set();
+    PIOB_REGS->PIO_SODR = (1U << 12U);
+
+    char buf[128];
+
+    sprintf(buf, "PB_PSR  = 0x%08lX", PIOB_REGS->PIO_PSR);
+    embeddedCliPrint(cli, buf);
+
+    sprintf(buf, "PB_OSR  = 0x%08lX", PIOB_REGS->PIO_OSR);
+    embeddedCliPrint(cli, buf);
+
+    sprintf(buf, "PB_ODSR = 0x%08lX", PIOB_REGS->PIO_ODSR);
+    embeddedCliPrint(cli, buf);
+
+    sprintf(buf, "PB_PDSR = 0x%08lX", PIOB_REGS->PIO_PDSR);
+    embeddedCliPrint(cli, buf);
+
     embeddedCliPrint(cli, "LED_ON");
     embeddedCliPrint(cli, "");
 }
+
 static void CMD_LED_Reset (EmbeddedCli *cli, char *args, void *context)
 {
-    bsp_led_reset();
+    PIOB_REGS->PIO_CODR = (1U << 12U);
+
+    char buf[128];
+
+    sprintf(buf, "PB_PSR  = 0x%08lX", PIOB_REGS->PIO_PSR);
+    embeddedCliPrint(cli, buf);
+
+    sprintf(buf, "PB_OSR  = 0x%08lX", PIOB_REGS->PIO_OSR);
+    embeddedCliPrint(cli, buf);
+
+    sprintf(buf, "PB_ODSR = 0x%08lX", PIOB_REGS->PIO_ODSR);
+    embeddedCliPrint(cli, buf);
+
+    sprintf(buf, "PB_PDSR = 0x%08lX", PIOB_REGS->PIO_PDSR);
+    embeddedCliPrint(cli, buf);
+
     embeddedCliPrint(cli, "LED_OFF");
     embeddedCliPrint(cli, "");
 }

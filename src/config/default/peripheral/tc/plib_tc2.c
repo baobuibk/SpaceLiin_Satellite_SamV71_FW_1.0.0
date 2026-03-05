@@ -83,8 +83,8 @@ void TC2_CH0_CompareInitialize (void)
     TC2_REGS->TC_CHANNEL[0].TC_RC = 10000U;
 
     /* write compare values */
-    TC2_REGS->TC_CHANNEL[0].TC_RA = 5000U;
-    TC2_REGS->TC_CHANNEL[0].TC_RB = 3000U;
+    TC2_REGS->TC_CHANNEL[0].TC_RA = 0U;
+    TC2_REGS->TC_CHANNEL[0].TC_RB = 0U;
 
 }
 
@@ -161,7 +161,7 @@ void TC2_CH1_CompareInitialize (void)
     TC2_REGS->TC_CHANNEL[1].TC_RC = 10000U;
 
     /* write compare values */
-    TC2_REGS->TC_CHANNEL[1].TC_RA = 5000U;
+    TC2_REGS->TC_CHANNEL[1].TC_RA = 0U;
     TC2_REGS->TC_CHANNEL[1].TC_RB = 0U;
 
 }

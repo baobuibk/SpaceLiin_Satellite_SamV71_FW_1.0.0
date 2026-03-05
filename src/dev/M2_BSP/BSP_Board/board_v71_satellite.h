@@ -25,5 +25,31 @@
 #define STATUS_LED_PORT         2   //PB12
 #define STATUS_LED_PIN          12   //PB12
 
+#define HTR_PWM_1_PORT         1  //PA27
+#define HTR_PWM_1_PIN          27   //PA27
+
+#define HTR_PWM_2_PORT         1  //PA00
+#define HTR_PWM_2_PIN          0   //PA00
+
+#define HTR_PWM_3_PORT         1  //PA01
+#define HTR_PWM_3_PIN          1   //PA01
+
+#define HTR_PWM_4_PORT         1  //PA26
+#define HTR_PWM_4_PIN          26   //PA26
+
+#define HTR_PWM_5_PORT         3  //PC8
+#define HTR_PWM_5_PIN          8   //PC8
+
+#define HTR_PWM_6_PORT         3  //PC23
+#define HTR_PWM_6_PIN          23   //PC23
+
+#define HTR_PWM_7_PORT         3  //PC5
+#define HTR_PWM_7_PIN          5   //PC5
+
+#define HTR_PWM_8_PORT         3  //PC6
+#define HTR_PWM_8_PIN          6   //PC6
+
+
+
 #endif	/* BOARD_V71_SATELLITE_H */
 
