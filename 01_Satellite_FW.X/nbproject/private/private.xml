@@ -5,7 +5,10 @@
         <group>
             <file>file:/D:/MPLAP_WorkSpace/SpaceLiin_Satellite_SamV71_FW_1.0.0/src/config/default/initialization.c</file>
             <file>file:/D:/MPLAP_WorkSpace/SpaceLiin_Satellite_SamV71_FW_1.0.0/src/config/default/peripheral/pio/plib_pio.c</file>
+            <file>file:/D:/MPLAP_WorkSpace/SpaceLiin_Satellite_SamV71_FW_1.0.0/src/dev/M2_BSP/BSP_Board/board.h</file>
             <file>file:/D:/MPLAP_WorkSpace/SpaceLiin_Satellite_SamV71_FW_1.0.0/src/main.c</file>
+            <file>file:/D:/MPLAP_WorkSpace/SpaceLiin_Satellite_SamV71_FW_1.0.0/src/dev/M2_BSP/BSP_Board/bsp_core.c</file>
+            <file>file:/D:/MPLAP_WorkSpace/SpaceLiin_Satellite_SamV71_FW_1.0.0/src/dev/M2_BSP/BSP_Board/board_v71_satellite.h</file>
             <file>file:/D:/MPLAP_WorkSpace/SpaceLiin_Satellite_SamV71_FW_1.0.0/src/config/default/peripheral/clk/plib_clk.c</file>
         </group>
     </open-files>
