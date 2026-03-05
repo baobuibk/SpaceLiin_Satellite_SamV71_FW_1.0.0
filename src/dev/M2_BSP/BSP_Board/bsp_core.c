@@ -8,6 +8,7 @@ spi_io_t onboard_adc_spi =
 {
     .ui32SpiPort = 1,
 };
+
 do_t laser_dac_cs =
 {
     .port = LASER_SPI_nCS1_PORT,
@@ -33,7 +34,6 @@ do_t laser_sw_ext_cs =
     .pin  = LASER_SW_EXT_CS_PIN,
     .bStatus = false,
 };
-
 
 do_t power_som = 
 {
@@ -83,6 +83,7 @@ do_t power_heater =
     .pin = POWER_HEATER_PIN, 
     .bStatus = false
 }; 
+
 do_t status_led = 
 {
     .port = STATUS_LED_PORT,

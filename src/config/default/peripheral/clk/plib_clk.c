@@ -244,6 +244,8 @@ void CLOCK_Initialize( void )
     PMC_REGS->PMC_PCER0=0x3bc00U;
     PMC_REGS->PMC_PCER1=0x41020U;
     
+    PMC_EnablePeripheralClock(ID_PIOD);
+    
     PMC_EnablePeripheralClock(ID_USBHS);
 
     PMC_EnablePeripheralClock(ID_TC0_CHANNEL0);

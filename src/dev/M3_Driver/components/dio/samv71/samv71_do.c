@@ -60,9 +60,9 @@ void do_set(do_t *me)
     pio_registers_t *port = gpio_ports[me->port];   
     uint32_t mask = (1u << me->pin);
     
-    port->PIO_PER = mask;
-
-    port->PIO_OER = mask;
+//    port->PIO_PER = mask;
+//
+//    port->PIO_OER = mask;
 
     port->PIO_SODR = mask;
 
@@ -76,9 +76,9 @@ void do_reset(do_t *me)
     pio_registers_t *port = gpio_ports[me->port];
     uint32_t mask = (1u << me->pin);
     
-    port->PIO_PER = mask;
-
-    port->PIO_OER = mask;
+//    port->PIO_PER = mask;
+//
+//    port->PIO_OER = mask;
 
     port->PIO_CODR = mask;
 
@@ -92,9 +92,9 @@ void do_toggle(do_t *me)
     pio_registers_t *port = gpio_ports[me->port];
     uint32_t mask = (1u << me->pin);
    
-    port->PIO_PER = mask;
-
-    port->PIO_OER = mask;
+//    port->PIO_PER = mask;
+//
+//    port->PIO_OER = mask;
     
     if(((port->PIO_ODSR) & mask) != 0u)
     {

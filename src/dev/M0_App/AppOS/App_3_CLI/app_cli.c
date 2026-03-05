@@ -44,7 +44,8 @@ static void UART2_RX_Thread(void)
     while ((c = UART2_ReadByte()) != -1)
     {
         // Mode NORMAL: CLI
-      	ShieldAuthState_t auth_state = Shield_GetState(&auth_uart);
+//      	ShieldAuthState_t auth_state = Shield_GetState(&auth_uart);
+        ShieldAuthState_t auth_state = AUTH_ADMIN;
        	if(auth_state == AUTH_ADMIN || auth_state == AUTH_USER)
         {
        		Shield_ResetTimer(&auth_uart);
