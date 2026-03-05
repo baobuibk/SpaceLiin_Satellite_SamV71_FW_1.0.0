@@ -144,8 +144,6 @@ void SYS_Initialize ( void* data )
     USART2_SPI_Initialize();
 
     NVIC_Initialize();
-
-
     /* MISRAC 2012 deviation block end */
 }
 

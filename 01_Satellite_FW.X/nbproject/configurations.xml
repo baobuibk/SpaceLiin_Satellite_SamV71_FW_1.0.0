@@ -340,6 +340,7 @@
               <itemPath>../src/dev/M2_BSP/BSP_Board/board_v71_iss.h</itemPath>
               <itemPath>../src/dev/M2_BSP/BSP_Board/board_v71_xult.h</itemPath>
               <itemPath>../src/dev/M2_BSP/BSP_Board/bsp_core.h</itemPath>
+              <itemPath>../src/dev/M2_BSP/BSP_Board/board_v71_satellite.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f3" displayName="BSP_Heater" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Heater/bsp_heater.h</itemPath>
@@ -1979,7 +1980,7 @@
         <targetDevice>ATSAMV71Q21B</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>EdbgTool</platformTool>
+        <platformTool>pk4hybrid</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>5.00</languageToolchainVersion>
         <platform>3</platform>

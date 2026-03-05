@@ -1,6 +1,8 @@
 #include "bsp_heater.h"
 #include "bsp_core.h"
 #include "peripheral/tc/plib_tc0.h"
+#include "peripheral/tc/plib_tc1.h"
+#include "peripheral/tc/plib_tc2.h"
 
 void bsp_heater_set_duty(heater_channel_t HTR_CH, uint8_t HTR_DUTY)
 {

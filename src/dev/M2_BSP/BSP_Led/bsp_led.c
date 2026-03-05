@@ -14,9 +14,5 @@ void bsp_led_reset(void)
 
 void bsp_led_toggle(void)
 {
-    if (status_led.bStatus) {
-        do_reset(&status_led);
-    } else {
-        do_set(&status_led);
-    }
+    do_toggle(&status_led);
 }
