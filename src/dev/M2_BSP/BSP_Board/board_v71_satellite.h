@@ -10,26 +10,26 @@
 
 #include "samv71q21b.h"
 
-#define POWER_SOM_PORT          4
-#define POWER_SOM_PIN           5
+#define POWER_SOM_PORT          4  //PD5
+#define POWER_SOM_PIN           5   //PD5
 
-#define POWER_PERI_PORT          5
-#define POWER_PERI_PIN           4
+#define POWER_PERI_PORT          5 //PE4
+#define POWER_PERI_PIN           4  //PE4
 
-#define POWER_TEC_PORT          4
-#define POWER_TEC_PIN           4
+#define POWER_TEC_PORT          4   //PD4
+#define POWER_TEC_PIN           4   //PD4
 
-#define POWER_HD4_PORT          4
-#define POWER_HD4_PIN           3
+#define POWER_HD4_PORT          4   //PD3
+#define POWER_HD4_PIN           3   //PD3
 
-#define POWER_SLN_PORT          4
-#define POWER_SLN_PIN           2
+#define POWER_SLN_PORT          4   //PD2
+#define POWER_SLN_PIN           2   //PD2
 
-#define POWER_LP_PORT          4
-#define POWER_LP_PIN           6
+#define POWER_LP_PORT          4    //PD6
+#define POWER_LP_PIN           6    //PD6
 
-#define POWER_HEATER_PORT       5
-#define POWER_HEATER_PIN        3
+#define POWER_HEATER_PORT       5   //PE3
+#define POWER_HEATER_PIN        3   //PE3
 
 #define LASER_DAC_LATCH_PORT    3    //PC16
 #define LASER_DAC_LATCH_PIN     16   //PC16 

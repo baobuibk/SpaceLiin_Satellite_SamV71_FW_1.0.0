@@ -155,11 +155,24 @@ void PIO_Initialize ( void )
 
     /************************ PIO D Initialization ************************/
     /* PORTD Peripheral Function Selection */
+    //------begin-------
+    /* PORTD PIO: Default*/
     ((pio_registers_t*)PIO_PORT_D)->PIO_ABCDSR[0]= 0x0U;
-    ((pio_registers_t*)PIO_PORT_D)->PIO_ABCDSR[1]= 0x6000000U;
+    ((pio_registers_t*)PIO_PORT_D)->PIO_ABCDSR[1]= 0x0U;
+    /* Select PIO_Output for PD4, PD5 */
+    uint32_t PIOD_Output_mask = ((1U << POWER_SLN_PIN) | (1U << POWER_HD4_PIN) | (1U << POWER_TEC_PIN) | (1U << POWER_SOM_PIN) | (1U << POWER_LP_PIN));
+    /* Select Peripheral C for PD25, PD26 */
+    uint32_t PIOD_periph_C_mask = (1U << 25) | (1U << 26);
+    PIOD_REGS->PIO_ABCDSR[0] &= ~PIOD_periph_C_mask;
+    PIOD_REGS->PIO_ABCDSR[1] |=  PIOD_periph_C_mask;
+    //------stop--------
+    ((pio_registers_t*)PIO_PORT_D)->PIO_PER = 0x0U;
+    //------begin-------
+    /* PORTD PIO Enable and Peripheral Disable*/
+    ((pio_registers_t*)PIO_PORT_D)->PIO_PER &= ~(PIOD_periph_C_mask);
     /* PORTD PIO Disable and Peripheral Enable*/
-    ((pio_registers_t*)PIO_PORT_D)->PIO_PDR = 0x6000000U;
-    ((pio_registers_t*)PIO_PORT_D)->PIO_PER = ~0x6000000U;
+    ((pio_registers_t*)PIO_PORT_D)->PIO_PDR |=  (PIOD_periph_C_mask);
+    //------stop--------
     ((pio_registers_t*)PIO_PORT_D)->PIO_MDDR = 0xFFFFFFFFU;
     /* PORTD Pull Up Enable/Disable as per MHC selection */
     ((pio_registers_t*)PIO_PORT_D)->PIO_PUDR = 0xFFFFFFFFU;
@@ -168,14 +181,22 @@ void PIO_Initialize ( void )
     /* PORTD Output Write Enable */
     ((pio_registers_t*)PIO_PORT_D)->PIO_OWER = PIO_OWER_Msk;
     /* PORTD Output Direction Enable */
-    ((pio_registers_t*)PIO_PORT_D)->PIO_OER = 0x10000001U;
-    ((pio_registers_t*)PIO_PORT_D)->PIO_ODR = ~0x10000001U;
+    ((pio_registers_t*)PIO_PORT_D)->PIO_OER = 0x0U;
+    ((pio_registers_t*)PIO_PORT_D)->PIO_ODR = 0xFFFFFFFFU;
+    //------begin-------
+    ((pio_registers_t*)PIO_PORT_D)->PIO_OER |=  PIOD_Output_mask;
+    ((pio_registers_t*)PIO_PORT_D)->PIO_ODR &= ~PIOD_Output_mask;
+    //------stop--------
     /* Initialize PORTD pin state */
     ((pio_registers_t*)PIO_PORT_D)->PIO_ODSR = 0x0U;
     /* PORTD drive control */
     ((pio_registers_t*)PIO_PORT_D)->PIO_DRIVER = 0x0U;
 
     /************************ PIO E Initialization ************************/
+    //------begin-------
+    /* Select PIO_Output for PE3, PE4 */
+    uint32_t PIOE_Output_mask = ((1U << POWER_HEATER_PIN) | (1U << POWER_PERI_PIN));
+    //------stop--------
     ((pio_registers_t*)PIO_PORT_E)->PIO_PER = 0xFFFFFFFFU;
     ((pio_registers_t*)PIO_PORT_E)->PIO_MDDR = 0xFFFFFFFFU;
     /* PORTE Pull Up Enable/Disable as per MHC selection */
@@ -185,8 +206,12 @@ void PIO_Initialize ( void )
     /* PORTE Output Write Enable */
     ((pio_registers_t*)PIO_PORT_E)->PIO_OWER = PIO_OWER_Msk;
     /* PORTE Output Direction Enable */
-    ((pio_registers_t*)PIO_PORT_E)->PIO_OER = 0x20U;
-    ((pio_registers_t*)PIO_PORT_E)->PIO_ODR = ~0x20U;
+    ((pio_registers_t*)PIO_PORT_E)->PIO_OER = 0x0U;
+    ((pio_registers_t*)PIO_PORT_E)->PIO_ODR = 0xFFFFFFFFU;
+    //------begin-------
+    ((pio_registers_t*)PIO_PORT_E)->PIO_OER |=  PIOE_Output_mask;
+    ((pio_registers_t*)PIO_PORT_E)->PIO_ODR &= ~PIOE_Output_mask;
+    //------stop--------
     /* Initialize PORTE pin state */
     ((pio_registers_t*)PIO_PORT_E)->PIO_ODSR = 0x0U;
     /* PORTE drive control */

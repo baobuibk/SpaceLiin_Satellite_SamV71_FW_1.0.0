@@ -1393,45 +1393,19 @@ static void CMD_PowerAll_Get(EmbeddedCli *cli, char *args, void *context) {
     embeddedCliPrint(cli, "");
 } 
 
-
-
-////--------IDEA OPTIMIZE POWER FUNCTION-----------
-//
-//static void CMD_PowerGuide_ON(EmbeddedCli *cli, char *args, void *context)
-//{
-//    embeddedCliPrint(cli, "power_on + parameters: <som> <buck_peri> <tec> <hd4> <solenoid> <lp> <heater> <all>");
-//}
-//
-//static void CMD_PowerGuide_OFF(EmbeddedCli *cli, char *args, void *context)
-//{
-//    embeddedCliPrint(cli, "power_on + parameters: <som> <buck_peri> <tec> <hd4> <solenoid> <lp> <heater> <all>");
-//} 
-//
-//static void CMD_Power_ON(EmbeddedCli *cli, char *args, void *context)
-//{
-//    int i = 1;
-//    
-//} 
-
-
 static void CMD_LED_Set (EmbeddedCli *cli, char *args, void *context)
 {
     PIOB_REGS->PIO_SODR = (1U << 12U);
 
-    char buf[128];
-
-    sprintf(buf, "PB_PSR  = 0x%08lX", PIOB_REGS->PIO_PSR);
-    embeddedCliPrint(cli, buf);
-
-    sprintf(buf, "PB_OSR  = 0x%08lX", PIOB_REGS->PIO_OSR);
-    embeddedCliPrint(cli, buf);
-
-    sprintf(buf, "PB_ODSR = 0x%08lX", PIOB_REGS->PIO_ODSR);
-    embeddedCliPrint(cli, buf);
-
-    sprintf(buf, "PB_PDSR = 0x%08lX", PIOB_REGS->PIO_PDSR);
-    embeddedCliPrint(cli, buf);
-
+//    char buf[128];
+//    sprintf(buf, "PB_PSR  = 0x%08lX", PIOB_REGS->PIO_PSR);
+//    embeddedCliPrint(cli, buf);
+//    sprintf(buf, "PB_OSR  = 0x%08lX", PIOB_REGS->PIO_OSR);
+//    embeddedCliPrint(cli, buf);
+//    sprintf(buf, "PB_ODSR = 0x%08lX", PIOB_REGS->PIO_ODSR);
+//    embeddedCliPrint(cli, buf);
+//    sprintf(buf, "PB_PDSR = 0x%08lX", PIOB_REGS->PIO_PDSR);
+//    embeddedCliPrint(cli, buf);
     embeddedCliPrint(cli, "LED_ON");
     embeddedCliPrint(cli, "");
 }
@@ -1440,20 +1414,15 @@ static void CMD_LED_Reset (EmbeddedCli *cli, char *args, void *context)
 {
     PIOB_REGS->PIO_CODR = (1U << 12U);
 
-    char buf[128];
-
-    sprintf(buf, "PB_PSR  = 0x%08lX", PIOB_REGS->PIO_PSR);
-    embeddedCliPrint(cli, buf);
-
-    sprintf(buf, "PB_OSR  = 0x%08lX", PIOB_REGS->PIO_OSR);
-    embeddedCliPrint(cli, buf);
-
-    sprintf(buf, "PB_ODSR = 0x%08lX", PIOB_REGS->PIO_ODSR);
-    embeddedCliPrint(cli, buf);
-
-    sprintf(buf, "PB_PDSR = 0x%08lX", PIOB_REGS->PIO_PDSR);
-    embeddedCliPrint(cli, buf);
-
+//    char buf[128];
+//    sprintf(buf, "PB_PSR  = 0x%08lX", PIOB_REGS->PIO_PSR);
+//    embeddedCliPrint(cli, buf);
+//    sprintf(buf, "PB_OSR  = 0x%08lX", PIOB_REGS->PIO_OSR);
+//    embeddedCliPrint(cli, buf);
+//    sprintf(buf, "PB_ODSR = 0x%08lX", PIOB_REGS->PIO_ODSR);
+//    embeddedCliPrint(cli, buf);
+//    sprintf(buf, "PB_PDSR = 0x%08lX", PIOB_REGS->PIO_PDSR);
+//    embeddedCliPrint(cli, buf);
     embeddedCliPrint(cli, "LED_OFF");
     embeddedCliPrint(cli, "");
 }
