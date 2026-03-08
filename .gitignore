@@ -59,3 +59,54 @@ dist/
 nbproject/private/
 nbproject/Makefile-*
 nbproject/Package-*
+
+####################################
+# Python virtual environments
+####################################
+
+venv/
+.venv/
+env/
+.env/
+
+# python compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+####################################
+# Python packaging / build
+####################################
+
+build/
+dist/
+*.egg-info/
+.eggs/
+
+####################################
+# MkDocs build output
+####################################
+
+site/
+
+####################################
+# Robot Framework outputs
+####################################
+
+output.xml
+log.html
+report.html
+
+####################################
+# IDE files
+####################################
+
+.vscode/
+.idea/
+
+####################################
+# OS files
+####################################
+
+.DS_Store
+Thumbs.db
