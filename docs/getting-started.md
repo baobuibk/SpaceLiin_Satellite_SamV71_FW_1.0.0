@@ -92,7 +92,6 @@ robot --version
 Firmware is compiled using the MplabX IDE from Microchip.
 
 
-
 # 5. Install Renode
 
 Renode is used for firmware simulation.
@@ -123,7 +122,7 @@ The documentation is built using **MkDocs**.
 Run locally:
 
 ```bash
-mkdocs serve
+mkdocs serve --livereload   
 ```
 
 Open browser:
@@ -161,7 +160,11 @@ Run tests:
 ```bash
 robot smoke.robot
 ```
+If COM port need to be specìied
 
+```bash
+robot --variable SERIAL_PORT:COM3 test/tests/
+```
 Robot generates reports:
 
 ```
@@ -539,3 +542,4 @@ Typical development cycle:
 8. Commit
 9. Push
 10. Create Pull Request
+
