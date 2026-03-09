@@ -82,6 +82,34 @@ static inline void twihs_enable_clock(uint32_t port)
         PMC_REGS->PMC_PCER1 = (1u << (id - 32u));
 }
 
+void TWIHS2_Initialize( void )
+{
+    // Reset the i2c Module
+    TWIHS2_REGS->TWIHS_CR = TWIHS_CR_SWRST_Msk;
+
+    // Disable the I2C Master/Slave Mode
+    TWIHS2_REGS->TWIHS_CR = TWIHS_CR_MSDIS_Msk | TWIHS_CR_SVDIS_Msk;
+
+    // Set Baud rate
+    TWIHS2_REGS->TWIHS_CWGR = (TWIHS_CWGR_HOLD_Msk & TWIHS2_REGS->TWIHS_CWGR) | TWIHS_CWGR_CLDIV(153) | TWIHS_CWGR_CHDIV(141) | TWIHS_CWGR_CKDIV(0);
+
+    // Starts the transfer by clearing the transmit hold register
+    TWIHS2_REGS->TWIHS_CR = TWIHS_CR_THRCLR_Msk;
+
+    // Disable TXRDY, TXCOMP and RXRDY interrupts
+    TWIHS2_REGS->TWIHS_IDR = TWIHS_IDR_TXCOMP_Msk | TWIHS_IDR_TXRDY_Msk | TWIHS_IDR_RXRDY_Msk;
+
+    // Enables interrupt on nack and arbitration lost
+    TWIHS2_REGS->TWIHS_IER = TWIHS_IER_NACK_Msk | TWIHS_IER_ARBLST_Msk;
+
+    // Enable Master Mode
+    TWIHS2_REGS->TWIHS_CR = TWIHS_CR_MSEN_Msk;
+
+//    // Initialize the twihs PLib Object
+//    twihs2Obj.error = TWIHS_ERROR_NONE;
+//    twihs2Obj.state = TWIHS_STATE_IDLE;
+}
+
 /*
  * Program TWIHS CWGR for approximate speed.
  * Uses CLDIV=CHDIV and increases CKDIV until CLDIV fits in 8-bit.

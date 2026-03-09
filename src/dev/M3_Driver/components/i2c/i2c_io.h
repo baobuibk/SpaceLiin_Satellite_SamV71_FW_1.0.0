@@ -17,6 +17,7 @@ typedef struct i2c_io_t{
 
 }i2c_io_t;
 
+void TWIHS2_Initialize( void );
 uint32_t i2c_io_init(i2c_io_t *me);
 uint32_t i2c_io_enable(i2c_io_t *me);
 uint32_t i2c_io_send(struct i2c_io_t *me, uint8_t ui8SlaveAddr, const char *buf, int count);

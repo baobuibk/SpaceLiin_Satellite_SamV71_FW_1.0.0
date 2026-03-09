@@ -90,3 +90,8 @@ do_t status_led =
     .pin = STATUS_LED_PIN,
     .bStatus = false,
 };
+
+i2c_io_t sol_expander_i2c = 
+{
+  .ui32I2cPort = 2  
+};

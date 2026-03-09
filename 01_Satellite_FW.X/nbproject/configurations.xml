@@ -361,6 +361,11 @@
             </logicalFolder>
             <logicalFolder name="BSP_RS485" displayName="BSP_RS485" projectFiles="true">
             </logicalFolder>
+            <logicalFolder name="BSP_Solenoid"
+                           displayName="BSP_Solenoid"
+                           projectFiles="true">
+              <itemPath>../src/dev/M2_BSP/BSP_Solenoid/bsp_solenoid.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="UART" displayName="UART" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/UART/uart_dma.h</itemPath>
               <itemPath>../src/dev/M2_BSP/UART/uart_irq.h</itemPath>
@@ -524,6 +529,7 @@
                   </logicalFolder>
                 </logicalFolder>
               </logicalFolder>
+              <itemPath>../src/dev/M4_Middlewares/Os_hal/FreeRTOS/os_freertos.c</itemPath>
             </logicalFolder>
             <logicalFolder name="libcsp-1.6" displayName="libcsp-1.6" projectFiles="true">
               <logicalFolder name="doc" displayName="doc" projectFiles="true">
@@ -1370,6 +1376,11 @@
             <logicalFolder name="f1" displayName="BSP_Power" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Power/bsp_power.c</itemPath>
             </logicalFolder>
+            <logicalFolder name="BSP_Solenoid"
+                           displayName="BSP_Solenoid"
+                           projectFiles="true">
+              <itemPath>../src/dev/M2_BSP/BSP_Solenoid/bsp_solenoid.c</itemPath>
+            </logicalFolder>
             <logicalFolder name="UART" displayName="UART" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/UART/uart_dma.c</itemPath>
               <itemPath>../src/dev/M2_BSP/UART/uart_irq.c</itemPath>
@@ -1715,6 +1726,10 @@
                 <itemPath>../src/dev/M4_Middlewares/LwIP/netif/lowpan6_common.c</itemPath>
                 <itemPath>../src/dev/M4_Middlewares/LwIP/netif/slipif.c</itemPath>
                 <itemPath>../src/dev/M4_Middlewares/LwIP/netif/zepif.c</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="Os_hal" displayName="Os_hal" projectFiles="true">
+              <logicalFolder name="FreeRTOS" displayName="FreeRTOS" projectFiles="true">
               </logicalFolder>
             </logicalFolder>
             <logicalFolder name="TinyUSB" displayName="TinyUSB" projectFiles="true">

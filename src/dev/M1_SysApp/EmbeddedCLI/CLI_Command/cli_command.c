@@ -31,6 +31,7 @@
 
 #include "M2_BSP/BSP_Power/bsp_power.h"
 #include "M2_BSP/BSP_Led/bsp_led.h"
+#include "M2_BSP/BSP_Solenoid/bsp_solenoid.h"
 #include "M2_BSP/BSP_Heater/bsp_heater.h"
 
 /*************************************************
@@ -92,6 +93,10 @@ static void CMD_PowerAll_Get(EmbeddedCli *cli, char *args, void *context);
 static void CMD_LED_Set (EmbeddedCli *cli, char *args, void *context);
 static void CMD_LED_Reset (EmbeddedCli *cli, char *args, void *context);
 
+static void CMD_SOL_Single_On (EmbeddedCli *cli, char *args, void *context);
+static void CMD_SOL_Single_Off (EmbeddedCli *cli, char *args, void *context);
+static void CMD_SOL_Single_Get (EmbeddedCli *cli, char *args, void *context);
+
 static void CMD_HEATER_SetDuty (EmbeddedCli *cli, char *args, void *context);
 
 
@@ -142,6 +147,12 @@ static const CliCommandBinding cliStaticBindings_internal[] = {
     { "LED",          "led_set",  "Comment following: led_set",                                 true, NULL, CMD_LED_Set  },
     { "LED",          "led_reset",  "Comment following: led_reset",                             true, NULL, CMD_LED_Reset  },
     
+    { "SOL",          "sol_single_on",  "Turn on single solenoid: sol_single_on <index>",       true, NULL, CMD_SOL_Single_On  },
+    { "SOL",          "sol_single_off", "Turn off single solenoid: sol_single_off <index>",     true, NULL, CMD_SOL_Single_Off  },
+    { "SOL",          "sol_single_get", "Get status single solenoid: sol_single_get <index>",   true, NULL, CMD_SOL_Single_Get  },
+    
+    { NULL,         	"reset",       	"Reset MCU: reset",                                 	false, 	NULL, CMD_Reset,     	 },
+
     { "HTR",          "heater_set",  "Comment following: heater_set <channel> <duty> ",         true, NULL, CMD_HEATER_SetDuty  },
 
     
@@ -182,6 +193,7 @@ static const CliCommandBinding cliStaticBindings_internal[] = {
 
     
     { NULL,         	"reset",       	"Reset MCU: reset",                                 	false, 	NULL, CMD_Reset,     	},
+
 };
 /*************************************************
  *                 External Declarations         *
@@ -1115,7 +1127,7 @@ static void CMD_ParamShow(EmbeddedCli *cli, char *args, void *context) {
  *  Usage: param_set <table_id> <addr> <type> <value>
  *  type: u8 u16 u32 i8 i16 i32 f32 bool str
  *  eg:
- *    param_set 4 8   i16 250         -> BRD_TEMP = 250 (25.0Â°C)
+ *    param_set 4 8   i16 250         -> BRD_TEMP = 250 (25.0°C)
  *    param_set 4 0   u32 1748000000  -> TIME_NOW = epoch
  *    param_set 1 121 u8  0           -> led_en = 0
  *    param_set 4 15  str NOMINAL     -> dev_status
@@ -1478,8 +1490,80 @@ static void CMD_HEATER_SetDuty (EmbeddedCli *cli, char *args, void *context)
     embeddedCliPrint(cli, "");
 }
 
+static void CMD_SOL_Single_On (EmbeddedCli *cli, char *args, void *context)
+{
+    const char *idexStr = embeddedCliGetToken(args, 1);
+    char buf[128];
+    
+    if (idexStr == NULL) {
+        embeddedCliPrint(cli, "Usage: sol_single_on <index>");
+        return;
+    }
+    
+    uint8_t index = (uint8_t)strtoul(idexStr, NULL, 0);
+    
+    if (index < 1 | index > 16) {
+        embeddedCliPrint(cli, "Index 1 to 16");
+        return;
+    }
+    
+    bsp_sol_single_on(index-1);
+    
+    snprintf(buf, sizeof(buf), "Single solenoid on index: %u", index);
+    embeddedCliPrint(cli, buf);
+}
 
+static void CMD_SOL_Single_Off (EmbeddedCli *cli, char *args, void *context)
+{
+    const char *idexStr = embeddedCliGetToken(args, 1);
+    char buf[128];
+    
+    if (idexStr == NULL) {
+        embeddedCliPrint(cli, "Usage: sol_single_off <index>");
+        return;
+    }
+    
+    uint8_t index = (uint8_t)strtoul(idexStr, NULL, 0);
+    
+    if (index < 1 | index > 16) {
+        embeddedCliPrint(cli, "Index 1 to 16");
+        return;
+    }
+    
+    bsp_sol_single_off(index-1);
+    
+    snprintf(buf, sizeof(buf), "Single solenoid off index: %u", index);
+    embeddedCliPrint(cli, buf);
+}
 
+static void CMD_SOL_Single_Get (EmbeddedCli *cli, char *args, void *context)
+{
+    const char *idexStr = embeddedCliGetToken(args, 1);
+    char buf[128];
+    
+    if (idexStr == NULL) {
+        embeddedCliPrint(cli, "Usage: sol_single_get <index>");
+        return;
+    }
+    
+    uint8_t index = (uint8_t)strtoul(idexStr, NULL, 0);
+    
+    if (index < 1 | index > 16) {
+        embeddedCliPrint(cli, "Index 1 to 16");
+        return;
+    }
+    
+    uint32_t rc;
+    rc = bsp_sol_single_status(index-1);
+    
+    if(rc == 1) {
+        snprintf(buf, sizeof(buf), "Status of single solenoid %u: ON", index);
+        embeddedCliPrint(cli, buf);
+    }else {
+        snprintf(buf, sizeof(buf), "Status of single solenoid %u: OFF", index);
+        embeddedCliPrint(cli, buf);
+    }
+}
 
 static void CMD_Reset(EmbeddedCli *cli, char *args, void *context) {
 	NVIC_SystemReset();
@@ -1505,5 +1589,3 @@ const CliCommandBinding *getCliStaticBindings(void) {
 uint16_t getCliStaticBindingCount(void) {
     return sizeof(cliStaticBindings_internal) / sizeof(cliStaticBindings_internal[0]);
 }
-
-

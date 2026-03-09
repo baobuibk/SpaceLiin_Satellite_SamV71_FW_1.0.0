@@ -21,6 +21,9 @@
 #include "M0_App/AppOS/App_x_Root/app_root.h"
 #include "M3_Devices/FRAM_USART-SPI/fram_usart.h"
 
+#include "M2_BSP/BSP_Solenoid/bsp_solenoid.h"
+#include "M3_Driver/components/i2c/i2c_io.h"
+
 
 /*============================================================*/
 /*                      Defines                               */
@@ -57,6 +60,9 @@ Std_ReturnType BootManager_SystemInit(void){
 
     SystemCLI_Init();
     HardwareCSP_Init();
+    
+    TWIHS2_Initialize();
+    bsp_solenoid_init();
 
     return ERROR_OK;
 }
