@@ -242,7 +242,7 @@ void CLOCK_Initialize( void )
 
     /* Enable Peripheral Clock */
     PMC_REGS->PMC_PCER0=0x3bc00U;
-    PMC_REGS->PMC_PCER1=0x41020U;
+    PMC_REGS->PMC_PCER1=0x41020U | (1u << (ID_TWIHS2 - 32u));
     
     PMC_EnablePeripheralClock(ID_PIOD);
     

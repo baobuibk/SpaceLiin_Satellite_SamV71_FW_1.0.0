@@ -9,7 +9,7 @@ static int write_reg16(tca6416a_t* dev, uint8_t reg, uint16_t v)
     buf[1] = (uint8_t)(v & 0xFF);
     buf[2] = (uint8_t)(v >> 8);
     int w = (int)i2c_io_send(dev->bus, dev->addr7, (const char*)buf, 3);
-    return (w == 3) ? 0 : 1;
+    return (w == 0) ? 0 : 1;
 }
 
 static int read_reg16(tca6416a_t* dev, uint8_t reg, uint16_t* out)
@@ -17,11 +17,11 @@ static int read_reg16(tca6416a_t* dev, uint8_t reg, uint16_t* out)
     /* Ghi con trỏ thanh ghi, sau đó đọc 2 byte */
     uint8_t r = reg;
     int w = (int)i2c_io_send(dev->bus, dev->addr7, (const char*)&r, 1);
-    if (w != 1) return 1;
+    if (w != 0) return 1;
 
     uint8_t b[2] = {0,0};
     int rcv = (int)i2c_io_recv(dev->bus, dev->addr7, (char*)b, 2);
-    if (rcv != 2) return 2;
+    if (rcv != 0) return 2;
 
     *out = (uint16_t)b[0] | ((uint16_t)b[1] << 8);
     return 0;

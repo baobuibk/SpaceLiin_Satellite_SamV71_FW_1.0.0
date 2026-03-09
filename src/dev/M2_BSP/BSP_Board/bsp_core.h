@@ -4,8 +4,11 @@
 #include "board.h"
 #include "do.h"
 #include "spi_io.h"
+#include "i2c_io.h"
+
 extern spi_io_t onboard_adc_spi;
 
+extern i2c_io_t sol_expander_i2c;
 
 extern do_t laser_dac_cs ;
 
