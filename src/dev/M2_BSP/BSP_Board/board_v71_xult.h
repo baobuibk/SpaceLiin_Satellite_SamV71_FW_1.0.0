@@ -31,9 +31,9 @@
 #define STATUS_LED_PIN          23   //PA23
 
 
-///*
-// * DEFINE FOR PORT AND PIN CONTROL EFUSE POWER
-// */
+/*
+* DEFINE FOR PORT AND PIN CONTROL EFUSE POWER
+*/
 #define POWER_SOM_PORT          4
 #define POWER_SOM_PIN           5
 
@@ -54,5 +54,13 @@
 
 #define POWER_HEATER_PORT       5
 #define POWER_HEATER_PIN        3
+
+
+/*
+* DEFINE FOR PORT I2C OF BMP390
+*/
+#define BMP390_ONBOARD_PORT         1
+#define BMP390_CONNECTOR_PORT       0
+
 
 #endif /* #ifndef _BOARD_V71_XULT_H_ */

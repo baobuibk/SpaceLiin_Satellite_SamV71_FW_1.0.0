@@ -143,10 +143,6 @@ static const CliCommandBinding cliStaticBindings_internal[] = {
     { "LED",          "led_reset",  "Comment following: led_reset",                             true, NULL, CMD_LED_Reset  },
     
     { "HTR",          "heater_set",  "Comment following: heater_set <channel> <duty> ",         true, NULL, CMD_HEATER_SetDuty  },
-
-    
-    
-
     
     { "POWER",          "power_som_on",  "power_som_on: enable efuse for turn on som",        false, NULL, CMD_PowerSOM_ON, },
     { "POWER",          "power_som_off",      "power_som_off: disable efuse for turn off som",          false, NULL, CMD_PowerSOM_OFF },

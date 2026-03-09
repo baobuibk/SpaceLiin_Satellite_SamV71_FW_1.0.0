@@ -83,9 +83,23 @@ do_t power_heater =
     .pin = POWER_HEATER_PIN, 
     .bStatus = false
 }; 
+
 do_t status_led = 
 {
     .port = STATUS_LED_PORT,
     .pin = STATUS_LED_PIN,
     .bStatus = false,
+};
+
+
+i2c_io_t bmp390_onboard =
+{
+    .ui32I2cPort = BMP390_ONBOARD_PORT,
+
+};
+
+i2c_io_t bmp390_connector =
+{
+    .ui32I2cPort = BMP390_CONNECTOR_PORT,
+
 };

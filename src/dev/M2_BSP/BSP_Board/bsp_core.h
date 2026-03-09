@@ -4,6 +4,8 @@
 #include "board.h"
 #include "do.h"
 #include "spi_io.h"
+#include "i2c_io.h"
+
 extern spi_io_t onboard_adc_spi;
 
 
@@ -23,6 +25,9 @@ extern do_t power_lp;
 extern do_t power_heater;
 
 extern do_t status_led;
+
+extern i2c_io_t bmp390_onboard;
+extern i2c_io_t bmp390_connector;
 
 void BSP_board_init(void);
 

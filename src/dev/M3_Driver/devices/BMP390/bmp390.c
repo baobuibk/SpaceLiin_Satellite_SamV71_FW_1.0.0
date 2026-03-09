@@ -151,11 +151,19 @@ uint8_t BMP390_Write(i2c_io_t* p_i2c, uint8_t reg, uint8_t TX_data)
 
 uint8_t BMP390_Read(i2c_io_t* p_i2c, uint8_t reg, uint8_t *p_RX_buffer, uint8_t byte_count)
 {
-	// 1) Write the register pointer WITHOUT STOP
-    if (i2c_io_send(p_i2c, BMP390_ADDR, (const char*)&reg, 1) != 1u)
-	{
-		return 0u;
-	}
+	// // 1) Write the register pointer WITHOUT STOP
+    // if (i2c_io_send(p_i2c, BMP390_ADDR, (const char*)&reg, 1) != 1u)
+	// {
+	// 	return 0u;
+	// }
+	// if status different ERROR_OK (=0), return status
+
+	//branch bmp
+	uint8_t status_i2c_send = i2c_io_send(p_i2c, BMP390_ADDR, (const char*)&reg, 1);
+	if (status_i2c_send != 0)
+    {
+        return status_i2c_send;
+    }
 
     // 2) Next recv performs a REPEATED-START automatically, then STOP
     uint32_t n = i2c_io_recv(p_i2c, BMP390_ADDR, (char*)p_RX_buffer, (int)byte_count);
