@@ -26,8 +26,9 @@ extern do_t power_heater;
 
 extern do_t status_led;
 
-extern i2c_io_t bmp390_onboard;
 extern i2c_io_t bmp390_connector;
+extern do_t bmp390_connector_sensor5;
+extern i2c_io_t bmp390_onboard;
 
 void BSP_board_init(void);
 

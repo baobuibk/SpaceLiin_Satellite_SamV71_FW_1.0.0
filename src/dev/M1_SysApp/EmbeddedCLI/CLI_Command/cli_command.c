@@ -33,6 +33,10 @@
 #include "M2_BSP/BSP_Led/bsp_led.h"
 #include "M2_BSP/BSP_Heater/bsp_heater.h"
 
+#include "M2_BSP/BSP_BMP390/bsp_bmp390.h"
+#include "M3_Driver/devices/BMP390/bmp390.h"
+
+
 /*************************************************
  *                     Extern                    *
  *************************************************/
@@ -94,6 +98,10 @@ static void CMD_LED_Reset (EmbeddedCli *cli, char *args, void *context);
 
 static void CMD_HEATER_SetDuty (EmbeddedCli *cli, char *args, void *context);
 
+static void CMD_BMP390_Onboard_Read(EmbeddedCli *cli, char *args, void *context);
+static void CMD_BMP390_Connector_Read(EmbeddedCli *cli, char *args, void *context);
+static void CMD_BMP390_Connector_Enable(EmbeddedCli *cli, char *args, void *context);
+static void CMD_BMP390_Connector_Disable(EmbeddedCli *cli, char *args, void *context);
 
 
 /*************************************************
@@ -175,6 +183,11 @@ static const CliCommandBinding cliStaticBindings_internal[] = {
     { "POWER",          "power_all_on",       "power_all_on: enable efuse for turn on all rails",       false, NULL, CMD_PowerAll_ON },
     { "POWER",          "power_all_off",      "power_all_off: disable efuse for turn off all rails",      false, NULL, CMD_PowerAll_OFF },
     { "POWER",          "power_all_get",      "power_all_get: get power status of all rails",           false, NULL, CMD_PowerAll_Get },
+
+    { "BMP390",          "bmp390_onboard_read",      "bmp390_onboard_read: read value BMP390 onboard",           false, NULL, CMD_BMP390_Onboard_Read },
+    { "BMP390",          "bmp390_connector_read",    "bmp390_connector_read: read value BMP390 connector",           false, NULL, CMD_BMP390_Connector_Read },
+    { "BMP390",          "bmp390_connector_enable",    "bmp390_connector_enable: enable switch i2c for bmp390 connector",           false, NULL, CMD_BMP390_Connector_Enable },
+    { "BMP390",          "bmp390_connector_disable",    "bmp390_connector_disable: disable switch i2c for bmp390 connector",           false, NULL, CMD_BMP390_Connector_Disable },
 
     
     { NULL,         	"reset",       	"Reset MCU: reset",                                 	false, 	NULL, CMD_Reset,     	},
@@ -1474,6 +1487,81 @@ static void CMD_HEATER_SetDuty (EmbeddedCli *cli, char *args, void *context)
     embeddedCliPrint(cli, "");
 }
 
+/*
+FUNCTION FOR BMP390 ONBOARD
+*/
+static void CMD_BMP390_Onboard_Read(EmbeddedCli *cli, char *args, void *context)
+{
+    bmp390_data_t bmp390_onboard_data = { .Pressure = 0, .Temp = 0 };
+    char buffer[128];
+
+    Std_ReturnType status = bsp_bmp390_onboard_read(&bmp390_onboard_data);
+
+    if (status == ERROR_OK) 
+    {
+
+        embeddedCliPrint(cli, "Status: ERROR_OK");
+        
+        snprintf(buffer, sizeof(buffer), "BMP390 - Temp: %.2f C, Pressure: %.2f Pa", 
+                 bmp390_onboard_data.Temp, 
+                 bmp390_onboard_data.Pressure);
+        embeddedCliPrint(cli, buffer);
+    }
+    else 
+    {
+        snprintf(buffer, sizeof(buffer), "READ FAILED! Status Code: %d", status);
+        embeddedCliPrint(cli, buffer);
+    }
+    
+    embeddedCliPrint(cli, "");
+}
+
+/*
+FUNCTION FOR BMP390 CONNECTOR
+*/
+static void CMD_BMP390_Connector_Read(EmbeddedCli *cli, char *args, void *context)
+{
+    bmp390_data_t bmp390_connector_data = { .Pressure = 0, .Temp = 0 };
+    char buffer[128];
+    
+    if(bsp_bmp390_connector_status()== false)
+    {
+        embeddedCliPrint(cli, "Switch I2C is disable, use <bmp390_connector_enable> to enable");
+        embeddedCliPrint(cli, "");
+        return;
+    }
+    
+    Std_ReturnType status = bsp_bmp390_onboard_read(&bmp390_connector_data);
+
+    if (status == ERROR_OK) 
+    {
+        embeddedCliPrint(cli, "Status: ERROR_OK");
+        
+        snprintf(buffer, sizeof(buffer), "BMP390 - Temp: %.2f C, Pressure: %.2f Pa", 
+                 bmp390_connector_data.Temp, 
+                 bmp390_connector_data.Pressure);
+        embeddedCliPrint(cli, buffer);
+    }
+    else 
+    {
+        snprintf(buffer, sizeof(buffer), "READ FAILED! Status Code: %d", status);
+        embeddedCliPrint(cli, buffer);
+    }
+    
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_BMP390_Connector_Enable(EmbeddedCli *cli, char *args, void *context) {
+    bsp_bmp390_connector_enable();
+    embeddedCliPrint(cli, "Enable switch i2c bmp390 connector");
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_BMP390_Connector_Disable(EmbeddedCli *cli, char *args, void *context) {
+    bsp_bmp390_connector_disable();
+    embeddedCliPrint(cli, "Disable switch i2c bmp390 connector");
+    embeddedCliPrint(cli, "");
+}
 
 
 

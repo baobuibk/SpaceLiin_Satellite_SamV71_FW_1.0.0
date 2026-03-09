@@ -63,4 +63,11 @@
 #define BMP390_CONNECTOR_PORT       0
 
 
+/*
+* DEFINE PORT AND PIN BMP390 ENABLE CONNECTOR
+*/
+#define SENSOR5_EN_PORT     3   //PC11
+#define SENSOR5_EN_PIN     11  //PC11
+
+
 #endif /* #ifndef _BOARD_V71_XULT_H_ */

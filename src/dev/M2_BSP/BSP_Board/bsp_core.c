@@ -92,14 +92,25 @@ do_t status_led =
 };
 
 
-i2c_io_t bmp390_onboard =
-{
-    .ui32I2cPort = BMP390_ONBOARD_PORT,
-
-};
-
+/*
+ * FOR BMP390 onboard and connnector
+*/
 i2c_io_t bmp390_connector =
 {
-    .ui32I2cPort = BMP390_CONNECTOR_PORT,
-
+    .ui32I2cPort = 0,
 };
+
+do_t bmp390_connector_sensor5 = 
+{
+    .port= SENSOR5_EN_PORT,
+    .pin = SENSOR5_EN_PIN,
+    .bStatus = false,
+};
+
+
+i2c_io_t bmp390_onboard =
+{
+    .ui32I2cPort = 1,
+};
+
+

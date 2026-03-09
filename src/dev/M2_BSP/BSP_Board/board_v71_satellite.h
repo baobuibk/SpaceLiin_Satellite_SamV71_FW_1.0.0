@@ -49,6 +49,11 @@
 #define POWER_HEATER_PORT       5
 #define POWER_HEATER_PIN        3
 
+/*
+* DEFINE PORT AND PIN BMP390 ENABLE CONNECTOR
+*/
+#define SENSOR5_EN_PORT     3   //PC11
+#define SENSOR5_EN_PIN     11  //PC11
 
 #endif	/* BOARD_V71_SATELLITE_H */
 
