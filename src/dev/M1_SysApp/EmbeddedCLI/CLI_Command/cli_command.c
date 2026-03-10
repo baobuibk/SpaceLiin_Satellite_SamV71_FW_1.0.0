@@ -1502,7 +1502,7 @@ static void CMD_BMP390_Onboard_Read(EmbeddedCli *cli, char *args, void *context)
 
         embeddedCliPrint(cli, "Status: ERROR_OK");
         
-        snprintf(buffer, sizeof(buffer), "BMP390 - Temp: %.2f C, Pressure: %.2f Pa", 
+        snprintf(buffer, sizeof(buffer), "BMP390 Onboard - Temp: %.2f C, Pressure: %.2f Pa", 
                  bmp390_onboard_data.Temp, 
                  bmp390_onboard_data.Pressure);
         embeddedCliPrint(cli, buffer);
@@ -1531,13 +1531,13 @@ static void CMD_BMP390_Connector_Read(EmbeddedCli *cli, char *args, void *contex
         return;
     }
     
-    Std_ReturnType status = bsp_bmp390_onboard_read(&bmp390_connector_data);
+    Std_ReturnType status = bsp_bmp390_connector_read(&bmp390_connector_data);
 
     if (status == ERROR_OK) 
     {
         embeddedCliPrint(cli, "Status: ERROR_OK");
         
-        snprintf(buffer, sizeof(buffer), "BMP390 - Temp: %.2f C, Pressure: %.2f Pa", 
+        snprintf(buffer, sizeof(buffer), "BMP390 Connector - Temp: %.2f C, Pressure: %.2f Pa", 
                  bmp390_connector_data.Temp, 
                  bmp390_connector_data.Pressure);
         embeddedCliPrint(cli, buffer);

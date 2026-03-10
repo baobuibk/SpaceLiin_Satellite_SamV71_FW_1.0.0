@@ -2432,8 +2432,8 @@ static void prvInitialiseNewTask( TaskFunction_t pxTaskCode,
 
 #if ( INCLUDE_vTaskDelay == 1 )
 
-{
-        void vTaskDelay( const TickType_t xTicksToDelay )
+    void vTaskDelay( const TickType_t xTicksToDelay )
+    {
         BaseType_t xAlreadyYielded = pdFALSE;
 
         traceENTER_vTaskDelay( xTicksToDelay );

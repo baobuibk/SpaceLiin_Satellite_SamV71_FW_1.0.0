@@ -334,6 +334,9 @@
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="M2_BSP" displayName="M2_BSP" projectFiles="true">
+            <logicalFolder name="f4" displayName="BSP_BMP390" projectFiles="true">
+              <itemPath>../src/dev/M2_BSP/BSP_BMP390/bsp_bmp390.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="BSP_Board" displayName="BSP_Board" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Board/bsp_core.c</itemPath>
               <itemPath>../src/dev/M2_BSP/BSP_Board/board.h</itemPath>
@@ -851,6 +854,7 @@
             </logicalFolder>
             <logicalFolder name="Os_hal" displayName="Os_hal" projectFiles="true">
               <logicalFolder name="FreeRTOS" displayName="FreeRTOS" projectFiles="true">
+                <itemPath>../src/dev/M4_Middlewares/Os_hal/FreeRTOS/os_freertos.c</itemPath>
               </logicalFolder>
               <itemPath>../src/dev/M4_Middlewares/Os_hal/os_hal.h</itemPath>
             </logicalFolder>
@@ -1360,6 +1364,9 @@
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="M2_BSP" displayName="M2_BSP" projectFiles="true">
+            <logicalFolder name="f4" displayName="BSP_BMP390" projectFiles="true">
+              <itemPath>../src/dev/M2_BSP/BSP_BMP390/bsp_bmp390.c</itemPath>
+            </logicalFolder>
             <logicalFolder name="f3" displayName="BSP_Heater" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Heater/bsp_heater.c</itemPath>
             </logicalFolder>
