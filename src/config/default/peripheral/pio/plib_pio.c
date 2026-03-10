@@ -463,11 +463,10 @@ void PIO_Initialize ( void )
     ((pio_registers_t*)PIO_PORT_B)->PIO_OER = 0x0U;
     ((pio_registers_t*)PIO_PORT_B)->PIO_ODR = 0xFFFFFFFFU;
     //------begin-------
-    ((pio_registers_t*)PIO_PORT_B)->PIO_OER |=  PIOB_Output_mask;
-    ((pio_registers_t*)PIO_PORT_B)->PIO_ODR &= ~PIOB_Output_mask;
+    // ((pio_registers_t*)PIO_PORT_B)->PIO_OER |=  PIOB_Output_mask;
+    // ((pio_registers_t*)PIO_PORT_B)->PIO_ODR &= ~PIOB_Output_mask;
 
-    ((pio_registers_t*)PIO_PORT_B)->PIO_OER &=  ~PIOB_I2C_mask;
-    ((pio_registers_t*)PIO_PORT_B)->PIO_ODR |=  PIOB_I2C_mask;
+
     //------stop--------
     /* Initialize PORTB pin state */
     ((pio_registers_t*)PIO_PORT_B)->PIO_ODSR = 0x0U;

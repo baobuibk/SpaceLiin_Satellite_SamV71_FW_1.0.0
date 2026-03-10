@@ -12,7 +12,7 @@
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Private Defines ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 // #define BMP390_ADDR                     0xEE
-#define BMP390_ADDR                     0x77
+#define BMP390_ADDR                     0x76
 #define BMP390_STATUS_REG_ADDR			0x03
 
 #define BMP390_PRESSURE_REG_ADDR_BASE	0x04
@@ -121,6 +121,7 @@ static void BMP390_read_uncompensated_value
 (
 	i2c_io_t* p_i2c,
     Sensor_Read_typedef read_type,
+    uint8_t ui8SlaveAddr,
 	uint8_t *p_BMP390_RX_buffer
 );
 
@@ -140,39 +141,69 @@ float Sensor_Pressure = 0.0;
 // float Sensor_Altitude = 0.0;
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Public Function ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-uint8_t BMP390_Write(i2c_io_t* p_i2c, uint8_t reg, uint8_t TX_data)
+//uint8_t BMP390_Write(i2c_io_t* p_i2c, uint8_t reg, uint8_t TX_data)
+//{
+//	uint8_t frame[2] = {reg, TX_data};
+//
+//	uint32_t n = i2c_io_send(p_i2c, BMP390_ADDR, (const char*)frame, 2);
+//
+//	return (n == 2) ? 1u : 0u;
+//}
+
+uint8_t BMP390_Write(i2c_io_t* p_i2c, uint8_t reg, uint8_t ui8SlaveAddr, uint8_t TX_data)
 {
 	uint8_t frame[2] = {reg, TX_data};
 
-	uint32_t n = i2c_io_send(p_i2c, BMP390_ADDR, (const char*)frame, 2);
+	uint32_t n = i2c_io_send(p_i2c, ui8SlaveAddr, (const char*)frame, 2);
 
 	return (n == 2) ? 1u : 0u;
 }
 
-uint8_t BMP390_Read(i2c_io_t* p_i2c, uint8_t reg, uint8_t *p_RX_buffer, uint8_t byte_count)
-{
-	// 1) Write the register pointer WITHOUT STOP
-    // if (i2c_io_send(p_i2c, BMP390_ADDR, (const char*)&reg, 1) != 1u)
-	// {
-	// 	return 0u;
-	// }
-	//WHEN SEND COMPLETE OK, RETURN ERROR_OK = 0 , with condition will return 0 immediately and not call i2c_io_recv after -> fix condition if
 
-	//fix condition
-	uint8_t status_i2c_send = i2c_io_send(p_i2c, BMP390_ADDR, (const char*)&reg, 1);
+//uint8_t BMP390_Read(i2c_io_t* p_i2c, uint8_t reg, uint8_t *p_RX_buffer, uint8_t byte_count)
+//{
+//	// 1) Write the register pointer WITHOUT STOP
+//    // if (i2c_io_send(p_i2c, BMP390_ADDR, (const char*)&reg, 1) != 1u)
+//	// {
+//	// 	return 0u;
+//	// }
+//	//WHEN SEND COMPLETE OK, RETURN ERROR_OK = 0 , with condition will return 0 immediately and not call i2c_io_recv after -> fix condition if
+//
+//	//fix condition
+//	uint8_t status_i2c_send = i2c_io_send(p_i2c, BMP390_ADDR, (const char*)&reg, 1);
+//	if (status_i2c_send != 0)
+//    {
+//        return status_i2c_send;
+//    }
+//
+//    // 2) Next recv performs a REPEATED-START automatically, then STOP
+//    uint32_t n = i2c_io_recv(p_i2c, BMP390_ADDR, (char*)p_RX_buffer, (int)byte_count);
+//
+//    return (n == (uint32_t)byte_count) ? 1u : 0u;
+//}
+
+uint8_t BMP390_Read(i2c_io_t* p_i2c, uint8_t reg, uint8_t ui8SlaveAddr, uint8_t *p_RX_buffer, uint8_t byte_count)
+{
+
+	uint8_t status_i2c_send = i2c_io_send(p_i2c, ui8SlaveAddr, (const char*)&reg, 1);
 	if (status_i2c_send != 0)
     {
         return status_i2c_send;
     }
 
     // 2) Next recv performs a REPEATED-START automatically, then STOP
-    uint32_t n = i2c_io_recv(p_i2c, BMP390_ADDR, (char*)p_RX_buffer, (int)byte_count);
+    uint32_t n = i2c_io_recv(p_i2c, ui8SlaveAddr, (char*)p_RX_buffer, (int)byte_count);
 
     return (n == (uint32_t)byte_count) ? 1u : 0u;
 }
 
+
+
+
+
+
 /* :::::::::: BMP390 Command :::::::: */
-uint8_t BMP390_init(i2c_io_t* p_i2c)
+uint8_t BMP390_init(i2c_io_t* p_i2c, uint8_t ui8SlaveAddr)
 {
 	BMP390_uncomp_data_typedef BMP390_uncomp_data;
 
@@ -181,7 +212,7 @@ uint8_t BMP390_init(i2c_io_t* p_i2c)
 	memset((void*)&BMP390_uncomp_data, 0, sizeof(BMP390_uncomp_data));
 	memset((void*)&BMP390_comp_data, 0, sizeof(BMP390_comp_data));
 
-	BMP390_Read(p_i2c, 0x00, Sensor_temp_buffer, 1);
+	BMP390_Read(p_i2c, 0x00, ui8SlaveAddr, Sensor_temp_buffer, 1);
 
 	//set oversampling
 	//Sensor_temp_buffer[0] = 11;
@@ -189,17 +220,17 @@ uint8_t BMP390_init(i2c_io_t* p_i2c)
 	Sensor_temp_buffer[0] |= (0b101 << 2); 	// osr_p [2..0] = 101
 	Sensor_temp_buffer[0] |= (0b010 << 5); 	// osr4_t[5..3] = 010
 
-	BMP390_Write(p_i2c, 0x1C, Sensor_temp_buffer[0]);
+	BMP390_Write(p_i2c, 0x1C, ui8SlaveAddr, Sensor_temp_buffer[0]);
 
 	//set filter
-	BMP390_Read(p_i2c, 0x1F, Sensor_temp_buffer, 1);
+	BMP390_Read(p_i2c, 0x1F, ui8SlaveAddr, Sensor_temp_buffer, 1);
 
 	//Sensor_temp_buffer[0] = (0b111 << 3); // iir_filter[3..1] = 111
 	Sensor_temp_buffer[0] = (0b011 << 3); // iir_filter[3..1] = 011
 	//Sensor_temp_buffer[0] = (0b000 << 3); // iir_filter[3..1] = 000
-	BMP390_Write(p_i2c, 0x1F, Sensor_temp_buffer[0]);
+	BMP390_Write(p_i2c, 0x1F, ui8SlaveAddr, Sensor_temp_buffer[0]);
 
-	BMP390_Read(p_i2c, 0x31, Sensor_temp_buffer, 21);
+	BMP390_Read(p_i2c, 0x31, ui8SlaveAddr, Sensor_temp_buffer, 21);
 
 	BMP390_uncomp_data.NVM_PAR_T1 = (Sensor_temp_buffer[1] << 8)
 			| Sensor_temp_buffer[0];
@@ -286,10 +317,10 @@ uint8_t BMP390_init(i2c_io_t* p_i2c)
 	
 	memset((void*)Sensor_temp_buffer, 0, sizeof(Sensor_temp_buffer));
 
-	BMP390_Read(p_i2c, 0x1B, Sensor_temp_buffer, 1);
+	BMP390_Read(p_i2c, 0x1B, ui8SlaveAddr, Sensor_temp_buffer, 1);
 
 	Sensor_temp_buffer[0] |= 0b00010011;
-	BMP390_Write(p_i2c, 0x1B, Sensor_temp_buffer[0]);
+	BMP390_Write(p_i2c, 0x1B, ui8SlaveAddr, Sensor_temp_buffer[0]);
 
 	// BMP390_read_uncompensated_value(p_i2c, SENSOR_READ_BMP390, &Sensor_temp_buffer[1]);
 
@@ -301,17 +332,16 @@ uint8_t BMP390_init(i2c_io_t* p_i2c)
 	return 1;
 }
 
-uint8_t BMP390_read_value(i2c_io_t* p_i2c, bmp390_data_t* p_data)
+uint8_t BMP390_read_value(i2c_io_t* p_i2c, bmp390_data_t* p_data, uint8_t ui8SlaveAddr )
 {
 	uint8_t Sensor_temp_buffer[30] = {0};
 
-	BMP390_Read(p_i2c, 0x1B, Sensor_temp_buffer, 1);
+	BMP390_Read(p_i2c, 0x1B,ui8SlaveAddr, Sensor_temp_buffer, 1);
 
 	Sensor_temp_buffer[0] |= 0b00010011;
-	BMP390_Write(p_i2c, 0x1B, Sensor_temp_buffer[0]);
+	BMP390_Write(p_i2c, 0x1B, ui8SlaveAddr, Sensor_temp_buffer[0]);
 
-	BMP390_Read(p_i2c, BMP390_STATUS_REG_ADDR,
-			Sensor_temp_buffer, 1);
+	BMP390_Read(p_i2c, BMP390_STATUS_REG_ADDR, ui8SlaveAddr, Sensor_temp_buffer, 1);
 
 
 	if (BMP390_is_value_ready(SENSOR_READ_BMP390, Sensor_temp_buffer) == false)
@@ -319,7 +349,7 @@ uint8_t BMP390_read_value(i2c_io_t* p_i2c, bmp390_data_t* p_data)
 		return 0;
 	}
 
-	BMP390_read_uncompensated_value(p_i2c, SENSOR_READ_BMP390, &Sensor_temp_buffer[1]);
+	BMP390_read_uncompensated_value(p_i2c, SENSOR_READ_BMP390, ui8SlaveAddr, &Sensor_temp_buffer[1]);
 
 
 	BMP390_compensate_value(SENSOR_READ_BMP390, &Sensor_temp_buffer[1]);
@@ -391,17 +421,15 @@ static bool BMP390_is_value_ready(Sensor_Read_typedef read_type, uint8_t *p_stat
 	return 0;
 }
 
-static void BMP390_read_uncompensated_value(i2c_io_t* p_i2c, Sensor_Read_typedef read_type, uint8_t *p_BMP390_RX_buffer)
+static void BMP390_read_uncompensated_value(i2c_io_t* p_i2c, Sensor_Read_typedef read_type, uint8_t ui8SlaveAddr, uint8_t *p_BMP390_RX_buffer)
 {
 	if (read_type == SENSOR_READ_TEMP)
     {
-		BMP390_Read(p_i2c, BMP390_TEMP_REG_ADDR_BASE,
-				p_BMP390_RX_buffer, BMP390_TEMP_REG_SIZE);
+		BMP390_Read(p_i2c, BMP390_TEMP_REG_ADDR_BASE, ui8SlaveAddr, p_BMP390_RX_buffer, BMP390_TEMP_REG_SIZE);
 		return;
 	}
 
-	BMP390_Read(p_i2c, BMP390_READ_ALL_ADDR_BASE,
-			p_BMP390_RX_buffer, BMP390_READ_ALL_REG_SIZE);
+	BMP390_Read(p_i2c, BMP390_READ_ALL_ADDR_BASE, ui8SlaveAddr, p_BMP390_RX_buffer, BMP390_READ_ALL_REG_SIZE);
 }
 
 static void BMP390_compensate_value(Sensor_Read_typedef read_type, uint8_t *p_BMP390_RX_buffer)

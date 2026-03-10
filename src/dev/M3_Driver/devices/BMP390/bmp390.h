@@ -22,9 +22,9 @@ typedef struct _bmp390_data_t_
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Class ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Prototype ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /* :::::::::: BMP390 Command :::::::: */
-uint8_t BMP390_init(i2c_io_t* p_i2c);
+uint8_t BMP390_init(i2c_io_t* p_i2c, uint8_t ui8SlaveAddr);
 
-uint8_t BMP390_read_value(i2c_io_t* p_i2c, bmp390_data_t* p_data);
+uint8_t BMP390_read_value(i2c_io_t* p_i2c, bmp390_data_t* p_data, uint8_t ui8SlaveAddr);
 
 /* :::::::::: BMP390 Flag Check Command :::::::: */
 bool Is_BMP390_Init_Complete();

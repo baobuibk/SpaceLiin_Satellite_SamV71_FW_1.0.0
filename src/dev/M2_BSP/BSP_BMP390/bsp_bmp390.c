@@ -17,9 +17,9 @@ Std_ReturnType bsp_bmp390_onboard_read(bmp390_data_t* p_data)
         return status; 
     }
     
-    BMP390_init(&bmp390_onboard);
+    BMP390_init(&bmp390_onboard, BMP390_ONBOARD_ADDRESS);
     
-    BMP390_read_value(&bmp390_onboard, p_data);
+    BMP390_read_value(&bmp390_onboard, p_data, BMP390_ONBOARD_ADDRESS);
 
     if (p_data->Temp != 0.0f || p_data->Pressure != 0.0f) {
         return ERROR_OK; 
@@ -62,9 +62,9 @@ Std_ReturnType bsp_bmp390_connector_read(bmp390_data_t* p_data)
         return status; 
     }
     
-    BMP390_init(&bmp390_connector);
+    BMP390_init(&bmp390_connector, BMP390_CONNECTOR_ADDRESS);
     
-    BMP390_read_value(&bmp390_connector, p_data);
+    BMP390_read_value(&bmp390_connector, p_data, BMP390_CONNECTOR_ADDRESS);
 
     if (p_data->Temp != 0.0f || p_data->Pressure != 0.0f) 
     {
