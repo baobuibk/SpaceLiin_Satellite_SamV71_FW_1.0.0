@@ -6,6 +6,7 @@
 
 /* Board Support includes. */
 #include "bmp390.h"
+#include "M1_SysApp/xlog/xlog.h"
 
 /* Component includes. */
 // #include "i2c_io.h"
@@ -150,7 +151,7 @@ float Sensor_Pressure = 0.0;
 //	return (n == 2) ? 1u : 0u;
 //}
 
-uint8_t BMP390_Write(i2c_io_t* p_i2c, uint8_t reg, uint8_t ui8SlaveAddr, uint8_t TX_data)
+    uint8_t BMP390_Write(i2c_io_t* p_i2c, uint8_t reg, uint8_t ui8SlaveAddr, uint8_t TX_data)
 {
 	uint8_t frame[2] = {reg, TX_data};
 
@@ -186,8 +187,11 @@ uint8_t BMP390_Read(i2c_io_t* p_i2c, uint8_t reg, uint8_t ui8SlaveAddr, uint8_t 
 {
 
 	uint8_t status_i2c_send = i2c_io_send(p_i2c, ui8SlaveAddr, (const char*)&reg, 1);
+    
+    xlog("status send %d" , status_i2c_send );
+    
 	if (status_i2c_send != 0)
-    {
+    {   
         return status_i2c_send;
     }
 
@@ -213,6 +217,7 @@ uint8_t BMP390_init(i2c_io_t* p_i2c, uint8_t ui8SlaveAddr)
 	memset((void*)&BMP390_comp_data, 0, sizeof(BMP390_comp_data));
 
 	BMP390_Read(p_i2c, 0x00, ui8SlaveAddr, Sensor_temp_buffer, 1);
+   
 
 	//set oversampling
 	//Sensor_temp_buffer[0] = 11;

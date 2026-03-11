@@ -423,7 +423,7 @@ void PIO_Initialize ( void )
     ((pio_registers_t*)PIO_PORT_A)->PIO_PER &= ~(PIOA_I2C_mask);
     /* PORTA PIO Disable and Peripheral Enable*/
 //    ((pio_registers_t*)PIO_PORT_A)->PIO_PDR |=  (PIOA_periph_B_mask | PIOA_I2C_mask);
-    ((pio_registers_t*)PIO_PORT_A)->PIO_PDR |=  ( PIOA_I2C_mask);
+    ((pio_registers_t*)PIO_PORT_A)->PIO_PDR |= (PIOA_I2C_mask);
     //------stop--------
     ((pio_registers_t*)PIO_PORT_A)->PIO_MDDR = 0xFFFFFFFFU;
     /* PORTA Pull Up Enable/Disable as per MHC selection */
@@ -442,9 +442,11 @@ void PIO_Initialize ( void )
 
     /************************ PIO B Initialization ************************/
     //------begin-------
-    uint32_t PIOB_Output_mask = (1U << STATUS_LED_PIN);
-
-
+//    uint32_t PIOB_Output_mask = (1U << STATUS_LED_PIN);
+    
+    PIOB_REGS->PIO_ABCDSR[0] = 0x0U;
+    PIOB_REGS->PIO_ABCDSR[1] = 0x0U;
+    
     uint32_t PIOB_I2C_mask = (1U << BMP390_ONBOARD_I2C_SDA_PIN) | (1U << BMP390_ONBOARD_I2C_SCL_PIN);
 
     PIOB_REGS->PIO_ABCDSR[0] &= ~PIOB_I2C_mask;
@@ -452,6 +454,11 @@ void PIO_Initialize ( void )
 
     //------stop--------
     ((pio_registers_t*)PIO_PORT_B)->PIO_PER = 0xFFFFFFFFU;
+    
+    ((pio_registers_t*)PIO_PORT_B)->PIO_PER &= ~PIOB_I2C_mask;
+    ((pio_registers_t*)PIO_PORT_B)->PIO_PDR |= PIOB_I2C_mask;    
+    
+    
     ((pio_registers_t*)PIO_PORT_B)->PIO_MDDR = 0xFFFFFFFFU;
     /* PORTB Pull Up Enable/Disable as per MHC selection */
     ((pio_registers_t*)PIO_PORT_B)->PIO_PUDR = 0xFFFFFFFFU;
@@ -463,10 +470,11 @@ void PIO_Initialize ( void )
     ((pio_registers_t*)PIO_PORT_B)->PIO_OER = 0x0U;
     ((pio_registers_t*)PIO_PORT_B)->PIO_ODR = 0xFFFFFFFFU;
     //------begin-------
-    // ((pio_registers_t*)PIO_PORT_B)->PIO_OER |=  PIOB_Output_mask;
-    // ((pio_registers_t*)PIO_PORT_B)->PIO_ODR &= ~PIOB_Output_mask;
+//    ((pio_registers_t*)PIO_PORT_B)->PIO_OER |=  PIOB_Output_mask;
+//    ((pio_registers_t*)PIO_PORT_B)->PIO_ODR &= ~PIOB_Output_mask;
 
-
+//    ((pio_registers_t*)PIO_PORT_B)->PIO_OER &=  ~PIOB_I2C_mask;
+//    ((pio_registers_t*)PIO_PORT_B)->PIO_ODR |=  PIOB_I2C_mask;
     //------stop--------
     /* Initialize PORTB pin state */
     ((pio_registers_t*)PIO_PORT_B)->PIO_ODSR = 0x0U;
@@ -495,7 +503,7 @@ void PIO_Initialize ( void )
 
     /* PORTA PIO Enable and Peripheral Disable*/
 //    ((pio_registers_t*)PIO_PORT_C)->PIO_PER &= ~(PIOC_periph_B_mask | PIOC_periph_C_mask);
-            ((pio_registers_t*)PIO_PORT_C)->PIO_PER &= ~( PIOC_periph_C_mask);
+    ((pio_registers_t*)PIO_PORT_C)->PIO_PER &= ~( PIOC_periph_C_mask);
     //------stop--------
     ((pio_registers_t*)PIO_PORT_C)->PIO_MDDR = 0xFFFFFFFFU;
     /* PORTC Pull Up Enable/Disable as per MHC selection */
