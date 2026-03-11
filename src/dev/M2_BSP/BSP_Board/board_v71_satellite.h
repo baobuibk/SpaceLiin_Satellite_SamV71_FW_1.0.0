@@ -10,6 +10,27 @@
 
 #include "samv71q21b.h"
 
+#define POWER_SOM_PORT          4  //PD5
+#define POWER_SOM_PIN           5   //PD5
+
+#define POWER_PERI_PORT          5 //PE4
+#define POWER_PERI_PIN           4  //PE4
+
+#define POWER_TEC_PORT          4   //PD4
+#define POWER_TEC_PIN           4   //PD4
+
+#define POWER_HD4_PORT          4   //PD3
+#define POWER_HD4_PIN           3   //PD3
+
+#define POWER_SLN_PORT          4   //PD2
+#define POWER_SLN_PIN           2   //PD2
+
+#define POWER_LP_PORT          4    //PD6
+#define POWER_LP_PIN           6    //PD6
+
+#define POWER_HEATER_PORT       5   //PE3
+#define POWER_HEATER_PIN        3   //PE3
+
 #define LASER_DAC_LATCH_PORT    3    //PC16
 #define LASER_DAC_LATCH_PIN     16   //PC16 
 
@@ -25,53 +46,53 @@
 #define STATUS_LED_PORT         2   //PB12
 #define STATUS_LED_PIN          12   //PB12
 
-/*
-* DEFINE FOR PORT AND PIN CONTROL EFUSE POWER
-*/
-#define POWER_SOM_PORT          4
-#define POWER_SOM_PIN           5
+#define HTR_PWM_1_PORT         1  //PA27
+#define HTR_PWM_1_PIN          27   //PA27
 
-#define POWER_PERI_PORT          5
-#define POWER_PERI_PIN           4
+#define HTR_PWM_2_PORT         1  //PA00
+#define HTR_PWM_2_PIN          0   //PA00
 
-#define POWER_TEC_PORT          4
-#define POWER_TEC_PIN           4
+#define HTR_PWM_3_PORT         1  //PA01
+#define HTR_PWM_3_PIN          1   //PA01
 
-#define POWER_HD4_PORT          4
-#define POWER_HD4_PIN           3
+#define HTR_PWM_4_PORT         1  //PA26
+#define HTR_PWM_4_PIN          26   //PA26
 
-#define POWER_SLN_PORT          4
-#define POWER_SLN_PIN           2
+#define HTR_PWM_5_PORT         3  //PC8
+#define HTR_PWM_5_PIN          8   //PC8
 
-#define POWER_LP_PORT          4
-#define POWER_LP_PIN           6
+#define HTR_PWM_6_PORT         3  //PC23
+#define HTR_PWM_6_PIN          23   //PC23
 
-#define POWER_HEATER_PORT       5
-#define POWER_HEATER_PIN        3
+#define HTR_PWM_7_PORT         3  //PC5
+#define HTR_PWM_7_PIN          5   //PC5
 
-/*
-* DEFINE FOR PORT I2C OF BMP390
-*/
-#define BMP390_ONBOARD_I2C_SDA_PORT       2     //PB04
-#define BMP390_ONBOARD_I2C_SDA_PIN        4     //PB04
+#define HTR_PWM_8_PORT         3  //PC6
+#define HTR_PWM_8_PIN          6   //PC6
 
-#define BMP390_ONBOARD_I2C_SCL_PORT       2     //PB05
-#define BMP390_ONBOARD_I2C_SCL_PIN        5     //PB05
+#define TEC_1_CS_PORT         3  //PC18
+#define TEC_1_CS_PIN          18   //PC18
 
-#define BMP390_CONNECTOR_I2C_SDA_PORT      1    //PA03
-#define BMP390_CONNECTOR_I2C_SDA_PIN       3    //PA03
+#define TEC_1_SW_PORT         1  //PA30
+#define TEC_1_SW_PIN          30   //PA30
 
-#define BMP390_CONNECTOR_I2C_SCL_PORT      1    //PA04   
-#define BMP390_CONNECTOR_I2C_SCL_PIN       4    //PA04
+#define TEC_2_CS_PORT         3  //PC20
+#define TEC_2_CS_PIN          20   //PC20
 
-#define BMP390_ONBOARD_ADDRESS          0x76
-#define BMP390_CONNECTOR_ADDRESS        0x77
+#define TEC_2_SW_PORT         4  //PD13
+#define TEC_2_SW_PIN          13   //PD13
 
-/*
-* DEFINE PORT AND PIN BMP390 ENABLE CONNECTOR
-*/
-#define SENSOR5_EN_PORT     3   //PC11
-#define SENSOR5_EN_PIN     11  //PC11
+#define TEC_3_CS_PORT         3  //PC22
+#define TEC_3_CS_PIN          22   //PC22
+
+#define TEC_3_SW_PORT         3  //PC01
+#define TEC_3_SW_PIN          1   //PC01
+
+#define TEC_4_CS_PORT         4  //PD11
+#define TEC_4_CS_PIN          11   //PD11
+
+#define TEC_4_SW_PORT         3  //PC02
+#define TEC_4_SW_PIN          2   //PC02
 
 #endif	/* BOARD_V71_SATELLITE_H */
 

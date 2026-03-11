@@ -242,14 +242,21 @@ void CLOCK_Initialize( void )
 
     /* Enable Peripheral Clock */
     PMC_REGS->PMC_PCER0=0x3bc00U;
-    PMC_REGS->PMC_PCER1=0x41020U;
+    PMC_REGS->PMC_PCER1=0x41020U | (1u << (ID_TWIHS2 - 32u));
+    
+    PMC_EnablePeripheralClock(ID_PIOA);
+    PMC_EnablePeripheralClock(ID_PIOB);
+    PMC_EnablePeripheralClock(ID_PIOC);
+    PMC_EnablePeripheralClock(ID_PIOD);
+    PMC_EnablePeripheralClock(ID_PIOE);
     
     PMC_EnablePeripheralClock(ID_USBHS);
-    
+
     PMC_EnablePeripheralClock(ID_TC0_CHANNEL0);
     PMC_EnablePeripheralClock(ID_TC0_CHANNEL2);
     PMC_EnablePeripheralClock(ID_TC1_CHANNEL0);
     PMC_EnablePeripheralClock(ID_TC2_CHANNEL0);
     PMC_EnablePeripheralClock(ID_TC2_CHANNEL1);
     
+    PMC_EnablePeripheralClock(ID_USART2);
 }

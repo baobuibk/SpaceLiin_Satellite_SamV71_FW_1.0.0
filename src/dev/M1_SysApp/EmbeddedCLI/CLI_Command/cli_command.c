@@ -31,7 +31,10 @@
 
 #include "M2_BSP/BSP_Power/bsp_power.h"
 #include "M2_BSP/BSP_Led/bsp_led.h"
+#include "M2_BSP/BSP_Solenoid/bsp_solenoid.h"
 #include "M2_BSP/BSP_Heater/bsp_heater.h"
+#include "cli_smoke_test.h"
+#include "M2_BSP/BSP_TEC/bsp_tec.h"
 
 #include "M2_BSP/BSP_BMP390/bsp_bmp390.h"
 #include "M3_Driver/devices/BMP390/bmp390.h"
@@ -95,10 +98,15 @@ static void CMD_PowerAll_OFF(EmbeddedCli *cli, char *args, void *context);
 static void CMD_PowerAll_Get(EmbeddedCli *cli, char *args, void *context); 
 static void CMD_LED_Set (EmbeddedCli *cli, char *args, void *context);
 static void CMD_LED_Reset (EmbeddedCli *cli, char *args, void *context);
-
 static void CMD_HEATER_SetDuty (EmbeddedCli *cli, char *args, void *context);
-
-static void CMD_BMP390_Onboard_Read(EmbeddedCli *cli, char *args, void *context);
+static void CMD_SOL_Single_On (EmbeddedCli *cli, char *args, void *context);
+static void CMD_SOL_Single_Off (EmbeddedCli *cli, char *args, void *context);
+static void CMD_SOL_Single_Get (EmbeddedCli *cli, char *args, void *context);
+static void CMD_TEC_Init (EmbeddedCli *cli, char *args, void *context);
+static void CMD_TEC_Set_Vol (EmbeddedCli *cli, char *args, void *context);
+static void CMD_TEC_En (EmbeddedCli *cli, char *args, void *context);
+static void CMD_TEC_SWen (EmbeddedCli *cli, char *args, void *context);
+static void CMD_TEC_Read_Reg(EmbeddedCli *cli, char *args, void *context);static void CMD_BMP390_Onboard_Read(EmbeddedCli *cli, char *args, void *context);
 static void CMD_BMP390_Connector_Read(EmbeddedCli *cli, char *args, void *context);
 static void CMD_BMP390_Connector_Enable(EmbeddedCli *cli, char *args, void *context);
 static void CMD_BMP390_Connector_Disable(EmbeddedCli *cli, char *args, void *context);
@@ -150,8 +158,14 @@ static const CliCommandBinding cliStaticBindings_internal[] = {
     { "LED",          "led_set",  "Comment following: led_set",                                 true, NULL, CMD_LED_Set  },
     { "LED",          "led_reset",  "Comment following: led_reset",                             true, NULL, CMD_LED_Reset  },
     
-    { "HTR",          "heater_set",  "Comment following: heater_set <channel> <duty> ",         true, NULL, CMD_HEATER_SetDuty  },
+    { "SOL",          "sol_single_on",  "Turn on single solenoid: sol_single_on <index>",       true, NULL, CMD_SOL_Single_On  },
+    { "SOL",          "sol_single_off", "Turn off single solenoid: sol_single_off <index>",     true, NULL, CMD_SOL_Single_Off  },
+    { "SOL",          "sol_single_get", "Get status single solenoid: sol_single_get <index>",   true, NULL, CMD_SOL_Single_Get  },
     
+    { NULL,         	"reset",       	"Reset MCU: reset",                                 	false, 	NULL, CMD_Reset,     	 },
+
+    { "HTR",          "heater_set",  "Comment following: heater_set <channel> <duty> ",         true, NULL, CMD_HEATER_SetDuty  },
+
     { "POWER",          "power_som_on",  "power_som_on: enable efuse for turn on som",        false, NULL, CMD_PowerSOM_ON, },
     { "POWER",          "power_som_off",      "power_som_off: disable efuse for turn off som",          false, NULL, CMD_PowerSOM_OFF },
     { "POWER",          "power_som_get",      "power_som_get: get power status of som",                 false, NULL, CMD_PowerSOM_Get },
@@ -181,15 +195,22 @@ static const CliCommandBinding cliStaticBindings_internal[] = {
     { "POWER",          "power_heater_get",   "power_heater_get: get power status of heater",           false, NULL, CMD_PowerHeater_Get },
 
     { "POWER",          "power_all_on",       "power_all_on: enable efuse for turn on all rails",       false, NULL, CMD_PowerAll_ON },
-    { "POWER",          "power_all_off",      "power_all_off: disable efuse for turn off all rails",      false, NULL, CMD_PowerAll_OFF },
+    { "POWER",          "power_all_off",      "power_all_off: disable efuse for turn off all rails",    false, NULL, CMD_PowerAll_OFF },
     { "POWER",          "power_all_get",      "power_all_get: get power status of all rails",           false, NULL, CMD_PowerAll_Get },
-
+    
     { "BMP390",          "bmp390_onboard_read",      "bmp390_onboard_read: read value BMP390 onboard",           false, NULL, CMD_BMP390_Onboard_Read },
     { "BMP390",          "bmp390_connector_read",    "bmp390_connector_read: read value BMP390 connector",           false, NULL, CMD_BMP390_Connector_Read },
     { "BMP390",          "bmp390_connector_enable",    "bmp390_connector_enable: enable switch i2c for bmp390 connector",           false, NULL, CMD_BMP390_Connector_Enable },
     { "BMP390",          "bmp390_connector_disable",    "bmp390_connector_disable: disable switch i2c for bmp390 connector",           false, NULL, CMD_BMP390_Connector_Disable },
 
+    { "TEST",           "echo",               "echo <text>",                                            true, NULL, CMD_CLI_Echo },
     
+    { "TEC",            "tec_init",               "power_all_get: get power status of all rails",           true, NULL, CMD_TEC_Init },
+    { "TEC",            "tec_vol",               "power_all_get: get power status of all rails",           true, NULL, CMD_TEC_Set_Vol },
+    { "TEC",            "tec_en",               "power_all_get: get power status of all rails",           true, NULL, CMD_TEC_En },
+    { "TEC",            "tec_swen",               "power_all_get: get power status of all rails",           true, NULL, CMD_TEC_SWen },
+    { "TEC",            "tec_read_reg",               "power_all_get: get power status of all rails",           true, NULL, CMD_TEC_Read_Reg },
+
     { NULL,         	"reset",       	"Reset MCU: reset",                                 	false, 	NULL, CMD_Reset,     	},
 };
 /*************************************************
@@ -1124,7 +1145,7 @@ static void CMD_ParamShow(EmbeddedCli *cli, char *args, void *context) {
  *  Usage: param_set <table_id> <addr> <type> <value>
  *  type: u8 u16 u32 i8 i16 i32 f32 bool str
  *  eg:
- *    param_set 4 8   i16 250         -> BRD_TEMP = 250 (25.0°C)
+ *    param_set 4 8   i16 250         -> BRD_TEMP = 250 (25.0�C)
  *    param_set 4 0   u32 1748000000  -> TIME_NOW = epoch
  *    param_set 1 121 u8  0           -> led_en = 0
  *    param_set 4 15  str NOMINAL     -> dev_status
@@ -1402,36 +1423,36 @@ static void CMD_PowerAll_Get(EmbeddedCli *cli, char *args, void *context) {
     embeddedCliPrint(cli, "");
 } 
 
-
-
-////--------IDEA OPTIMIZE POWER FUNCTION-----------
-//
-//static void CMD_PowerGuide_ON(EmbeddedCli *cli, char *args, void *context)
-//{
-//    embeddedCliPrint(cli, "power_on + parameters: <som> <buck_peri> <tec> <hd4> <solenoid> <lp> <heater> <all>");
-//}
-//
-//static void CMD_PowerGuide_OFF(EmbeddedCli *cli, char *args, void *context)
-//{
-//    embeddedCliPrint(cli, "power_on + parameters: <som> <buck_peri> <tec> <hd4> <solenoid> <lp> <heater> <all>");
-//} 
-//
-//static void CMD_Power_ON(EmbeddedCli *cli, char *args, void *context)
-//{
-//    int i = 1;
-//    
-//} 
-
-
 static void CMD_LED_Set (EmbeddedCli *cli, char *args, void *context)
 {
-    bsp_led_set();
+    PIOB_REGS->PIO_SODR = (1U << 12U);
+
+//    char buf[128];
+//    sprintf(buf, "PB_PSR  = 0x%08lX", PIOB_REGS->PIO_PSR);
+//    embeddedCliPrint(cli, buf);
+//    sprintf(buf, "PB_OSR  = 0x%08lX", PIOB_REGS->PIO_OSR);
+//    embeddedCliPrint(cli, buf);
+//    sprintf(buf, "PB_ODSR = 0x%08lX", PIOB_REGS->PIO_ODSR);
+//    embeddedCliPrint(cli, buf);
+//    sprintf(buf, "PB_PDSR = 0x%08lX", PIOB_REGS->PIO_PDSR);
+//    embeddedCliPrint(cli, buf);
     embeddedCliPrint(cli, "LED_ON");
     embeddedCliPrint(cli, "");
 }
+
 static void CMD_LED_Reset (EmbeddedCli *cli, char *args, void *context)
 {
-    bsp_led_reset();
+    PIOB_REGS->PIO_CODR = (1U << 12U);
+
+//    char buf[128];
+//    sprintf(buf, "PB_PSR  = 0x%08lX", PIOB_REGS->PIO_PSR);
+//    embeddedCliPrint(cli, buf);
+//    sprintf(buf, "PB_OSR  = 0x%08lX", PIOB_REGS->PIO_OSR);
+//    embeddedCliPrint(cli, buf);
+//    sprintf(buf, "PB_ODSR = 0x%08lX", PIOB_REGS->PIO_ODSR);
+//    embeddedCliPrint(cli, buf);
+//    sprintf(buf, "PB_PDSR = 0x%08lX", PIOB_REGS->PIO_PDSR);
+//    embeddedCliPrint(cli, buf);
     embeddedCliPrint(cli, "LED_OFF");
     embeddedCliPrint(cli, "");
 }
@@ -1562,8 +1583,227 @@ static void CMD_BMP390_Connector_Disable(EmbeddedCli *cli, char *args, void *con
     embeddedCliPrint(cli, "Disable switch i2c bmp390 connector");
     embeddedCliPrint(cli, "");
 }
+static void CMD_SOL_Single_On (EmbeddedCli *cli, char *args, void *context)
+{
+    const char *idexStr = embeddedCliGetToken(args, 1);
+    char buf[128];
+    
+    if (idexStr == NULL) {
+        embeddedCliPrint(cli, "Usage: sol_single_on <index>");
+        return;
+    }
+    
+    uint8_t index = (uint8_t)strtoul(idexStr, NULL, 0);
+    
+    if (index < 1 | index > 16) {
+        embeddedCliPrint(cli, "Index 1 to 16");
+        return;
+    }
+    
+    bsp_sol_single_on(index-1);
+    
+    snprintf(buf, sizeof(buf), "Single solenoid on index: %u", index);
+    embeddedCliPrint(cli, buf);
+}
+
+static void CMD_SOL_Single_Off (EmbeddedCli *cli, char *args, void *context)
+{
+    const char *idexStr = embeddedCliGetToken(args, 1);
+    char buf[128];
+    
+    if (idexStr == NULL) {
+        embeddedCliPrint(cli, "Usage: sol_single_off <index>");
+        return;
+    }
+    
+    uint8_t index = (uint8_t)strtoul(idexStr, NULL, 0);
+    
+    if (index < 1 | index > 16) {
+        embeddedCliPrint(cli, "Index 1 to 16");
+        return;
+    }
+    
+    bsp_sol_single_off(index-1);
+    
+    snprintf(buf, sizeof(buf), "Single solenoid off index: %u", index);
+    embeddedCliPrint(cli, buf);
+}
+
+static void CMD_SOL_Single_Get (EmbeddedCli *cli, char *args, void *context)
+{
+    const char *idexStr = embeddedCliGetToken(args, 1);
+    char buf[128];
+    
+    if (idexStr == NULL) {
+        embeddedCliPrint(cli, "Usage: sol_single_get <index>");
+        return;
+    }
+    
+    uint8_t index = (uint8_t)strtoul(idexStr, NULL, 0);
+    
+    if (index < 1 | index > 16) {
+        embeddedCliPrint(cli, "Index 1 to 16");
+        return;
+    }
+    
+    uint32_t rc;
+    rc = bsp_sol_single_status(index-1);
+    
+    if(rc == 1) {
+        snprintf(buf, sizeof(buf), "Status of single solenoid %u: ON", index);
+        embeddedCliPrint(cli, buf);
+    }else {
+        snprintf(buf, sizeof(buf), "Status of single solenoid %u: OFF", index);
+        embeddedCliPrint(cli, buf);
+    }
+}
+
+static void CMD_TEC_Init(EmbeddedCli *cli, char *args, void *context)
+{
+    const char *indexStr = embeddedCliGetToken(args, 1);
+    char *endptr;
+    char buf[128];
+
+    if (indexStr == NULL) {
+        embeddedCliPrint(cli, "Usage: tec_init <index>");
+        return;
+    }
+
+    uint32_t index = strtoul(indexStr, &endptr, 0);
+
+    /* Check convert error */
+    if (*endptr != '\0') {
+        embeddedCliPrint(cli, "Invalid index");
+        return;
+    }
+
+    /* Check index range (v� d? TEC1..TECn) */
+    if (index == 0 || index > TEC_MAX_NUM) {
+        snprintf(buf, sizeof(buf), "Index out of range (1-%d)", TEC_MAX_NUM);
+        embeddedCliPrint(cli, buf);
+        return;
+    }
+
+    uint32_t ret = bsp_tec_init(p_tec[index - 1]);
+
+    snprintf(buf, sizeof(buf), "TEC[%lu] %s", index, (ret == 0) ? "init success" : "init fail");
+
+    embeddedCliPrint(cli, buf);
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_TEC_Set_Vol(EmbeddedCli *cli, char *args, void *context)
+{
+    const char *indexStr = embeddedCliGetToken(args, 1);
+    const char *valStr   = embeddedCliGetToken(args, 2);
+    char *endptr;
+    char buf[128];
+
+    if (indexStr == NULL || valStr == NULL) {
+        embeddedCliPrint(cli, "Usage: tec_vol <index> <mVol>");
+        return;
+    }
+
+    uint32_t index = strtoul(indexStr, &endptr, 0);
+    if (*endptr != '\0' || index == 0 || index > TEC_MAX_NUM) {
+        embeddedCliPrint(cli, "Invalid index");
+        return;
+    }
+
+    uint32_t mVol = strtoul(valStr, &endptr, 0);
+    if (*endptr != '\0') {
+        embeddedCliPrint(cli, "Invalid voltage");
+        return;
+    }
+
+    bsp_tec_set_output_voltage_channel(p_tec[index - 1], (int64_t)(mVol * 1000000));
+
+    snprintf(buf, sizeof(buf), "TEC[%lu] output voltage = %lu mV", index, mVol);
+    embeddedCliPrint(cli, buf);
+}
+
+static void CMD_TEC_En(EmbeddedCli *cli, char *args, void *context)
+{
+    const char *indexStr = embeddedCliGetToken(args, 1);
+    char *endptr;
+    char buf[64];
+
+    if (indexStr == NULL) {
+        embeddedCliPrint(cli, "Usage: tec_en <index>");
+        return;
+    }
+
+    uint32_t index = strtoul(indexStr, &endptr, 0);
+    if (*endptr != '\0' || index == 0 || index > TEC_MAX_NUM) {
+        embeddedCliPrint(cli, "Invalid index");
+        return;
+    }
+
+    bsp_tec_set_enable_req(p_tec[index - 1]);
+
+    snprintf(buf, sizeof(buf), "TEC[%lu] enable request sent", index);
+    embeddedCliPrint(cli, buf);
+}
 
 
+static void CMD_TEC_SWen(EmbeddedCli *cli, char *args, void *context)
+{
+    const char *indexStr = embeddedCliGetToken(args, 1);
+    char *endptr;
+    char buf[64];
+
+    if (indexStr == NULL) {
+        embeddedCliPrint(cli, "Usage: tec_swen <index>");
+        return;
+    }
+
+    uint32_t index = strtoul(indexStr, &endptr, 0);
+    if (*endptr != '\0' || index == 0 || index > TEC_MAX_NUM) {
+        embeddedCliPrint(cli, "Invalid index");
+        return;
+    }
+
+    bsp_tec_set_swen_req(p_tec[index - 1]);
+
+    snprintf(buf, sizeof(buf), "TEC[%lu] SW enable request sent", index);
+    embeddedCliPrint(cli, buf);
+}
+
+static void CMD_TEC_Read_Reg(EmbeddedCli *cli, char *args, void *context)
+{
+    const char *indexStr = embeddedCliGetToken(args, 1);
+    const char *addStr   = embeddedCliGetToken(args, 2);
+    char *endptr;
+    char buf[120];
+
+    if (indexStr == NULL || addStr == NULL) {
+        embeddedCliPrint(cli, "Usage: tec_read <index> <addr>");
+        return;
+    }
+
+    uint32_t index = strtoul(indexStr, &endptr, 0);
+    if (*endptr != '\0' || index == 0 || index > TEC_MAX_NUM) {
+        embeddedCliPrint(cli, "Invalid index");
+        return;
+    }
+
+    uint32_t add = strtoul(addStr, &endptr, 0);
+    if (*endptr != '\0') {
+        embeddedCliPrint(cli, "Invalid address");
+        return;
+    }
+
+    uint32_t reg_val = 0;
+
+    lt8722_reg_read(p_tec[index - 1], add, &reg_val);
+
+    snprintf(buf, sizeof(buf),
+             "TEC[%lu] REG ADD: 0x%02lX  VAL: 0x%08lX",
+             index, add, reg_val);
+
+    embeddedCliPrint(cli, buf);
+    embeddedCliPrint(cli, "");
+}
 
 static void CMD_Reset(EmbeddedCli *cli, char *args, void *context) {
 	NVIC_SystemReset();
@@ -1589,5 +1829,3 @@ const CliCommandBinding *getCliStaticBindings(void) {
 uint16_t getCliStaticBindingCount(void) {
     return sizeof(cliStaticBindings_internal) / sizeof(cliStaticBindings_internal[0]);
 }
-
-

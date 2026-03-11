@@ -56,6 +56,65 @@ dkms.conf
 **/.generated_files/
 build/
 dist/
-nbproject/private/
-nbproject/Makefile-*
-nbproject/Package-*
+01_Satellite_FW.X/nbproject/private/
+01_Satellite_FW.X/nbproject/Makefile-*
+01_Satellite_FW.X/nbproject/Package-*
+
+####################################
+# Python virtual environments
+####################################
+
+venv/
+.venv/
+env/
+.env/
+
+# python compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+####################################
+# Python packaging / build
+####################################
+
+build/
+dist/
+*.egg-info/
+.eggs/
+
+####################################
+# MkDocs build output
+####################################
+
+site/
+
+####################################
+# Robot Framework outputs
+####################################
+
+output.xml
+log.html
+report.html
+
+####################################
+# IDE files
+####################################
+
+.vscode/
+.idea/
+
+####################################
+# OS files
+####################################
+
+.DS_Store
+Thumbs.db
+
+####################################
+# log files
+####################################
+
+*.log
+test/logs/
+test/tests/logs/

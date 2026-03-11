@@ -58,6 +58,8 @@
 #include "peripheral/efc/plib_efc.h"
 #include "peripheral/tc/plib_tc3.h"
 #include "peripheral/tc/plib_tc0.h"
+#include "peripheral/tc/plib_tc1.h"
+#include "peripheral/tc/plib_tc2.h"
 #include "peripheral/usart/plib_usart0_spi.h"
 #include "peripheral/usart/plib_usart2_spi.h"
 
