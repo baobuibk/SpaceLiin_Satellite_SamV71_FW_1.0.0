@@ -5,7 +5,7 @@ Library    BuiltIn
 *** Variables ***
 #${SERIAL_PORT}          /dev/ttyUSB0
 
-${SERIAL_PORT}          COM3
+${SERIAL_PORT}          COM6
 ${BAUDRATE}             115200
 ${TIMEOUT_S}            1.0
 ${NEWLINE}              \r\n

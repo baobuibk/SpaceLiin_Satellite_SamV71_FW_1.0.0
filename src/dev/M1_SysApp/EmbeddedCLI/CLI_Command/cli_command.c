@@ -33,6 +33,7 @@
 #include "M2_BSP/BSP_Led/bsp_led.h"
 #include "M2_BSP/BSP_Solenoid/bsp_solenoid.h"
 #include "M2_BSP/BSP_Heater/bsp_heater.h"
+#include "cli_smoke_test.h"
 
 /*************************************************
  *                     Extern                    *
@@ -92,13 +93,11 @@ static void CMD_PowerAll_OFF(EmbeddedCli *cli, char *args, void *context);
 static void CMD_PowerAll_Get(EmbeddedCli *cli, char *args, void *context); 
 static void CMD_LED_Set (EmbeddedCli *cli, char *args, void *context);
 static void CMD_LED_Reset (EmbeddedCli *cli, char *args, void *context);
+static void CMD_HEATER_SetDuty (EmbeddedCli *cli, char *args, void *context);
 
 static void CMD_SOL_Single_On (EmbeddedCli *cli, char *args, void *context);
 static void CMD_SOL_Single_Off (EmbeddedCli *cli, char *args, void *context);
 static void CMD_SOL_Single_Get (EmbeddedCli *cli, char *args, void *context);
-
-static void CMD_HEATER_SetDuty (EmbeddedCli *cli, char *args, void *context);
-
 
 
 /*************************************************
@@ -188,8 +187,10 @@ static const CliCommandBinding cliStaticBindings_internal[] = {
     { "POWER",          "power_heater_get",   "power_heater_get: get power status of heater",           false, NULL, CMD_PowerHeater_Get },
 
     { "POWER",          "power_all_on",       "power_all_on: enable efuse for turn on all rails",       false, NULL, CMD_PowerAll_ON },
-    { "POWER",          "power_all_off",      "power_all_off: disable efuse for turn off all rails",      false, NULL, CMD_PowerAll_OFF },
+    { "POWER",          "power_all_off",      "power_all_off: disable efuse for turn off all rails",    false, NULL, CMD_PowerAll_OFF },
     { "POWER",          "power_all_get",      "power_all_get: get power status of all rails",           false, NULL, CMD_PowerAll_Get },
+    
+    { "TEST",           "echo",               "echo <text>",                                            true, NULL, CMD_CLI_Echo },
 
     
     { NULL,         	"reset",       	"Reset MCU: reset",                                 	false, 	NULL, CMD_Reset,     	},
@@ -1127,7 +1128,7 @@ static void CMD_ParamShow(EmbeddedCli *cli, char *args, void *context) {
  *  Usage: param_set <table_id> <addr> <type> <value>
  *  type: u8 u16 u32 i8 i16 i32 f32 bool str
  *  eg:
- *    param_set 4 8   i16 250         -> BRD_TEMP = 250 (25.0°C)
+ *    param_set 4 8   i16 250         -> BRD_TEMP = 250 (25.0ï¿½C)
  *    param_set 4 0   u32 1748000000  -> TIME_NOW = epoch
  *    param_set 1 121 u8  0           -> led_en = 0
  *    param_set 4 15  str NOMINAL     -> dev_status
