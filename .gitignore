@@ -56,9 +56,9 @@ dkms.conf
 **/.generated_files/
 build/
 dist/
-nbproject/private/
-nbproject/Makefile-*
-nbproject/Package-*
+**/nbproject/private/
+**/nbproject/Makefile-*
+**/nbproject/Package-*
 
 ####################################
 # Python virtual environments
