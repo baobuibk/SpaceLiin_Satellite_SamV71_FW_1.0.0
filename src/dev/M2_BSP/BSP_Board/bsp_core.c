@@ -96,7 +96,7 @@ do_t status_led =
 /*
  * FOR BMP390 onboard and connnector
 */
-i2c_io_t bmp390_connector =
+i2c_io_t i2c0 =
 {
     .ui32I2cPort = 0,
 };
@@ -108,12 +108,10 @@ do_t bmp390_connector_sensor5 =
     .bStatus = false,
 };
 
-i2c_io_t bmp390_onboard =
+i2c_io_t i2c1 =
 {
     .ui32I2cPort = 1,
 };
-
-
 
 i2c_io_t sol_expander_i2c = 
 {

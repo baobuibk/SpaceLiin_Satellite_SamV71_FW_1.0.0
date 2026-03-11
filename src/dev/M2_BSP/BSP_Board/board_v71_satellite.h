@@ -94,5 +94,20 @@
 #define TEC_4_SW_PORT         3  //PC02
 #define TEC_4_SW_PIN          2   //PC02
 
+#define I2C0_SDA_PORT           1    //PA03
+#define I2C0_SDA_PIN            3    //PA03
+
+#define I2C0_SCL_PORT           1    //PA04   
+#define I2C0_SCL_PIN            4    //PA04
+
+#define I2C1_SDA_PORT           2     //PB04
+#define I2C1_SDA_PIN            4     //PB04
+
+#define I2C1_SCL_PORT           2     //PB05
+#define I2C1_SCL_PIN            5     //PB05
+
+#define SENSOR5_EN_PORT         3   //PC11
+#define SENSOR5_EN_PIN          11  //PC11
+
 #endif	/* BOARD_V71_SATELLITE_H */
 

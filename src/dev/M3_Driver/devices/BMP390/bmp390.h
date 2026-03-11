@@ -10,7 +10,14 @@
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Defines ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Types ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-typedef struct _bmp390_data_t_
+typedef struct bmp390_dev
+{
+    i2c_io_t* i2c_bus;
+    uint8_t slaveAdd;
+    bool init_status;
+} bmp390_dev_t;
+
+typedef struct bmp390_data_t
 {
 	float Temp;
 	float Pressure;
@@ -22,14 +29,11 @@ typedef struct _bmp390_data_t_
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Class ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Prototype ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /* :::::::::: BMP390 Command :::::::: */
-uint8_t BMP390_init(i2c_io_t* p_i2c, uint8_t ui8SlaveAddr);
-
-uint8_t BMP390_read_value(i2c_io_t* p_i2c, bmp390_data_t* p_data, uint8_t ui8SlaveAddr);
+uint8_t BMP390_init(bmp390_dev_t* dev);
+uint8_t BMP390_read_value(bmp390_dev_t* dev, bmp390_data_t* p_data);
 
 /* :::::::::: BMP390 Flag Check Command :::::::: */
-bool Is_BMP390_Init_Complete();
-
-bool Is_BMP390_Read_Complete();
+uint32_t Is_BMP390_Init_Complete(bmp390_dev_t* dev);
 
 /* :::::::::: Sensor_BMP390 Interface :::::::: */
 

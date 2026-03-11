@@ -19,7 +19,7 @@
 
 #include "i2c_io.h"
 #include "define.h"
-#include "D:\payload_satellite\fw\SpaceLiin_Satellite_SamV71_FW_1.0.0\src\dev\M4_Middlewares\Os_hal\os_hal.h"
+#include "os_hal.h"
 #include <stdint.h>
 #include <stdbool.h>
 

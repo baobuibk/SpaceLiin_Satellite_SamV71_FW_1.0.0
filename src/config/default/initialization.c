@@ -45,6 +45,8 @@
 // *****************************************************************************
 #include "definitions.h"
 #include "device.h"
+#include "i2c_io.h"
+#include "M2_BSP/BSP_BMP390/bsp_bmp390.h"
 
 
 // ****************************************************************************
@@ -142,6 +144,8 @@ void SYS_Initialize ( void* data )
     USART0_SPI_Initialize();
 
     USART2_SPI_Initialize();
+    
+    TWIHS2_Initialize();
 
     NVIC_Initialize();
     /* MISRAC 2012 deviation block end */

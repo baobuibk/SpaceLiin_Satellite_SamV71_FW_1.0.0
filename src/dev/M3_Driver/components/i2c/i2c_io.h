@@ -14,7 +14,6 @@
 typedef struct i2c_io_t{
 	uint32_t 			ui32I2cPort;
 	os_lock_t			lock;
-
 }i2c_io_t;
 
 void TWIHS2_Initialize( void );

@@ -337,6 +337,7 @@
           <logicalFolder name="M2_BSP" displayName="M2_BSP" projectFiles="true">
             <logicalFolder name="f4" displayName="BSP_BMP390" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_BMP390/bsp_bmp390.h</itemPath>
+              <itemPath>../src/dev/M2_BSP/BSP_TEC/bsp_tec.h</itemPath>
             </logicalFolder>
             <logicalFolder name="BSP_Board" displayName="BSP_Board" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Board/bsp_core.c</itemPath>
@@ -369,9 +370,6 @@
                            displayName="BSP_Solenoid"
                            projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Solenoid/bsp_solenoid.h</itemPath>
-            </logicalFolder>
-            <logicalFolder name="f4" displayName="BSP_TEC" projectFiles="true">
-              <itemPath>../src/dev/M2_BSP/BSP_TEC/bsp_tec.h</itemPath>
             </logicalFolder>
             <logicalFolder name="UART" displayName="UART" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/UART/uart_dma.h</itemPath>
@@ -865,7 +863,6 @@
             </logicalFolder>
             <logicalFolder name="Os_hal" displayName="Os_hal" projectFiles="true">
               <logicalFolder name="FreeRTOS" displayName="FreeRTOS" projectFiles="true">
-                <itemPath>../src/dev/M4_Middlewares/Os_hal/FreeRTOS/os_freertos.c</itemPath>
               </logicalFolder>
               <itemPath>../src/dev/M4_Middlewares/Os_hal/os_hal.h</itemPath>
             </logicalFolder>
@@ -1378,6 +1375,7 @@
           <logicalFolder name="M2_BSP" displayName="M2_BSP" projectFiles="true">
             <logicalFolder name="f4" displayName="BSP_BMP390" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_BMP390/bsp_bmp390.c</itemPath>
+              <itemPath>../src/dev/M2_BSP/BSP_TEC/bsp_tec.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f3" displayName="BSP_Heater" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Heater/bsp_heater.c</itemPath>
@@ -1392,9 +1390,6 @@
                            displayName="BSP_Solenoid"
                            projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Solenoid/bsp_solenoid.c</itemPath>
-            </logicalFolder>
-            <logicalFolder name="f4" displayName="BSP_TEC" projectFiles="true">
-              <itemPath>../src/dev/M2_BSP/BSP_TEC/bsp_tec.c</itemPath>
             </logicalFolder>
             <logicalFolder name="UART" displayName="UART" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/UART/uart_dma.c</itemPath>
