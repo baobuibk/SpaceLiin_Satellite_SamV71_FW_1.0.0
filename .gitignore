@@ -110,3 +110,11 @@ report.html
 
 .DS_Store
 Thumbs.db
+
+####################################
+# log files
+####################################
+
+*.log
+test/logs/
+test/tests/logs/
