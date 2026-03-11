@@ -1,0 +1,44 @@
+[2026-03-11T09:29:20.346] INFO: opened COM6 baud=115200
+[2026-03-11T09:29:20.348] TX: echo hello_samv71
+[2026-03-11T09:29:20.359] RX: e
+[2026-03-11T09:29:20.359] RX: [s
+[2026-03-11T09:29:20.374] RX: [
+[2026-03-11T09:29:20.374] RX: uc[sho[uh[so [uo[s [u [s[uh[s[ue[s[ul[s[ul[s[
+[2026-03-11T09:29:20.379] RX: u
+[2026-03-11T09:29:20.379] RX: o[s[u_[s[us[s[ua[s[um[s[uv[s[u7[s[u1[s[u
+hello_
+[2026-03-11T09:29:20.384] RX: s
+[2026-03-11T09:29:20.385] RX: amv71
+DEBUG@MCU:~ $ [s[u[s[u
+[2026-03-11T09:29:20.388] TX: echo firmware cli ready
+[2026-03-11T09:29:20.397] RX: e
+[2026-03-11T09:29:20.397] RX: [s[uc[sho[uh[so [uo[s [u [s[uf[s[ui[s[ur[s[um
+[2026-03-11T09:29:20.400] RX: 
+[2026-03-11T09:29:20.400] RX: [s[uw[s[ua[s[ur[s[ue[s
+[2026-03-11T09:29:20.409] RX: 
+[2026-03-11T09:29:20.409] RX: [u [s[uc[s[ul[s[ui[s[u [s[ur[s[ue[s[ua[s[ud[
+[2026-03-11T09:29:20.413] RX: s
+[2026-03-11T09:29:20.414] RX: [uy[s[u
+firmware
+DEBUG@MCU:~ $ [s[u[s[u
+[2026-03-11T09:29:23.434] WARN: command 'echo firmware cli ready' attempt 1 failed: Timeout waiting for token 'firmware cli ready'. Buffer so far:
+e[s[uc[sho[uh[so [uo[s [u [s[uf[s[ui[s[ur[s[um[s[uw[s[ua[s[ur[s[ue[s[u [s[uc[s[ul[s[ui[s[u [s[ur[s[ue[s[ua[s[ud[s[uy[s[u
+firmware
+DEBUG@MCU:~ $ [s[u[s[u
+[2026-03-11T09:29:23.935] TX: echo firmware cli ready
+[2026-03-11T09:29:23.947] RX: e
+[2026-03-11T09:29:23.947] RX: [s[uc[sho[u
+[2026-03-11T09:29:23.961] RX: h
+[2026-03-11T09:29:23.961] RX: [so [uo[s [u [s[uf[s[ui[s[ur[s[um[s[uw[s[ua[
+[2026-03-11T09:29:23.966] RX: s
+[2026-03-11T09:29:23.966] RX: [ur[s[ue[s[u [s[uc[s[ul[s[ui[s[u [s[ur[s[ue
+[2026-03-11T09:29:23.966] RX: [s
+[2026-03-11T09:29:23.974] RX: [
+[2026-03-11T09:29:23.974] RX: ua[s[ud[s[uy[s[u
+firmware
+DEBUG@MCU:~ $ [s[u[s[u
+[2026-03-11T09:29:26.986] WARN: command 'echo firmware cli ready' attempt 2 failed: Timeout waiting for token 'firmware cli ready'. Buffer so far:
+e[s[uc[sho[uh[so [uo[s [u [s[uf[s[ui[s[ur[s[um[s[uw[s[ua[s[ur[s[ue[s[u [s[uc[s[ul[s[ui[s[u [s[ur[s[ue[s[ua[s[ud[s[uy[s[u
+firmware
+DEBUG@MCU:~ $ [s[u[s[u
+[2026-03-11T09:29:27.489] INFO: closing serial port

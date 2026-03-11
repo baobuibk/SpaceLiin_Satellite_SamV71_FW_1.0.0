@@ -1,0 +1,5 @@
+[2026-03-11T09:25:23.321] WARN: open attempt 1 failed: could not open port 'COM6': PermissionError(13, 'Access is denied.', None, 5)
+[2026-03-11T09:25:23.822] WARN: open attempt 2 failed: could not open port 'COM6': PermissionError(13, 'Access is denied.', None, 5)
+[2026-03-11T09:25:24.323] WARN: open attempt 3 failed: could not open port 'COM6': PermissionError(13, 'Access is denied.', None, 5)
+[2026-03-11T09:25:24.824] WARN: open attempt 4 failed: could not open port 'COM6': PermissionError(13, 'Access is denied.', None, 5)
+[2026-03-11T09:25:25.325] WARN: open attempt 5 failed: could not open port 'COM6': PermissionError(13, 'Access is denied.', None, 5)

@@ -1,0 +1,5 @@
+[2026-03-10T12:20:18.078] WARN: open attempt 1 failed: could not open port 'COM3': FileNotFoundError(2, 'The system cannot find the file specified.', None, 2)
+[2026-03-10T12:20:18.580] WARN: open attempt 2 failed: could not open port 'COM3': FileNotFoundError(2, 'The system cannot find the file specified.', None, 2)
+[2026-03-10T12:20:19.083] WARN: open attempt 3 failed: could not open port 'COM3': FileNotFoundError(2, 'The system cannot find the file specified.', None, 2)
+[2026-03-10T12:20:19.584] WARN: open attempt 4 failed: could not open port 'COM3': FileNotFoundError(2, 'The system cannot find the file specified.', None, 2)
+[2026-03-10T12:20:20.087] WARN: open attempt 5 failed: could not open port 'COM3': FileNotFoundError(2, 'The system cannot find the file specified.', None, 2)

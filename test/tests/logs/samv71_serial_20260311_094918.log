@@ -1,0 +1,29 @@
+[2026-03-11T09:49:18.216] INFO: opened COM6 baud=115200
+[2026-03-11T09:49:18.222] TX: version
+[2026-03-11T09:49:18.228] RX: v
+[2026-03-11T09:49:18.229] RX: [s[ue[s[ur[s[us[s[ui[s[uo[s[un[s[u
+[2026-03-11T09:49:18.240] RX: 
+[2026-03-11T09:49:18.240] RX: 
+Unknown command: "version". Write "help" for a list of avail
+[2026-03-11T09:49:18.243] RX: a
+[2026-03-11T09:49:18.244] RX: ble commands
+DEBUG@MCU:~ $ [s[u[s[u
+[2026-03-11T09:49:21.262] WARN: command 'version' attempt 1 failed: Timeout waiting for token 'SAMV71'. Buffer so far:
+v[s[ue[s[ur[s[us[s[ui[s[uo[s[un[s[u
+Unknown command: "version". Write "help" for a list of available commands
+DEBUG@MCU:~ $ [s[u[s[u
+[2026-03-11T09:49:21.763] TX: version
+[2026-03-11T09:49:21.766] RX: v
+[2026-03-11T09:49:21.767] RX: [s[ue[s[ur[s[us[
+[2026-03-11T09:49:21.779] RX: s
+[2026-03-11T09:49:21.780] RX: [ui[s[uo[s[un[s[u
+Unknown command: "version". Write "
+[2026-03-11T09:49:21.785] RX: h
+[2026-03-11T09:49:21.785] RX: elp" for a list of available commands
+DEBUG@MCU:~ $ [s[u[
+[2026-03-11T09:49:21.785] RX: s[u
+[2026-03-11T09:49:24.798] WARN: command 'version' attempt 2 failed: Timeout waiting for token 'SAMV71'. Buffer so far:
+v[s[ue[s[ur[s[us[s[ui[s[uo[s[un[s[u
+Unknown command: "version". Write "help" for a list of available commands
+DEBUG@MCU:~ $ [s[u[s[u
+[2026-03-11T09:49:25.301] INFO: closing serial port

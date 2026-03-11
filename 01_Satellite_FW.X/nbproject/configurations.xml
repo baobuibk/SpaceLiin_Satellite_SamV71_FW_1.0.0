@@ -267,6 +267,7 @@
               </logicalFolder>
               <logicalFolder name="CLI_Command" displayName="CLI_Command" projectFiles="true">
                 <itemPath>../src/dev/M1_SysApp/EmbeddedCLI/CLI_Command/cli_command.h</itemPath>
+                <itemPath>../src/dev/M1_SysApp/EmbeddedCLI/CLI_Command/cli_smoke_test.h</itemPath>
               </logicalFolder>
               <logicalFolder name="CLI_Setup" displayName="CLI_Setup" projectFiles="true">
                 <itemPath>../src/dev/M1_SysApp/EmbeddedCLI/CLI_Setup/cli_setup.h</itemPath>
@@ -1315,6 +1316,7 @@
               </logicalFolder>
               <logicalFolder name="CLI_Command" displayName="CLI_Command" projectFiles="true">
                 <itemPath>../src/dev/M1_SysApp/EmbeddedCLI/CLI_Command/cli_command.c</itemPath>
+                <itemPath>../src/dev/M1_SysApp/EmbeddedCLI/CLI_Command/cli_smoke_test.c</itemPath>
               </logicalFolder>
               <logicalFolder name="CLI_Setup" displayName="CLI_Setup" projectFiles="true">
                 <itemPath>../src/dev/M1_SysApp/EmbeddedCLI/CLI_Setup/cli_setup.c</itemPath>
