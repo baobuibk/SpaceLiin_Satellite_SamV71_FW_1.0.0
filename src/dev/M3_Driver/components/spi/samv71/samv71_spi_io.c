@@ -35,13 +35,7 @@ static void spi_enable_clock(uint32_t spiNum)
         PMC_REGS->PMC_PCER1 = (1u << (id - 32U));
 }
 
-
-
-
-uint32_t spi_io_transfer_sync(spi_io_t *me,
-                              const uint8_t *pui8TxBuff,
-                              uint8_t *pui8RxBuff,
-                              uint32_t ui32Length)
+uint32_t spi_io_transfer_sync(spi_io_t *me, const uint8_t *pui8TxBuff, uint8_t *pui8RxBuff, uint32_t ui32Length)
 {
     if (!me) return ERROR_INVALID_PARAM;
     if (ui32Length == 0) return ERROR_OK;
@@ -49,12 +43,11 @@ uint32_t spi_io_transfer_sync(spi_io_t *me,
     spi_registers_t *spi = spi_periph[me->ui32SpiPort];
     if (!spi) return ERROR_INVALID_PARAM;
 
-    // (Tuỳ chọn) đảm bảo SPI enabled:
     // if (!(spi->SPI_SR & SPI_SR_SPIENS_Msk)) return ERROR_SPI_DISABLED;
 
     for (uint32_t i = 0; i < ui32Length; i++)
     {
-        // Wait Transmit Data Register Empty (sẵn sàng nhận dữ liệu mới)
+        // Wait Transmit Data Register Empty
         if (ERROR_OK != os_reg_wait_flag_blocking(&spi->SPI_SR, SPI_SR_TDRE_Msk, 100))
             return ERROR_TIMEOUT;
 
@@ -63,7 +56,6 @@ uint32_t spi_io_transfer_sync(spi_io_t *me,
         // Ghi đúng field TD (và có thể OR PCS/LASTXFER nếu bạn dùng HW CS)
         uint32_t tdr = SPI_TDR_TD(tx);
 
-        // Nếu cần nhả CS ở byte cuối (khi dùng CSAAT/HW CS), bạn có thể:
         // if (i == (ui32Length - 1)) tdr |= SPI_TDR_LASTXFER_Msk;
 
         spi->SPI_TDR = tdr;
@@ -85,7 +77,6 @@ uint32_t spi_io_transfer_sync(spi_io_t *me,
         if (pui8RxBuff) pui8RxBuff[i] = rx;
     }
 
-    // Flush: đợi truyền xong hẳn
     if (ERROR_OK != os_reg_wait_flag_blocking(&spi->SPI_SR, SPI_SR_TXEMPTY_Msk, 100))
         return ERROR_TIMEOUT;
 
@@ -102,8 +93,6 @@ uint32_t spi_io_set_mode(spi_io_t *me, uint8_t spi_mode)
     if (me == NULL)
         return ERROR_INVALID_PARAM;
 
-    // Giữ đúng logic bạn đang dùng: port==0 là invalid.
-    // Nếu hệ bạn dùng index từ 0..SPI_MAX_BUS_NUMBER-1 thì đổi điều kiện này.
     if (me->ui32SpiPort == 0 || me->ui32SpiPort > SPI_MAX_BUS_NUMBER)
         return ERROR_INVALID_PARAM;
 
@@ -111,23 +100,19 @@ uint32_t spi_io_set_mode(spi_io_t *me, uint8_t spi_mode)
     if (spi == NULL)
         return ERROR_INVALID_PARAM;
 
-    // Chờ SPI rảnh (TX regs empty) trước khi đổi mode
     if (ERROR_OK != os_reg_wait_flag_blocking(&spi->SPI_SR, SPI_SR_TXEMPTY_Msk, 100))
         return ERROR_TIMEOUT;
 
     // Disable SPI
     spi->SPI_CR = SPI_CR_SPIDIS_Msk;
 
-    // (Khuyến nghị) đợi SPI disable thật
     if (ERROR_OK != os_reg_wait_clear_flag_blocking(&spi->SPI_SR, SPI_SR_SPIENS_Msk, 100))
     {
         return ERROR_TIMEOUT;
     }
 
-    // Chỉ cho phép 0..3
     spi_mode &= 0x03u;
 
-    // Chọn CSR index (mặc định NPCS0). Nếu me có thông tin NPCS, dùng me->npcs.
     const uint32_t cs_idx = 0;
 
     uint32_t csr = spi->SPI_CSR[cs_idx];
@@ -175,7 +160,6 @@ uint32_t spi_io_write_sync(spi_io_t *me, const uint8_t *pui8TxBuff, uint32_t ui3
     if (!pui8TxBuff) return ERROR_INVALID_PARAM;
     if (ui32Length == 0) return ERROR_OK;
 
-    // Write = transmit buffer, Rx không cần lưu (transfer_sync vẫn đọc RDR để clear RDRF)
     return spi_io_transfer_sync(me, pui8TxBuff, NULL, ui32Length);
 }
 

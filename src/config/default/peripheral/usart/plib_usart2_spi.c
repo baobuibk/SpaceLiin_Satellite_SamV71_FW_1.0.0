@@ -59,7 +59,7 @@ void USART2_SPI_Initialize( void )
     USART2_REGS->US_CR = (US_CR_SPI_RSTRX_Msk | US_CR_SPI_RSTTX_Msk | US_CR_SPI_RSTSTA_Msk);
 
     /* Configure clock source, clock phase, clock polarity and CKO = 1 */
-    USART2_REGS->US_MR |= (US_MR_USART_USCLKS_MCK | US_MR_SPI_CHRL(US_MR_SPI_CHRL_8_BIT_Val) | US_MR_SPI_CPHA(0x0U) | US_MR_SPI_CPOL(0x0U) | US_MR_SPI_CLKO(1U));
+    USART2_REGS->US_MR |= (US_MR_USART_USCLKS_MCK | US_MR_SPI_CHRL(US_MR_SPI_CHRL_8_BIT_Val) | US_MR_SPI_CPHA(0x0U) | US_MR_SPI_CPOL(0x1U) | US_MR_SPI_CLKO(1U));
 
     /* Enable TX and RX */
     USART2_REGS->US_CR = (US_CR_SPI_RXEN_Msk | US_CR_SPI_TXEN_Msk);

@@ -95,3 +95,64 @@ i2c_io_t sol_expander_i2c =
 {
   .ui32I2cPort = 2  
 };
+
+spi_io_t tec_usart_spi =
+{
+    .ui32SpiPort = 2,
+};
+
+do_t tec_1_cs =
+{
+    .port = TEC_1_CS_PORT,
+    .pin = TEC_1_CS_PIN,
+    .bStatus = true,
+};
+
+do_t tec_1_sw =
+{
+    .port = TEC_1_SW_PORT,
+    .pin = TEC_1_SW_PIN,
+    .bStatus = false,
+};
+
+do_t tec_2_cs =
+{
+    .port = TEC_2_CS_PORT,
+    .pin = TEC_2_CS_PIN,
+    .bStatus = true,
+};
+
+do_t tec_2_sw =
+{
+    .port = TEC_2_SW_PORT,
+    .pin = TEC_2_SW_PIN,
+    .bStatus = false,
+};
+
+do_t tec_3_cs =
+{
+    .port = TEC_3_CS_PORT,
+    .pin = TEC_3_CS_PIN,
+    .bStatus = true,
+};
+
+do_t tec_3_sw =
+{
+    .port = TEC_3_SW_PORT,
+    .pin = TEC_3_SW_PIN,
+    .bStatus = false,
+};
+
+do_t tec_4_cs =
+{
+    .port = TEC_4_CS_PORT,
+    .pin = TEC_4_CS_PIN,
+    .bStatus = true,
+};
+
+do_t tec_4_sw =
+{
+    .port = TEC_4_SW_PORT,
+    .pin = TEC_4_SW_PIN,
+    .bStatus = false,
+};

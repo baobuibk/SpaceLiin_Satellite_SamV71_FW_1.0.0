@@ -27,6 +27,16 @@ extern do_t power_heater;
 
 extern do_t status_led;
 
+extern spi_io_t tec_usart_spi;
+extern do_t tec_1_cs;
+extern do_t tec_1_sw;
+extern do_t tec_2_cs;
+extern do_t tec_2_sw;
+extern do_t tec_3_cs;
+extern do_t tec_3_sw;
+extern do_t tec_4_cs;
+extern do_t tec_4_sw;
+
 void BSP_board_init(void);
 
 #endif /* __BSP_CORE_H__ */

@@ -70,5 +70,29 @@
 #define HTR_PWM_8_PORT         3  //PC6
 #define HTR_PWM_8_PIN          6   //PC6
 
+#define TEC_1_CS_PORT         3  //PC18
+#define TEC_1_CS_PIN          18   //PC18
+
+#define TEC_1_SW_PORT         1  //PA30
+#define TEC_1_SW_PIN          30   //PA30
+
+#define TEC_2_CS_PORT         3  //PC20
+#define TEC_2_CS_PIN          20   //PC20
+
+#define TEC_2_SW_PORT         4  //PD13
+#define TEC_2_SW_PIN          13   //PD13
+
+#define TEC_3_CS_PORT         3  //PC22
+#define TEC_3_CS_PIN          22   //PC22
+
+#define TEC_3_SW_PORT         3  //PC01
+#define TEC_3_SW_PIN          1   //PC01
+
+#define TEC_4_CS_PORT         4  //PD11
+#define TEC_4_CS_PIN          11   //PD11
+
+#define TEC_4_SW_PORT         3  //PC02
+#define TEC_4_SW_PIN          2   //PC02
+
 #endif	/* BOARD_V71_SATELLITE_H */
 
