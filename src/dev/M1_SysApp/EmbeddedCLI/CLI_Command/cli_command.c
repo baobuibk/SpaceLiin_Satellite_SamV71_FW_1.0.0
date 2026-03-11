@@ -34,6 +34,7 @@
 #include "M2_BSP/BSP_Solenoid/bsp_solenoid.h"
 #include "M2_BSP/BSP_Heater/bsp_heater.h"
 #include "cli_smoke_test.h"
+#include "cli_expander_test.h"
 
 /*************************************************
  *                     Extern                    *
@@ -191,6 +192,8 @@ static const CliCommandBinding cliStaticBindings_internal[] = {
     { "POWER",          "power_all_get",      "power_all_get: get power status of all rails",           false, NULL, CMD_PowerAll_Get },
     
     { "TEST",           "echo",               "echo <text>",                                            true, NULL, CMD_CLI_Echo },
+    { "TEST",           "expander_write",     "expander_write <val>",                                   true, NULL, CMD_Expander_Write },
+    { "TEST",           "expander_read",      "expander_read",                                          false, NULL, CMD_Expander_Read },
 
     
     { NULL,         	"reset",       	"Reset MCU: reset",                                 	false, 	NULL, CMD_Reset,     	},

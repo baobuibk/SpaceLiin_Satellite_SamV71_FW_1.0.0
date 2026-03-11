@@ -5,7 +5,7 @@
 
 extern i2c_io_t sol_expander_i2c;
 
-static tca6416a_t expander = {
+tca6416a_t expander = {
     .bus = &sol_expander_i2c,
     .addr7 = 0x20,
 };
