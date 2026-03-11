@@ -34,6 +34,7 @@
 #include "M2_BSP/BSP_Solenoid/bsp_solenoid.h"
 #include "M2_BSP/BSP_Heater/bsp_heater.h"
 #include "cli_smoke_test.h"
+#include "M2_BSP/BSP_TEC/bsp_tec.h"
 #include "cli_expander_test.h"
 
 /*************************************************
@@ -95,11 +96,14 @@ static void CMD_PowerAll_Get(EmbeddedCli *cli, char *args, void *context);
 static void CMD_LED_Set (EmbeddedCli *cli, char *args, void *context);
 static void CMD_LED_Reset (EmbeddedCli *cli, char *args, void *context);
 static void CMD_HEATER_SetDuty (EmbeddedCli *cli, char *args, void *context);
-
 static void CMD_SOL_Single_On (EmbeddedCli *cli, char *args, void *context);
 static void CMD_SOL_Single_Off (EmbeddedCli *cli, char *args, void *context);
 static void CMD_SOL_Single_Get (EmbeddedCli *cli, char *args, void *context);
-
+static void CMD_TEC_Init (EmbeddedCli *cli, char *args, void *context);
+static void CMD_TEC_Set_Vol (EmbeddedCli *cli, char *args, void *context);
+static void CMD_TEC_En (EmbeddedCli *cli, char *args, void *context);
+static void CMD_TEC_SWen (EmbeddedCli *cli, char *args, void *context);
+static void CMD_TEC_Read_Reg(EmbeddedCli *cli, char *args, void *context);
 
 /*************************************************
  * Command Define "Dev"              *
@@ -155,10 +159,6 @@ static const CliCommandBinding cliStaticBindings_internal[] = {
 
     { "HTR",          "heater_set",  "Comment following: heater_set <channel> <duty> ",         true, NULL, CMD_HEATER_SetDuty  },
 
-    
-    
-
-    
     { "POWER",          "power_som_on",  "power_som_on: enable efuse for turn on som",        false, NULL, CMD_PowerSOM_ON, },
     { "POWER",          "power_som_off",      "power_som_off: disable efuse for turn off som",          false, NULL, CMD_PowerSOM_OFF },
     { "POWER",          "power_som_get",      "power_som_get: get power status of som",                 false, NULL, CMD_PowerSOM_Get },
@@ -192,12 +192,16 @@ static const CliCommandBinding cliStaticBindings_internal[] = {
     { "POWER",          "power_all_get",      "power_all_get: get power status of all rails",           false, NULL, CMD_PowerAll_Get },
     
     { "TEST",           "echo",               "echo <text>",                                            true, NULL, CMD_CLI_Echo },
-    { "TEST",           "expander_write",     "expander_write <val>",                                   true, NULL, CMD_Expander_Write },
+        { "TEST",           "expander_write",     "expander_write <val>",                                   true, NULL, CMD_Expander_Write },
     { "TEST",           "expander_read",      "expander_read",                                          false, NULL, CMD_Expander_Read },
 
-    
-    { NULL,         	"reset",       	"Reset MCU: reset",                                 	false, 	NULL, CMD_Reset,     	},
+    { "TEC",            "tec_init",               "power_all_get: get power status of all rails",           true, NULL, CMD_TEC_Init },
+    { "TEC",            "tec_vol",               "power_all_get: get power status of all rails",           true, NULL, CMD_TEC_Set_Vol },
+    { "TEC",            "tec_en",               "power_all_get: get power status of all rails",           true, NULL, CMD_TEC_En },
+    { "TEC",            "tec_swen",               "power_all_get: get power status of all rails",           true, NULL, CMD_TEC_SWen },
+    { "TEC",            "tec_read_reg",               "power_all_get: get power status of all rails",           true, NULL, CMD_TEC_Read_Reg },
 
+    { NULL,         	"reset",       	"Reset MCU: reset",                                 	false, 	NULL, CMD_Reset,     	},
 };
 /*************************************************
  *                 External Declarations         *
@@ -1567,6 +1571,153 @@ static void CMD_SOL_Single_Get (EmbeddedCli *cli, char *args, void *context)
         snprintf(buf, sizeof(buf), "Status of single solenoid %u: OFF", index);
         embeddedCliPrint(cli, buf);
     }
+}
+
+static void CMD_TEC_Init(EmbeddedCli *cli, char *args, void *context)
+{
+    const char *indexStr = embeddedCliGetToken(args, 1);
+    char *endptr;
+    char buf[128];
+
+    if (indexStr == NULL) {
+        embeddedCliPrint(cli, "Usage: tec_init <index>");
+        return;
+    }
+
+    uint32_t index = strtoul(indexStr, &endptr, 0);
+
+    /* Check convert error */
+    if (*endptr != '\0') {
+        embeddedCliPrint(cli, "Invalid index");
+        return;
+    }
+
+    /* Check index range (v� d? TEC1..TECn) */
+    if (index == 0 || index > TEC_MAX_NUM) {
+        snprintf(buf, sizeof(buf), "Index out of range (1-%d)", TEC_MAX_NUM);
+        embeddedCliPrint(cli, buf);
+        return;
+    }
+
+    uint32_t ret = bsp_tec_init(p_tec[index - 1]);
+
+    snprintf(buf, sizeof(buf), "TEC[%lu] %s", index, (ret == 0) ? "init success" : "init fail");
+
+    embeddedCliPrint(cli, buf);
+    embeddedCliPrint(cli, "");
+}
+
+static void CMD_TEC_Set_Vol(EmbeddedCli *cli, char *args, void *context)
+{
+    const char *indexStr = embeddedCliGetToken(args, 1);
+    const char *valStr   = embeddedCliGetToken(args, 2);
+    char *endptr;
+    char buf[128];
+
+    if (indexStr == NULL || valStr == NULL) {
+        embeddedCliPrint(cli, "Usage: tec_vol <index> <mVol>");
+        return;
+    }
+
+    uint32_t index = strtoul(indexStr, &endptr, 0);
+    if (*endptr != '\0' || index == 0 || index > TEC_MAX_NUM) {
+        embeddedCliPrint(cli, "Invalid index");
+        return;
+    }
+
+    uint32_t mVol = strtoul(valStr, &endptr, 0);
+    if (*endptr != '\0') {
+        embeddedCliPrint(cli, "Invalid voltage");
+        return;
+    }
+
+    bsp_tec_set_output_voltage_channel(p_tec[index - 1], (int64_t)(mVol * 1000000));
+
+    snprintf(buf, sizeof(buf), "TEC[%lu] output voltage = %lu mV", index, mVol);
+    embeddedCliPrint(cli, buf);
+}
+
+static void CMD_TEC_En(EmbeddedCli *cli, char *args, void *context)
+{
+    const char *indexStr = embeddedCliGetToken(args, 1);
+    char *endptr;
+    char buf[64];
+
+    if (indexStr == NULL) {
+        embeddedCliPrint(cli, "Usage: tec_en <index>");
+        return;
+    }
+
+    uint32_t index = strtoul(indexStr, &endptr, 0);
+    if (*endptr != '\0' || index == 0 || index > TEC_MAX_NUM) {
+        embeddedCliPrint(cli, "Invalid index");
+        return;
+    }
+
+    bsp_tec_set_enable_req(p_tec[index - 1]);
+
+    snprintf(buf, sizeof(buf), "TEC[%lu] enable request sent", index);
+    embeddedCliPrint(cli, buf);
+}
+
+
+static void CMD_TEC_SWen(EmbeddedCli *cli, char *args, void *context)
+{
+    const char *indexStr = embeddedCliGetToken(args, 1);
+    char *endptr;
+    char buf[64];
+
+    if (indexStr == NULL) {
+        embeddedCliPrint(cli, "Usage: tec_swen <index>");
+        return;
+    }
+
+    uint32_t index = strtoul(indexStr, &endptr, 0);
+    if (*endptr != '\0' || index == 0 || index > TEC_MAX_NUM) {
+        embeddedCliPrint(cli, "Invalid index");
+        return;
+    }
+
+    bsp_tec_set_swen_req(p_tec[index - 1]);
+
+    snprintf(buf, sizeof(buf), "TEC[%lu] SW enable request sent", index);
+    embeddedCliPrint(cli, buf);
+}
+
+static void CMD_TEC_Read_Reg(EmbeddedCli *cli, char *args, void *context)
+{
+    const char *indexStr = embeddedCliGetToken(args, 1);
+    const char *addStr   = embeddedCliGetToken(args, 2);
+    char *endptr;
+    char buf[120];
+
+    if (indexStr == NULL || addStr == NULL) {
+        embeddedCliPrint(cli, "Usage: tec_read <index> <addr>");
+        return;
+    }
+
+    uint32_t index = strtoul(indexStr, &endptr, 0);
+    if (*endptr != '\0' || index == 0 || index > TEC_MAX_NUM) {
+        embeddedCliPrint(cli, "Invalid index");
+        return;
+    }
+
+    uint32_t add = strtoul(addStr, &endptr, 0);
+    if (*endptr != '\0') {
+        embeddedCliPrint(cli, "Invalid address");
+        return;
+    }
+
+    uint32_t reg_val = 0;
+
+    lt8722_reg_read(p_tec[index - 1], add, &reg_val);
+
+    snprintf(buf, sizeof(buf),
+             "TEC[%lu] REG ADD: 0x%02lX  VAL: 0x%08lX",
+             index, add, reg_val);
+
+    embeddedCliPrint(cli, buf);
+    embeddedCliPrint(cli, "");
 }
 
 static void CMD_Reset(EmbeddedCli *cli, char *args, void *context) {

@@ -368,6 +368,9 @@
                            projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Solenoid/bsp_solenoid.h</itemPath>
             </logicalFolder>
+            <logicalFolder name="f4" displayName="BSP_TEC" projectFiles="true">
+              <itemPath>../src/dev/M2_BSP/BSP_TEC/bsp_tec.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="UART" displayName="UART" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/UART/uart_dma.h</itemPath>
               <itemPath>../src/dev/M2_BSP/UART/uart_irq.h</itemPath>
@@ -1384,6 +1387,9 @@
                            displayName="BSP_Solenoid"
                            projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Solenoid/bsp_solenoid.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f4" displayName="BSP_TEC" projectFiles="true">
+              <itemPath>../src/dev/M2_BSP/BSP_TEC/bsp_tec.c</itemPath>
             </logicalFolder>
             <logicalFolder name="UART" displayName="UART" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/UART/uart_dma.c</itemPath>

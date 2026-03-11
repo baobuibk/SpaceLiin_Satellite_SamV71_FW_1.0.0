@@ -8,7 +8,7 @@
 #include "lt8722.h"
 #include "os_hal.h"
 #include "define.h"
-
+#include "../Config/default/peripheral/usart/plib_usart2_spi.h"
 
 struct lt8722_reg lt8722_regs[LT8722_NUM_REGISTERS] = {
 	{
@@ -120,13 +120,14 @@ uint32_t lt8722_transaction(struct lt8722_dev *dev, struct lt8722_packet *packet
 
 
     csLOW(dev);
-    spi_io_transfer_async(dev->hspi, tx_buffer, rx_buffer, packet->command.size);
+//    spi_io_transfer_sync(dev->hspi, tx_buffer, rx_buffer, packet->command.size);
+    USART2_SPI_WriteRead(tx_buffer, packet->command.size, rx_buffer, packet->command.size);
+    while(USART2_SPI_IsTransmitterBusy());
     csHIGH(dev);
 
 //	SPI_write_and_read_buffer(dev, buffer, packet->command.size);
 	packet->status = (get_unaligned_be16(&rx_buffer[0]) & GENMASK(10, 0));
-	if (packet->command.byte == LT8722_DATA_WRITE_COMMAND)
-	{
+	if (packet->command.byte == LT8722_DATA_WRITE_COMMAND) {
 		packet->crc = rx_buffer[2];
 		packet->ack = rx_buffer[7];
 	} else if (packet->command.byte == LT8722_DATA_READ_COMMAND) {
@@ -137,8 +138,7 @@ uint32_t lt8722_transaction(struct lt8722_dev *dev, struct lt8722_packet *packet
 		packet->crc = rx_buffer[2];
 		packet->ack = rx_buffer[3];
 	}
-	if (packet->ack != LT8722_ACK_ACKNOWLEDGE)
-	{
+	if (packet->ack != LT8722_ACK_ACKNOWLEDGE) {
 		dev->status |= (1 << TEC_FAULT_POS); //communication fault
 		return ERROR_FAIL;
 	}
@@ -425,11 +425,13 @@ uint32_t lt8722_init(struct lt8722_dev *dev)
 	/*
 	 * 7. Set the desired output voltage
 	 */
+    
+//    lt8722_set_output_voltage_channel(dev, TEC_COOL, 1000000000);
 
 	if (!ret)
-		{
-		dev->status |= ((1 << TEC_INIT_POS) | (1 << TEC_ENABLED_POS) | (1 << TEC_SWITCH_ENABLED_POS)); //tec is initted
-		}
+    {
+        dev->status |= ((1 << TEC_INIT_POS) | (1 << TEC_ENABLED_POS) | (1 << TEC_SWITCH_ENABLED_POS)); //tec is initted
+    }
 	else dev->status = 0;
 	dev->voltage = 0;
 	return ret;

@@ -335,15 +335,15 @@ struct lt8722_packet {
 #define TEC_SWITCH_ENABLED_POS 	2
 #define TEC_DIR_POS 			3
 #define TEC_FAULT_POS 			4
-struct lt8722_dev {
+
+typedef struct lt8722_dev {
 	spi_io_t *hspi;
 	do_t     *spi_cs_pin;
 	do_t     *en_pin;
 	do_t     *sw_pin;
 	uint8_t status; //							FAULT | DIR | SWITCH_ENABLED | ENABLED | INIT
 	int64_t  voltage;
-
-};
+} lt8722_dev_t;
 
 int32_t lt8722_voltage_to_dac(int64_t voltage);
 int64_t lt8722_dac_to_voltage(int32_t dac);
