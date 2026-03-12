@@ -101,7 +101,7 @@ i2c_io_t i2c0 =
     .ui32I2cPort = 0,
 };
 
-do_t bmp390_connector_sensor5 = 
+do_t bmp390_ext_sensor5 = 
 {
     .port= SENSOR5_EN_PORT,
     .pin = SENSOR5_EN_PIN,

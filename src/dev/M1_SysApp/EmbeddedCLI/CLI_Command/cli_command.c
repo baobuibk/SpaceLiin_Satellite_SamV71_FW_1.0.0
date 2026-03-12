@@ -1510,11 +1510,10 @@ static void CMD_HEATER_SetDuty (EmbeddedCli *cli, char *args, void *context)
 
 static void CMD_BMP390_Int_Read(EmbeddedCli *cli, char *args, void *context)
 {
-    uint32_t status;
+    uint32_t status = ERROR_OK;
     bmp390_data_t data;
     if (bmp390_int.init_status == false)
     {
-        bsp_bmp390_init(&bmp390_int);
         /* init sensor */
         status = bsp_bmp390_init(&bmp390_int);
         if (status != ERROR_OK)
@@ -1523,7 +1522,10 @@ static void CMD_BMP390_Int_Read(EmbeddedCli *cli, char *args, void *context)
             return;
         }
     }
-    /* ??c d? li?u */
+    
+    //wait for init complete
+    os_delay_ms(100);
+
     status = bsp_bmp390_read(&bmp390_int, &data);
     if (status != ERROR_OK)
     {
@@ -1545,9 +1547,18 @@ static void CMD_BMP390_Ext_Read(EmbeddedCli *cli, char *args, void *context)
 {
     uint32_t status;
     bmp390_data_t data;
+    
+    if (bsp_bmp390_status_switch() == 0)
+    {
+        embeddedCliPrint(cli, "BMP390 switch is disble");
+        embeddedCliPrint(cli, "Enable BMP390 switch using <bmp390_ext_ena>");
+        embeddedCliPrint(cli, "");
+        return;
+    }
+    
     if (bmp390_ext.init_status == false)
     {
-        bsp_bmp390_init(&bmp390_ext);
+//        bsp_bmp390_init(&bmp390_ext);
         /* init sensor */
         status = bsp_bmp390_init(&bmp390_ext);
         if (status != ERROR_OK)
@@ -1556,7 +1567,9 @@ static void CMD_BMP390_Ext_Read(EmbeddedCli *cli, char *args, void *context)
             return;
         }
     }
-    /* ??c d? li?u */
+    
+    os_delay_ms(100);
+    
     status = bsp_bmp390_read(&bmp390_ext, &data);
     if (status != ERROR_OK)
     {
@@ -1564,7 +1577,6 @@ static void CMD_BMP390_Ext_Read(EmbeddedCli *cli, char *args, void *context)
         return;
     }
     embeddedCliPrint(cli, "External BMP390:");
-    /* in k?t qu? */
     char msg[100];
     sprintf(msg, "Temp: %.2f C  Pressure: %.2f Pa", data.Temp, data.Pressure);
     embeddedCliPrint(cli, msg);    
@@ -1573,12 +1585,14 @@ static void CMD_BMP390_Ext_Read(EmbeddedCli *cli, char *args, void *context)
 
 static void CMD_BMP390_Ext_Ena(EmbeddedCli *cli, char *args, void *context) {
     bsp_bmp390_ena_switch();
+    //delay for waiting switch enable
+    os_delay_ms(50);
     embeddedCliPrint(cli, "SW is enabled");
     embeddedCliPrint(cli, "");
 }
 
 static void CMD_BMP390_Ext_Dis(EmbeddedCli *cli, char *args, void *context) {
-//    bsp_bmp390_dis_switch();
+    bsp_bmp390_dis_switch();
     embeddedCliPrint(cli, "Disable switch i2c bmp390 connector");
     embeddedCliPrint(cli, "");
 }

@@ -26,6 +26,8 @@ void App_AliveTask(void *param)
 {
     static uint8_t counter = 0;
     char buf[32];
+    
+    
     for(;;)
     {
         bsp_led_toggle();

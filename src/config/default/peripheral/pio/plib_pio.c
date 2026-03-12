@@ -44,7 +44,6 @@
 #include "plib_pio.h"
 #include "interrupts.h"
 #include "../../M2_BSP/BSP_Board/board.h"
-#include "board_v71_xult.h"
 
 
 
@@ -61,6 +60,8 @@
 void PIO_Initialize ( void )
 {
     MATRIX_REGS->CCFG_SYSIO = 0x0;
+    /* Selected System IO pins are configured as GPIO */
+    MATRIX_REGS->CCFG_SYSIO |= 0x1030UL;
 
     /************************ PIO A Initialization ************************/
     //------begin-------

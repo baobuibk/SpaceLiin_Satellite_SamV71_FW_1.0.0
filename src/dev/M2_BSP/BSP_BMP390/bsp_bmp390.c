@@ -41,5 +41,15 @@ uint32_t bsp_bmp390_read(bmp390_dev_t* dev, bmp390_data_t* p_data)
 
 void bsp_bmp390_ena_switch(void)
 {
-    do_set(&bmp390_connector_sensor5);
+    do_set(&bmp390_ext_sensor5);
+}
+
+void bsp_bmp390_dis_switch(void)
+{
+    do_reset(&bmp390_ext_sensor5);
+}
+
+bool bsp_bmp390_status_switch(void)
+{
+    return bmp390_ext_sensor5.bStatus;
 }
