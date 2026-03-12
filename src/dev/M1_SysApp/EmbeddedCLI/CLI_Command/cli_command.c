@@ -35,6 +35,7 @@
 #include "M2_BSP/BSP_Heater/bsp_heater.h"
 #include "cli_smoke_test.h"
 #include "M2_BSP/BSP_TEC/bsp_tec.h"
+#include "cli_expander_test.h"
 
 #include "M2_BSP/BSP_BMP390/bsp_bmp390.h"
 
@@ -204,7 +205,9 @@ static const CliCommandBinding cliStaticBindings_internal[] = {
     { "BMP390",          "bmp390_ext_dis",    "bmp390_connector_disable: disable switch i2c for bmp390 connector",           false, NULL, CMD_BMP390_Ext_Dis },
 
     { "TEST",           "echo",               "echo <text>",                                            true, NULL, CMD_CLI_Echo },
-    
+        { "TEST",           "expander_write",     "expander_write <val>",                                   true, NULL, CMD_Expander_Write },
+    { "TEST",           "expander_read",      "expander_read",                                          false, NULL, CMD_Expander_Read },
+
     { "TEC",            "tec_init",               "power_all_get: get power status of all rails",           true, NULL, CMD_TEC_Init },
     { "TEC",            "tec_vol",               "power_all_get: get power status of all rails",           true, NULL, CMD_TEC_Set_Vol },
     { "TEC",            "tec_en",               "power_all_get: get power status of all rails",           true, NULL, CMD_TEC_En },

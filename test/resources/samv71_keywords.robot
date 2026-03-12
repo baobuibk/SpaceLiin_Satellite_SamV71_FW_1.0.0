@@ -43,3 +43,18 @@ Echo Should Return Argument
     [Arguments]    ${text}
     ${resp}=    Execute Command And Expect    echo ${text}    ${text}    timeout_s=3.0    retries=2
     Should Contain    ${resp}    ${text}
+
+Expander Write Read Value
+    [Arguments]    ${value}
+    Send Command    expander_write ${value}
+    Execute Command And Expect    expander_read ${value}    ${value}    timeout_s=3.0    retries=2
+
+Expander Turn On Return
+    [Arguments]    ${value}
+    Send Command    sol_single_on 9
+    Execute Command And Expect    sol_single_get 9    ${value}    timeout_s=3.0    retries=2
+
+Expander Turn Off Return
+    [Arguments]    ${value}
+    Send Command    sol_single_off 9
+    Execute Command And Expect    sol_single_get 9    ${value}    timeout_s=3.0    retries=2
