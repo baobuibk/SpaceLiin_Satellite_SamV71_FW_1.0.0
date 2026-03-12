@@ -25,11 +25,9 @@
 #define PHOTO_SPI0_CS_PORT     4   //PD12 
 #define PHOTO_SPI0_CS_PIN      12  //PD12
 
-#define STATUS_LED_PORT        1   //PA23
-#define STATUS_LED_PIN         23  //PA23
-///*
-// * DEFINE FOR PORT AND PIN CONTROL EFUSE POWER
-// */
+#define STATUS_LED_PORT         1    //PA23
+#define STATUS_LED_PIN          23   //PA23
+
 #define POWER_SOM_PORT          4
 #define POWER_SOM_PIN           5
 
@@ -50,5 +48,24 @@
 
 #define POWER_HEATER_PORT       5
 #define POWER_HEATER_PIN        3
+
+#define I2C0_SDA_PORT           1    //PA03
+#define I2C0_SDA_PIN            3    //PA03
+
+#define I2C0_SCL_PORT           1    //PA04   
+#define I2C0_SCL_PIN            4    //PA04
+
+#define I2C1_SDA_PORT           2     //PB04
+#define I2C1_SDA_PIN            4     //PB04
+
+#define I2C1_SCL_PORT           2     //PB05
+#define I2C1_SCL_PIN            5     //PB05
+
+#define BMP390_ONBOARD_ADDRESS          0x76
+#define BMP390_CONNECTOR_ADDRESS        0x77
+
+#define SENSOR5_EN_PORT         3   //PC11
+#define SENSOR5_EN_PIN          11  //PC11
+
 
 #endif /* #ifndef _BOARD_V71_XULT_H_ */

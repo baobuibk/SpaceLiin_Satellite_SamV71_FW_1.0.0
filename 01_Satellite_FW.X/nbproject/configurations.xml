@@ -336,6 +336,10 @@
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="M2_BSP" displayName="M2_BSP" projectFiles="true">
+            <logicalFolder name="f4" displayName="BSP_BMP390" projectFiles="true">
+              <itemPath>../src/dev/M2_BSP/BSP_BMP390/bsp_bmp390.h</itemPath>
+              <itemPath>../src/dev/M2_BSP/BSP_TEC/bsp_tec.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="BSP_Board" displayName="BSP_Board" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Board/bsp_core.c</itemPath>
               <itemPath>../src/dev/M2_BSP/BSP_Board/board.h</itemPath>
@@ -367,9 +371,6 @@
                            displayName="BSP_Solenoid"
                            projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Solenoid/bsp_solenoid.h</itemPath>
-            </logicalFolder>
-            <logicalFolder name="f4" displayName="BSP_TEC" projectFiles="true">
-              <itemPath>../src/dev/M2_BSP/BSP_TEC/bsp_tec.h</itemPath>
             </logicalFolder>
             <logicalFolder name="UART" displayName="UART" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/UART/uart_dma.h</itemPath>
@@ -1374,6 +1375,10 @@
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="M2_BSP" displayName="M2_BSP" projectFiles="true">
+            <logicalFolder name="f4" displayName="BSP_BMP390" projectFiles="true">
+              <itemPath>../src/dev/M2_BSP/BSP_BMP390/bsp_bmp390.c</itemPath>
+              <itemPath>../src/dev/M2_BSP/BSP_TEC/bsp_tec.c</itemPath>
+            </logicalFolder>
             <logicalFolder name="f3" displayName="BSP_Heater" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Heater/bsp_heater.c</itemPath>
             </logicalFolder>
@@ -1387,9 +1392,6 @@
                            displayName="BSP_Solenoid"
                            projectFiles="true">
               <itemPath>../src/dev/M2_BSP/BSP_Solenoid/bsp_solenoid.c</itemPath>
-            </logicalFolder>
-            <logicalFolder name="f4" displayName="BSP_TEC" projectFiles="true">
-              <itemPath>../src/dev/M2_BSP/BSP_TEC/bsp_tec.c</itemPath>
             </logicalFolder>
             <logicalFolder name="UART" displayName="UART" projectFiles="true">
               <itemPath>../src/dev/M2_BSP/UART/uart_dma.c</itemPath>
@@ -2400,13 +2402,22 @@
       </EdbgTool>
       <Tool>
         <property key="AutoSelectMemRanges" value="auto"/>
+        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
+        <property key="ToolFirmwareFilePath"
+                  value="Press to browse for a specific firmware version"/>
+        <property key="ToolFirmwareOption.UpdateOptions"
+                  value="ToolFirmwareOption.UseLatest"/>
+        <property key="ToolFirmwareToolPack"
+                  value="Press to select which tool pack to use"/>
         <property key="arm.use_vtor" value="false"/>
         <property key="arm.vtor_adr" value="exception_table"/>
         <property key="communication.activationmode" value="nohv"/>
         <property key="communication.interface" value="swd"/>
+        <property key="communication.interface.jtag" value="2wire"/>
         <property key="communication.speed" value="2.000"/>
         <property key="debugoptions.debug-startup" value="Use system settings"/>
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
+        <property key="debugoptions.simultaneous.debug" value="false"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
         <property key="event.recorder.debugger.behavior" value="Running"/>
         <property key="event.recorder.enabled" value="false"/>
@@ -2435,7 +2446,16 @@
         <property key="poweroptions.powerenable" value="false"/>
         <property key="programmerToGoFilePath"
                   value="F:/F00_Workspace/06_SAT_SAM/MCU/MainProject/03_FREERTOS/03_FreeRTOS.X/debug/default/03_FreeRTOS_ptg"/>
+        <property key="programmerToGoImageName" value="01_Satellite_FW_ptg"/>
+        <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
+        <property key="programoptions.ledbrightness" value="5"/>
+        <property key="programoptions.pgcconfig" value="pull down"/>
+        <property key="programoptions.pgcresistor.value" value="4.7"/>
+        <property key="programoptions.pgdconfig" value="pull down"/>
+        <property key="programoptions.pgdresistor.value" value="4.7"/>
+        <property key="programoptions.pgmentry.voltage" value="low"/>
+        <property key="programoptions.pgmspeed" value="Med"/>
         <property key="programoptions.preservedataflash" value="false"/>
         <property key="programoptions.preservedataflash.ranges"
                   value="${memories.dataflash.default}"/>
@@ -2444,8 +2464,13 @@
         <property key="programoptions.preserveprogram.ranges" value=""/>
         <property key="programoptions.preserveprogramrange" value="false"/>
         <property key="programoptions.preserveuserid" value="false"/>
+        <property key="programoptions.program.otpconfig" value="false"/>
+        <property key="programoptions.programcalmem" value="false"/>
         <property key="programoptions.programuserotp" value="false"/>
         <property key="programoptions.smart.program" value="When debugging only"/>
+        <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
+        <property key="ptgProgramImage" value="true"/>
+        <property key="ptgSendImage" value="true"/>
         <property key="script.has_reset" value="true"/>
         <property key="script.log_level" value="1"/>
         <property key="script.reset_by_pin" value="false"/>
@@ -2455,8 +2480,76 @@
                   value="toolpack.updateoptions.uselatestoolpack"/>
         <property key="toolpack.updateoptions.packversion"
                   value="Press to select which tool pack to use"/>
-        <property key="voltagevalue" value=""/>
+        <property key="voltagevalue" value="3.25"/>
       </Tool>
+      <pk4hybrid>
+        <property key="AutoSelectMemRanges" value="auto"/>
+        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
+        <property key="ToolFirmwareFilePath"
+                  value="Press to browse for a specific firmware version"/>
+        <property key="ToolFirmwareOption.UpdateOptions"
+                  value="ToolFirmwareOption.UseLatest"/>
+        <property key="ToolFirmwareToolPack"
+                  value="Press to select which tool pack to use"/>
+        <property key="communication.activationmode" value="nohv"/>
+        <property key="communication.interface" value="swd"/>
+        <property key="communication.interface.jtag" value="2wire"/>
+        <property key="communication.speed" value="2.000"/>
+        <property key="debugoptions.debug-startup" value="Use system settings"/>
+        <property key="debugoptions.reset-behaviour" value="Use system settings"/>
+        <property key="debugoptions.simultaneous.debug" value="false"/>
+        <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="event.recorder.debugger.behavior" value="Running"/>
+        <property key="event.recorder.enabled" value="false"/>
+        <property key="event.recorder.scvd.files" value=""/>
+        <property key="freeze.timers" value="false"/>
+        <property key="lastid" value=""/>
+        <property key="memories.aux" value="false"/>
+        <property key="memories.bootflash" value="true"/>
+        <property key="memories.configurationmemory" value="true"/>
+        <property key="memories.configurationmemory2" value="true"/>
+        <property key="memories.dataflash" value="true"/>
+        <property key="memories.eeprom" value="true"/>
+        <property key="memories.exclude.configurationmemory" value="true"/>
+        <property key="memories.flashdata" value="true"/>
+        <property key="memories.id" value="true"/>
+        <property key="memories.instruction.ram.ranges"
+                  value="${memories.instruction.ram.ranges}"/>
+        <property key="memories.programmemory" value="true"/>
+        <property key="memories.programmemory.ranges" value="400000-5fffff"/>
+        <property key="poweroptions.powerenable" value="false"/>
+        <property key="programmerToGoImageName" value="01_Satellite_FW_ptg"/>
+        <property key="programoptions.donoteraseauxmem" value="false"/>
+        <property key="programoptions.eraseb4program" value="true"/>
+        <property key="programoptions.ledbrightness" value="5"/>
+        <property key="programoptions.pgcconfig" value="pull down"/>
+        <property key="programoptions.pgcresistor.value" value="4.7"/>
+        <property key="programoptions.pgdconfig" value="pull down"/>
+        <property key="programoptions.pgdresistor.value" value="4.7"/>
+        <property key="programoptions.pgmentry.voltage" value="low"/>
+        <property key="programoptions.pgmspeed" value="Med"/>
+        <property key="programoptions.preservedataflash" value="false"/>
+        <property key="programoptions.preservedataflash.ranges"
+                  value="${memories.dataflash.default}"/>
+        <property key="programoptions.preserveeeprom" value="false"/>
+        <property key="programoptions.preserveeeprom.ranges" value=""/>
+        <property key="programoptions.preserveprogram.ranges" value=""/>
+        <property key="programoptions.preserveprogramrange" value="false"/>
+        <property key="programoptions.preserveuserid" value="false"/>
+        <property key="programoptions.program.otpconfig" value="false"/>
+        <property key="programoptions.programcalmem" value="false"/>
+        <property key="programoptions.programuserotp" value="false"/>
+        <property key="programoptions.smart.program" value="When debugging only"/>
+        <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
+        <property key="ptgProgramImage" value="true"/>
+        <property key="ptgSendImage" value="true"/>
+        <property key="script.reset_by_pin" value="false"/>
+        <property key="toolpack.updateoptions"
+                  value="toolpack.updateoptions.uselatestoolpack"/>
+        <property key="toolpack.updateoptions.packversion"
+                  value="Press to select which tool pack to use"/>
+        <property key="voltagevalue" value="3.25"/>
+      </pk4hybrid>
     </conf>
   </confs>
 </configurationDescriptor>

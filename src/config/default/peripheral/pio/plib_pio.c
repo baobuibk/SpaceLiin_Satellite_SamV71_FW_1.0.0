@@ -60,15 +60,17 @@
 void PIO_Initialize ( void )
 {
     MATRIX_REGS->CCFG_SYSIO = 0x0;
+    /* Selected System IO pins are configured as GPIO */
+    MATRIX_REGS->CCFG_SYSIO |= 0x1030UL;
 
     /************************ PIO A Initialization ************************/
     //------begin-------
     /* PORTA PIO: Default*/
     ((pio_registers_t*)PIO_PORT_A)->PIO_ABCDSR[0] = 0x0U;
     ((pio_registers_t*)PIO_PORT_A)->PIO_ABCDSR[1] = 0x0U;
-    //------begin-------
     uint32_t PIOA_Output_mask = (1U << 30);
-    //------stop--------
+    /* Select Peripheral A for PA */
+    uint32_t PIOA_periph_A_mask = (1U << I2C0_SDA_PIN) | (1U << I2C0_SCL_PIN);
     /* Select Peripheral B for PA00, PA01, PA26, PA27 */
     uint32_t PIOA_periph_B_mask = (1U << HTR_PWM_2_PIN) | (1U << HTR_PWM_3_PIN) | (1U << HTR_PWM_4_PIN) | (1U << HTR_PWM_1_PIN);
     ((pio_registers_t*)PIO_PORT_A)->PIO_ABCDSR[0] |=  PIOA_periph_B_mask;
@@ -77,9 +79,9 @@ void PIO_Initialize ( void )
     ((pio_registers_t*)PIO_PORT_A)->PIO_PER = 0xFFFFFFFFU;
     //------begin-------
     /* PORTA PIO Enable and Peripheral Disable*/
-    ((pio_registers_t*)PIO_PORT_A)->PIO_PER &= ~(PIOA_periph_B_mask);
+    ((pio_registers_t*)PIO_PORT_A)->PIO_PER &= ~(PIOA_periph_A_mask | PIOA_periph_B_mask);
     /* PORTA PIO Disable and Peripheral Enable*/
-    ((pio_registers_t*)PIO_PORT_A)->PIO_PDR |=  (PIOA_periph_B_mask);
+    ((pio_registers_t*)PIO_PORT_A)->PIO_PDR |=  (PIOA_periph_A_mask | PIOA_periph_B_mask);
     //------stop--------
     ((pio_registers_t*)PIO_PORT_A)->PIO_MDDR = 0xFFFFFFFFU;
     /* PORTA Pull Up Enable/Disable as per MHC selection */
@@ -102,9 +104,21 @@ void PIO_Initialize ( void )
 
     /************************ PIO B Initialization ************************/
     //------begin-------
+    /* PORTB PIO: Default*/
+    ((pio_registers_t*)PIO_PORT_B)->PIO_ABCDSR[0] = 0x0U;
+    ((pio_registers_t*)PIO_PORT_B)->PIO_ABCDSR[1] = 0x0U;
+    /* Select PIO_Output for PB */
     uint32_t PIOB_Output_mask = (1U << STATUS_LED_PIN);
+    /* Select Peripheral A for PB */
+    uint32_t PIOB_periph_A_mask = (1U << I2C1_SDA_PIN) | (1U << I2C1_SCL_PIN);
     //------stop--------
     ((pio_registers_t*)PIO_PORT_B)->PIO_PER = 0xFFFFFFFFU;
+    //------begin-------
+    /* PORTB PIO Disable and Peripheral Enable*/
+    ((pio_registers_t*)PIO_PORT_B)->PIO_PDR |=  (PIOB_periph_A_mask);
+    /* PORTB PIO Enable and Peripheral Disable*/
+    ((pio_registers_t*)PIO_PORT_B)->PIO_PER &= ~(PIOB_periph_A_mask);
+    //------stop--------
     ((pio_registers_t*)PIO_PORT_B)->PIO_MDDR = 0xFFFFFFFFU;
     /* PORTB Pull Up Enable/Disable as per MHC selection */
     ((pio_registers_t*)PIO_PORT_B)->PIO_PUDR = 0xFFFFFFFFU;
@@ -131,7 +145,7 @@ void PIO_Initialize ( void )
     ((pio_registers_t*)PIO_PORT_C)->PIO_ABCDSR[1] = 0x0U;
     /* Select PIO_Output for PC18 */
     uint32_t PIOC_Output_mask = ((1U << TEC_3_SW_PIN) | (1U << TEC_1_CS_PIN)| (1U << TEC_2_CS_PIN) | (1U << TEC_3_CS_PIN)
-                                | (1U << TEC_4_SW_PIN) );
+                                | (1U << TEC_4_SW_PIN) | (1U << SENSOR5_EN_PIN) );
     /* Select Peripheral B for PC5, PC6, PC8, PC23 */
     uint32_t PIOC_periph_B_mask = (1U << HTR_PWM_7_PIN) | (1U << HTR_PWM_8_PIN) | (1U << HTR_PWM_5_PIN) | (1U << HTR_PWM_6_PIN);
     ((pio_registers_t*)PIO_PORT_C)->PIO_ABCDSR[0] |=  PIOC_periph_B_mask;

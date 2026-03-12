@@ -9,9 +9,9 @@
 #define BOARD_SAMV71_STL
 
 #if defined(BOARD_SAMV71_XULT)
-	#include "board_v71_xult.h"
+//	#include "board_v71_xult.h"
 #elif defined(BOARD_SAMV71_ISS)
-	#include "board_v71_iss.h"
+//	#include "board_v71_iss.h"
 #elif defined(BOARD_SAMV71_STL)
 	#include "board_v71_satellite.h"
 #else

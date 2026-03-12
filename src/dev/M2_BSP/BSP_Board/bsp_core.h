@@ -37,6 +37,10 @@ extern do_t tec_3_sw;
 extern do_t tec_4_cs;
 extern do_t tec_4_sw;
 
+extern do_t bmp390_ext_sensor5;
+extern i2c_io_t i2c0;
+extern i2c_io_t i2c1;
+
 void BSP_board_init(void);
 
 #endif /* __BSP_CORE_H__ */

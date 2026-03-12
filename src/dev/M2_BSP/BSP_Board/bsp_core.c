@@ -84,11 +84,33 @@ do_t power_heater =
     .bStatus = false
 }; 
 
+
 do_t status_led = 
 {
     .port = STATUS_LED_PORT,
     .pin = STATUS_LED_PIN,
     .bStatus = false,
+};
+
+
+/*
+ * FOR BMP390 onboard and connnector
+*/
+i2c_io_t i2c0 =
+{
+    .ui32I2cPort = 0,
+};
+
+do_t bmp390_ext_sensor5 = 
+{
+    .port= SENSOR5_EN_PORT,
+    .pin = SENSOR5_EN_PIN,
+    .bStatus = false,
+};
+
+i2c_io_t i2c1 =
+{
+    .ui32I2cPort = 1,
 };
 
 i2c_io_t sol_expander_i2c = 

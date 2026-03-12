@@ -60,8 +60,6 @@ Std_ReturnType BootManager_SystemInit(void){
 
     SystemCLI_Init();
     HardwareCSP_Init();
-    
-    TWIHS2_Initialize();
     bsp_solenoid_init();
 
     return ERROR_OK;

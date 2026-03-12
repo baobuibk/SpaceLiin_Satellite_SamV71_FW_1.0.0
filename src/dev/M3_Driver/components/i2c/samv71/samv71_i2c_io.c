@@ -19,7 +19,7 @@
 
 #include "i2c_io.h"
 #include "define.h"
-
+#include "os_hal.h"
 #include <stdint.h>
 #include <stdbool.h>
 
