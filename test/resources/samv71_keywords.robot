@@ -5,7 +5,7 @@ Library    BuiltIn
 *** Variables ***
 #${SERIAL_PORT}          /dev/ttyUSB0
 
-${SERIAL_PORT}          COM6
+${SERIAL_PORT}          COM10
 ${BAUDRATE}             115200
 ${TIMEOUT_S}            1.0
 ${NEWLINE}              \r\n
@@ -58,3 +58,33 @@ Expander Turn Off Return
     [Arguments]    ${value}
     Send Command    sol_single_off 9
     Execute Command And Expect    sol_single_get 9    ${value}    timeout_s=3.0    retries=2
+
+
+BMP390 Read Internal
+    ${line}=    Execute Command And Expect    bmp390_int_read    Pa
+    Should Contain    ${line}    Temp
+    Should Contain    ${line}    Pressure
+    RETURN    ${line}
+
+BMP390 Read External
+    [Arguments]    ${auto_enable}=False
+    # try read; if disabled and auto_enable requested, enable and read again
+    ${status}    ${resp}=    Run Keyword And Ignore Error    Execute Command And Expect    bmp390_ext_read    Pa
+    IF    '${status}' == 'FAIL' and '${auto_enable}' == 'True'
+        BMP390 Enable Switch
+        ${resp}=    Execute Command And Expect    bmp390_ext_read    Pa
+    ELSE
+        Should Be Equal    ${status}    PASS
+    END
+    Should Contain    ${resp}    Temp
+    Should Contain    ${resp}    Pressure
+    RETURN    ${resp}
+
+BMP390 Disable Switch
+    ${resp}=    Execute Command And Expect    bmp390_ext_dis    Disable switch i2c bmp390 connector
+    RETURN    ${resp}
+
+BMP390 Enable Switch
+    Send Command    bmp390_ext_ena
+    ${resp}=    Execute Command And Expect    bmp390_ext_ena    SW is enabled
+    RETURN    ${resp}
